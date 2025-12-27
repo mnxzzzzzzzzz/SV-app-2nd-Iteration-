@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react"
-import { View, Text, StyleSheet, Animated, Dimensions } from "react-native"
-import { Ionicons } from "@expo/vector-icons"
+import { View, Text, StyleSheet, Animated, Dimensions, Image } from "react-native"
 import { Colors, Spacing, FontSize } from "../../constants/Colors"
 
 const { width, height } = Dimensions.get("window")
@@ -42,10 +41,11 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
     <View style={styles.container}>
       <Animated.View style={[styles.content, { opacity: fadeAnim, transform: [{ scale: scaleAnim }] }]}>
         <View style={styles.logoContainer}>
-          <Ionicons name="planet" size={120} color={Colors.primary} />
-          <View style={styles.logoOverlay}>
-            <Text style={styles.logoText}>SV</Text>
-          </View>
+          <Image 
+            source={require("../../../assets/studentverse-logo.svg")} 
+            style={styles.logo}
+            resizeMode="contain"
+          />
         </View>
         <Text style={styles.tagline}>Smarter student living</Text>
       </Animated.View>
@@ -68,17 +68,10 @@ const styles = StyleSheet.create({
     height: 200,
     alignItems: "center",
     justifyContent: "center",
-    position: "relative",
   },
-  logoOverlay: {
-    position: "absolute",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  logoText: {
-    fontSize: 40,
-    fontWeight: "900",
-    color: Colors.text.primary,
+  logo: {
+    width: 200,
+    height: 200,
   },
   tagline: {
     marginTop: Spacing.lg,

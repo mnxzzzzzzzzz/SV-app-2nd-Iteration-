@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, ActivityIndicator, KeyboardAvoidingView, Platform, ScrollView } from "react-native"
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, ActivityIndicator, KeyboardAvoidingView, Platform, ScrollView, Image } from "react-native"
 import { Ionicons } from "@expo/vector-icons"
 import { Colors, Spacing, FontSize, BorderRadius } from "../../constants/Colors"
 
@@ -33,10 +33,11 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
     <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={styles.header}>
-          <View style={styles.logoContainer}>
-            <Ionicons name="planet" size={60} color={Colors.primary} />
-            <Text style={styles.logoMiniText}>SV</Text>
-          </View>
+          <Image 
+            source={require("../../../assets/studentverse-logo.svg")} 
+            style={styles.logo}
+            resizeMode="contain"
+          />
           <Text style={styles.welcomeText}>Welcome to</Text>
           <Text style={styles.title}>StudentVerse</Text>
         </View>
@@ -77,8 +78,7 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: Colors.background },
   scrollContent: { flexGrow: 1, padding: Spacing.xl, justifyContent: "space-between", paddingBottom: Spacing.xxl },
   header: { alignItems: "center", marginTop: Spacing.xxl },
-  logoContainer: { flexDirection: 'row', alignItems: 'center', marginBottom: Spacing.md },
-  logoMiniText: { color: Colors.text.primary, fontSize: 24, fontWeight: '900', marginLeft: -15 },
+  logo: { width: 120, height: 60, marginBottom: Spacing.md },
   welcomeText: { fontSize: FontSize.lg, color: Colors.text.secondary },
   title: { fontSize: 32, fontWeight: "700", color: Colors.text.primary, marginBottom: Spacing.md },
   form: { width: "100%", gap: Spacing.md },
