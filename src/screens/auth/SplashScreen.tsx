@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react"
-import { View, Text, StyleSheet, Animated, Dimensions } from "react-native"
+import { View, Text, StyleSheet, Animated, Dimensions, Image } from "react-native"
 import { Colors, Spacing, FontSize } from "../../constants/Colors"
-import Logo from "../../../assets/studentverse-logo.svg"
 
 const { width, height } = Dimensions.get("window")
 
@@ -42,7 +41,11 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
     <View style={styles.container}>
       <Animated.View style={[styles.content, { opacity: fadeAnim, transform: [{ scale: scaleAnim }] }]}>
         <View style={styles.logoContainer}>
-          <Logo width={200} height={200} />
+          <Image 
+            source={require("../../../assets/studentverse-logo.png")} 
+            style={styles.logo}
+            resizeMode="contain"
+          />
         </View>
         <Text style={styles.tagline}>Smarter student living</Text>
       </Animated.View>
@@ -65,6 +68,10 @@ const styles = StyleSheet.create({
     height: 200,
     alignItems: "center",
     justifyContent: "center",
+  },
+  logo: {
+    width: 200,
+    height: 200,
   },
   tagline: {
     marginTop: Spacing.lg,
