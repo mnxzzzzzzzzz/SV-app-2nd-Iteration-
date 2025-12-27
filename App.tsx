@@ -1,3 +1,4 @@
+import React, { useState } from "react"
 import { NavigationContainer } from "@react-navigation/native"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import { SafeAreaProvider } from "react-native-safe-area-context"
@@ -11,10 +12,42 @@ import QRScreen from "./src/screens/QRScreen"
 import PayScreen from "./src/screens/PayScreen"
 import OrbitScreen from "./src/screens/OrbitScreen"
 import MeScreen from "./src/screens/MeScreen"
+import LoginScreen from "./src/screens/auth/LoginScreen"
+import OTPScreen from "./src/screens/auth/OTPScreen"
 
 const Tab = createBottomTabNavigator()
 
 export default function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [authStep, setAuthStep] = useState<"login" | "otp">("login")
+  const [email, setEmail] = useState("")
+
+  if (!isAuthenticated) {
+    if (authStep === "login") {
+      return (
+        <SafeAreaProvider>
+          <StatusBar style="light" backgroundColor={Colors.background} />
+          <LoginScreen 
+            onLogin={(email) => {
+              setEmail(email)
+              setAuthStep("otp")
+            }} 
+          />
+        </SafeAreaProvider>
+      )
+    }
+    return (
+      <SafeAreaProvider>
+        <StatusBar style="light" backgroundColor={Colors.background} />
+        <OTPScreen 
+          email={email}
+          onVerify={() => setIsAuthenticated(true)}
+          onBack={() => setAuthStep("login")}
+        />
+      </SafeAreaProvider>
+    )
+  }
+
   return (
     <SafeAreaProvider>
       <StatusBar style="light" backgroundColor={Colors.background} />
