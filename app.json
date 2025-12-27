@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "StudentVerse",
+    "slug": "studentverse-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.jpg",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#080C1F",
+    "splash": {
+      "image": "./assets/splash.jpg",
+      "resizeMode": "contain",
+      "backgroundColor": "#080C1F"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.studentverse.mobile"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.jpg",
+        "backgroundColor": "#080C1F"
+      },
+      "package": "com.studentverse.mobile"
+    },
+    "web": {
+      "favicon": "./assets/favicon.jpg"
+    },
+    "scheme": "studentverse",
+    "sdkVersion": "54.0.0"
+  }
+}
