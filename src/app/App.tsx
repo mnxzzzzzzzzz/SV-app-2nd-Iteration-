@@ -11,7 +11,9 @@ import { EmailEntry } from "./components/auth/EmailEntry";
 import { OTPVerification } from "./components/auth/OTPVerification";
 import { Waitlist } from "./components/auth/Waitlist";
 
-type AuthStep = "email" | "otp" | "waitlist" | "authenticated";
+import { LoadingScreen } from "./components/shared/LoadingScreen";
+
+type AuthStep = "email" | "loading" | "otp" | "waitlist" | "authenticated";
 
 export default function App() {
   const [showSplash, setShowSplash] = useState(true);
@@ -56,7 +58,10 @@ export default function App() {
   // Auth handlers
   const handleEmailSubmit = (email: string) => {
     setUserEmail(email);
-    setAuthStep("otp");
+    setAuthStep("loading");
+    setTimeout(() => {
+      setAuthStep("otp");
+    }, 2000);
   };
 
   const handleOTPVerify = () => {
@@ -76,6 +81,8 @@ export default function App() {
     switch (authStep) {
       case "email":
         return <EmailEntry onSubmit={handleEmailSubmit} />;
+      case "loading":
+        return <LoadingScreen title="Verifying Email" subtitle="Checking your university credentials..." />;
       case "otp":
         return (
           <OTPVerification

@@ -49,7 +49,7 @@ export function LoadingScreen({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-[32px] font-semibold text-[#2962FF] text-center mb-4"
+          className="text-[32px] font-semibold text-white text-center mb-4"
         >
           {title}
         </motion.h1>
