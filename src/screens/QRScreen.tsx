@@ -1,18 +1,26 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { View, StyleSheet } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { Colors } from "../constants/Colors"
 import MerchantListScreen from "../components/qr/MerchantListScreen"
 import ActiveQRScreen from "../components/qr/ActiveQRScreen"
 import type { Merchant } from "../types"
+import { useRoute } from "@react-navigation/native"
 
 export type QRFlow = "merchant-list" | "active-qr"
 
 export default function QRScreen() {
+  const route = useRoute<any>()
   const [currentFlow, setCurrentFlow] = useState<QRFlow>("merchant-list")
   const [selectedMerchant, setSelectedMerchant] = useState<Merchant | null>(null)
+
+  useEffect(() => {
+    if (route.params?.merchant) {
+      handleMerchantSelect(route.params.merchant)
+    }
+  }, [route.params?.merchant])
 
   const handleMerchantSelect = (merchant: Merchant) => {
     setSelectedMerchant(merchant)
