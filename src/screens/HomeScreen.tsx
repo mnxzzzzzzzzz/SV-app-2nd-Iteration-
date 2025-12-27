@@ -15,6 +15,7 @@ export default function HomeScreen() {
   const navigation = useNavigation<any>()
   const fadeAnim = useRef(new Animated.Value(0)).current
   const slideAnim = useRef(new Animated.Value(30)).current
+  const moveAnim = useRef(new Animated.Value(0)).current
 
   useEffect(() => {
     Animated.parallel([
@@ -28,8 +29,32 @@ export default function HomeScreen() {
         duration: 600,
         useNativeDriver: true,
       }),
+      Animated.loop(
+        Animated.sequence([
+          Animated.timing(moveAnim, {
+            toValue: 1,
+            duration: 4000,
+            useNativeDriver: true,
+          }),
+          Animated.timing(moveAnim, {
+            toValue: 0,
+            duration: 4000,
+            useNativeDriver: true,
+          }),
+        ])
+      ),
     ]).start()
   }, [])
+
+  const moveX = moveAnim.interpolate({
+    inputRange: [0, 1],
+    outputRange: [-20, 20],
+  })
+
+  const moveY = moveAnim.interpolate({
+    inputRange: [0, 1],
+    outputRange: [-10, 10],
+  })
 
   const stats = {
     savings: 1247,
@@ -136,12 +161,25 @@ export default function HomeScreen() {
               <Text style={styles.statsSubtext}>This semester</Text>
 
               <View style={styles.statsRow}>
-                <LinearGradient
-                  colors={Colors.accentGradient}
-                  start={{ x: 0, y: 0 }}
-                  end={{ x: 1, y: 1 }}
-                  style={styles.accentDecoration}
-                />
+                <Animated.View 
+                  style={[
+                    styles.accentDecoration, 
+                    { 
+                      transform: [
+                        { translateX: moveX },
+                        { translateY: moveY },
+                        { scale: 1.8 }
+                      ] 
+                    }
+                  ]} 
+                >
+                  <LinearGradient
+                    colors={Colors.accentGradient}
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 1, y: 1 }}
+                    style={{ flex: 1, borderRadius: 60 }}
+                  />
+                </Animated.View>
                 <View style={styles.statItem}>
                   <Text style={styles.statValue}>{stats.discounts}</Text>
                   <Text style={styles.statLabel}>Active Deals</Text>
@@ -436,13 +474,14 @@ const styles = StyleSheet.create({
   },
   accentDecoration: {
     position: 'absolute',
-    top: -Spacing.xl,
-    right: -Spacing.xl,
-    width: 120,
-    height: 120,
-    borderRadius: 60,
-    opacity: 0.4,
-    transform: [{ scale: 1.5 }],
+    top: -Spacing.lg,
+    right: -Spacing.lg,
+    width: 140,
+    height: 140,
+    borderRadius: 70,
+    opacity: 0.25,
+    // Note: Blur is handled via opacity and gradient smoothing in web-only environments
+    // without dedicated blur libs, but we'll optimize for a soft mesh look
   },
   section: {
     paddingHorizontal: Spacing.lg,
