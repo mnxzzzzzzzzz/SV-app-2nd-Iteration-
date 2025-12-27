@@ -131,8 +131,8 @@ export default function MeScreen() {
                     activeOpacity={item.hasSwitch ? 1 : 0.7}
                   >
                     <View style={styles.menuItemLeft}>
-                      <View style={[styles.menuIcon, { backgroundColor: `${item.color || Colors.primary}20` }]}>
-                        <Ionicons name={item.icon as any} size={20} color={item.color || Colors.text.primary} />
+                      <View style={[styles.menuIcon, { backgroundColor: `${(item.color as string) || Colors.primary}20` }]}>
+                        <Ionicons name={item.icon as any} size={20} color={(item.color as string) || Colors.text.primary} />
                       </View>
                       <Text style={styles.menuItemLabel}>{item.label}</Text>
                     </View>
