@@ -8,6 +8,7 @@ import { Colors, Spacing, FontSize, BorderRadius } from "../constants/Colors"
 import Card from "../components/ui/Card"
 import Badge from "../components/ui/Badge"
 import { useEffect, useRef } from "react"
+import Icon from "../../assets/studentverse-icon.svg"
 
 export default function HomeScreen() {
   const fadeAnim = useRef(new Animated.Value(0)).current
@@ -83,11 +84,7 @@ export default function HomeScreen() {
         {/* Header */}
         <Animated.View style={[styles.header, { opacity: fadeAnim, transform: [{ translateY: slideAnim }] }]}>
           <View style={styles.headerLeft}>
-            <Image 
-              source={require("../../assets/studentverse-icon.svg")} 
-              style={styles.miniLogo}
-              resizeMode="contain"
-            />
+            <Icon width={40} height={40} style={styles.miniLogo} />
             <View>
               <Text style={styles.greeting}>Good Morning</Text>
               <Text style={styles.userName}>John Student</Text>
