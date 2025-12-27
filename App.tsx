@@ -14,13 +14,23 @@ import OrbitScreen from "./src/screens/OrbitScreen"
 import MeScreen from "./src/screens/MeScreen"
 import LoginScreen from "./src/screens/auth/LoginScreen"
 import OTPScreen from "./src/screens/auth/OTPScreen"
+import SplashScreen from "./src/screens/auth/SplashScreen"
 
 const Tab = createBottomTabNavigator()
 
 export default function App() {
+  const [showSplash, setShowSplash] = useState(true)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [authStep, setAuthStep] = useState<"login" | "otp">("login")
   const [email, setEmail] = useState("")
+
+  if (showSplash) {
+    return (
+      <SafeAreaProvider>
+        <SplashScreen onComplete={() => setShowSplash(false)} />
+      </SafeAreaProvider>
+    )
+  }
 
   if (!isAuthenticated) {
     if (authStep === "login") {

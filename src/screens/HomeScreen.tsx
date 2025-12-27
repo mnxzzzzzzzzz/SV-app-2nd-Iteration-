@@ -82,9 +82,15 @@ export default function HomeScreen() {
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
         {/* Header */}
         <Animated.View style={[styles.header, { opacity: fadeAnim, transform: [{ translateY: slideAnim }] }]}>
-          <View>
-            <Text style={styles.greeting}>Good Morning</Text>
-            <Text style={styles.userName}>John Student</Text>
+          <View style={styles.headerLeft}>
+            <View style={styles.logoContainer}>
+              <Ionicons name="planet" size={24} color={Colors.primary} />
+              <Text style={styles.logoMiniText}>SV</Text>
+            </View>
+            <View>
+              <Text style={styles.greeting}>Good Morning</Text>
+              <Text style={styles.userName}>John Student</Text>
+            </View>
           </View>
           <TouchableOpacity style={styles.notificationButton}>
             <Ionicons name="notifications-outline" size={24} color={Colors.text.primary} />
@@ -237,12 +243,32 @@ const styles = StyleSheet.create({
     padding: Spacing.lg,
     paddingTop: Spacing.md,
   },
+  headerLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: Spacing.md,
+  },
+  logoContainer: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: Colors.surface,
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: 'row',
+  },
+  logoMiniText: {
+    color: Colors.text.primary,
+    fontSize: 10,
+    fontWeight: '900',
+    marginLeft: -6,
+  },
   greeting: {
     fontSize: FontSize.md,
     color: Colors.text.secondary,
   },
   userName: {
-    fontSize: FontSize.xxxl,
+    fontSize: FontSize.xl,
     fontWeight: "700",
     color: Colors.text.primary,
     marginTop: 4,
