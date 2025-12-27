@@ -82,7 +82,7 @@ export default function App() {
       case "email":
         return <EmailEntry onSubmit={handleEmailSubmit} />;
       case "loading":
-        return <LoadingScreen title="Verifying Email" subtitle="Checking your university credentials..." />;
+        return <LoadingScreen title="StudentVerse" subtitle="Verifying your information..." />;
       case "otp":
         return (
           <OTPVerification
