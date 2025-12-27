@@ -7,7 +7,7 @@ import { LinearGradient } from "expo-linear-gradient"
 import { Colors, Spacing, FontSize, BorderRadius } from "../constants/Colors"
 import Card from "../components/ui/Card"
 import Badge from "../components/ui/Badge"
-import { useEffect, useRef } from "react"
+import { useState, useEffect, useRef } from "react"
 
 import { useNavigation } from "@react-navigation/native"
 
@@ -61,6 +61,9 @@ export default function HomeScreen() {
     },
   ]
 
+  const [activeCategory, setActiveCategory] = useState("All")
+  const categories = ["All", "Entertainment", "Clothing", "Food", "Tech"]
+
   const nearbyDeals = [
     {
       id: "1",
@@ -69,6 +72,7 @@ export default function HomeScreen() {
       distance: "0.3 km",
       logo: "https://via.placeholder.com/80",
       popular: true,
+      category: "Food",
     },
     {
       id: "2",
@@ -77,8 +81,22 @@ export default function HomeScreen() {
       distance: "0.5 km",
       logo: "https://via.placeholder.com/80",
       popular: false,
+      category: "Entertainment",
+    },
+    {
+      id: "3",
+      name: "Urban Threads",
+      discount: 15,
+      distance: "1.2 km",
+      logo: "https://via.placeholder.com/80",
+      popular: true,
+      category: "Clothing",
     },
   ]
+
+  const filteredDeals = activeCategory === "All" 
+    ? nearbyDeals 
+    : nearbyDeals.filter(d => d.category === activeCategory)
 
   return (
     <SafeAreaView style={styles.container}>
@@ -108,7 +126,7 @@ export default function HomeScreen() {
         <Animated.View style={{ opacity: fadeAnim, transform: [{ translateY: slideAnim }] }}>
           <Card style={styles.statsCard}>
             <LinearGradient
-              colors={[Colors.primary, Colors.primaryDark]}
+              colors={Colors.primaryGradient}
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 1 }}
               style={styles.statsGradient}
@@ -175,7 +193,30 @@ export default function HomeScreen() {
             </TouchableOpacity>
           </View>
 
-          {nearbyDeals.map((deal) => (
+          <ScrollView 
+            horizontal 
+            showsHorizontalScrollIndicator={false} 
+            style={styles.categoryScroll}
+            contentContainerStyle={styles.categoryContent}
+          >
+            {categories.map(cat => (
+              <TouchableOpacity 
+                key={cat} 
+                style={[
+                  styles.categoryButton, 
+                  activeCategory === cat && styles.categoryButtonActive
+                ]}
+                onPress={() => setActiveCategory(cat)}
+              >
+                <Text style={[
+                  styles.categoryText,
+                  activeCategory === cat && styles.categoryTextActive
+                ]}>{cat}</Text>
+              </TouchableOpacity>
+            ))}
+          </ScrollView>
+
+          {filteredDeals.map((deal) => (
             <TouchableOpacity key={deal.id} onPress={() => navigation.navigate("QR", { merchant: deal })}>
               <Card style={styles.dealCard}>
                 <View style={styles.dealContent}>
@@ -294,6 +335,34 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontWeight: "700",
     color: Colors.text.primary,
+  },
+  categoryScroll: {
+    marginBottom: Spacing.lg,
+    marginHorizontal: -Spacing.lg,
+  },
+  categoryContent: {
+    paddingHorizontal: Spacing.lg,
+    gap: Spacing.sm,
+  },
+  categoryButton: {
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderRadius: 12,
+    backgroundColor: Colors.surface,
+    borderWidth: 1,
+    borderColor: Colors.border,
+  },
+  categoryButtonActive: {
+    backgroundColor: Colors.primary,
+    borderColor: Colors.primary,
+  },
+  categoryText: {
+    color: Colors.text.secondary,
+    fontWeight: "600",
+    fontSize: 14,
+  },
+  categoryTextActive: {
+    color: "#FFFFFF",
   },
   statsCard: {
     marginHorizontal: Spacing.lg,
