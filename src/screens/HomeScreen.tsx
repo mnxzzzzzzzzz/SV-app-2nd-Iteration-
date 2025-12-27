@@ -174,7 +174,7 @@ export default function HomeScreen() {
               </Animated.View>
               
               <Text style={styles.statsTitle}>Your Total Savings</Text>
-              <Text style={styles.statsAmount}>{stats.savings.toLocaleString()} AED</Text>
+              <Text style={styles.statsAmount}>£{stats.savings.toLocaleString()}</Text>
               <Text style={styles.statsSubtext}>This semester</Text>
 
               <View style={styles.statsRow}>
@@ -306,7 +306,7 @@ export default function HomeScreen() {
                     <Text style={styles.activityTime}>{activity.time}</Text>
                   </View>
                   <View style={styles.activityAmount}>
-                    <Text style={styles.activitySaved}>-${activity.amount.toFixed(2)}</Text>
+                    <Text style={styles.activitySaved}>-£{activity.amount.toFixed(2)}</Text>
                     <Text style={styles.activityDiscount}>{activity.discount}% OFF</Text>
                   </View>
                 </View>
