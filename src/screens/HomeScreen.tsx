@@ -10,7 +10,10 @@ import Badge from "../components/ui/Badge"
 import { useEffect, useRef } from "react"
 import Icon from "../../assets/studentverse-icon.svg"
 
+import { useNavigation } from "@react-navigation/native"
+
 export default function HomeScreen() {
+  const navigation = useNavigation<any>()
   const fadeAnim = useRef(new Animated.Value(0)).current
   const slideAnim = useRef(new Animated.Value(30)).current
 
@@ -170,32 +173,34 @@ export default function HomeScreen() {
           </View>
 
           {nearbyDeals.map((deal) => (
-            <Card key={deal.id} style={styles.dealCard}>
-              <View style={styles.dealContent}>
-                <Image source={{ uri: deal.logo }} style={styles.dealLogo} />
-                <View style={styles.dealInfo}>
-                  <View style={styles.dealHeader}>
-                    <Text style={styles.dealName}>{deal.name}</Text>
-                    {deal.popular && (
-                      <Badge variant="warning">
-                        <Text style={[styles.badgeText, { color: Colors.warning }]}>Popular</Text>
-                      </Badge>
-                    )}
-                  </View>
-                  <View style={styles.dealDetails}>
-                    <View style={styles.dealDetailItem}>
-                      <Ionicons name="location" size={14} color={Colors.text.tertiary} />
-                      <Text style={styles.dealDetailText}>{deal.distance}</Text>
+            <TouchableOpacity key={deal.id} onPress={() => navigation.navigate("QR", { merchant: deal })}>
+              <Card style={styles.dealCard}>
+                <View style={styles.dealContent}>
+                  <Image source={{ uri: deal.logo }} style={styles.dealLogo} />
+                  <View style={styles.dealInfo}>
+                    <View style={styles.dealHeader}>
+                      <Text style={styles.dealName}>{deal.name}</Text>
+                      {deal.popular && (
+                        <Badge variant="warning">
+                          <Text style={[styles.badgeText, { color: Colors.warning }]}>Popular</Text>
+                        </Badge>
+                      )}
                     </View>
-                    <View style={styles.dealDetailItem}>
-                      <Ionicons name="pricetag" size={14} color={Colors.success} />
-                      <Text style={[styles.dealDetailText, { color: Colors.success }]}>{deal.discount}% OFF</Text>
+                    <View style={styles.dealDetails}>
+                      <View style={styles.dealDetailItem}>
+                        <Ionicons name="location" size={14} color={Colors.text.tertiary} />
+                        <Text style={styles.dealDetailText}>{deal.distance}</Text>
+                      </View>
+                      <View style={styles.dealDetailItem}>
+                        <Ionicons name="pricetag" size={14} color={Colors.success} />
+                        <Text style={[styles.dealDetailText, { color: Colors.success }]}>{deal.discount}% OFF</Text>
+                      </View>
                     </View>
                   </View>
+                  <Ionicons name="chevron-forward" size={20} color={Colors.text.tertiary} />
                 </View>
-                <Ionicons name="chevron-forward" size={20} color={Colors.text.tertiary} />
-              </View>
-            </Card>
+              </Card>
+            </TouchableOpacity>
           ))}
         </View>
 
@@ -204,21 +209,23 @@ export default function HomeScreen() {
           <Text style={styles.sectionTitle}>Recent Activity</Text>
 
           {recentActivities.map((activity) => (
-            <Card key={activity.id} style={styles.activityCard}>
-              <View style={styles.activityContent}>
-                <View style={styles.activityIcon}>
-                  <Ionicons name="checkmark-circle" size={20} color={Colors.success} />
+            <TouchableOpacity key={activity.id} onPress={() => navigation.navigate("QR", { merchant: activity })}>
+              <Card style={styles.activityCard}>
+                <View style={styles.activityContent}>
+                  <View style={styles.activityIcon}>
+                    <Ionicons name="checkmark-circle" size={20} color={Colors.success} />
+                  </View>
+                  <View style={styles.activityInfo}>
+                    <Text style={styles.activityMerchant}>{activity.merchant}</Text>
+                    <Text style={styles.activityTime}>{activity.time}</Text>
+                  </View>
+                  <View style={styles.activityAmount}>
+                    <Text style={styles.activitySaved}>-${activity.amount.toFixed(2)}</Text>
+                    <Text style={styles.activityDiscount}>{activity.discount}% OFF</Text>
+                  </View>
                 </View>
-                <View style={styles.activityInfo}>
-                  <Text style={styles.activityMerchant}>{activity.merchant}</Text>
-                  <Text style={styles.activityTime}>{activity.time}</Text>
-                </View>
-                <View style={styles.activityAmount}>
-                  <Text style={styles.activitySaved}>-${activity.amount.toFixed(2)}</Text>
-                  <Text style={styles.activityDiscount}>{activity.discount}% OFF</Text>
-                </View>
-              </View>
-            </Card>
+              </Card>
+            </TouchableOpacity>
           ))}
         </View>
       </ScrollView>

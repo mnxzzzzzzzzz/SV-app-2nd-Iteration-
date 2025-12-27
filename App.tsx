@@ -77,6 +77,7 @@ export default function App() {
         <Tab.Navigator
           screenOptions={({ route }) => ({
             headerShown: false,
+            tabBarShowLabel: false,
             tabBarIcon: ({ focused, color, size }) => {
               let iconName: keyof typeof Ionicons.glyphMap = "home"
 
@@ -92,7 +93,7 @@ export default function App() {
                 iconName = focused ? "person" : "person-outline"
               }
 
-              return <Ionicons name={iconName} size={size} color={color} />
+              return <Ionicons name={iconName} size={size + 4} color={color} />
             },
             tabBarActiveTintColor: Colors.primary,
             tabBarInactiveTintColor: Colors.text.tertiary,
@@ -100,16 +101,12 @@ export default function App() {
               backgroundColor: Colors.surface,
               borderTopColor: Colors.border,
               borderTopWidth: 1,
-              height: 60,
-              paddingBottom: 8,
-              paddingTop: 8,
-            },
-            tabBarLabelStyle: {
-              fontSize: 12,
-              fontWeight: "600",
+              height: 70,
+              paddingBottom: 0,
             },
             tabBarItemStyle: {
-              padding: 0,
+              justifyContent: 'center',
+              alignItems: 'center',
             },
           })}
         >
