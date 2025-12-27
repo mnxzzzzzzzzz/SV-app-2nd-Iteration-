@@ -136,6 +136,12 @@ export default function HomeScreen() {
               <Text style={styles.statsSubtext}>This semester</Text>
 
               <View style={styles.statsRow}>
+                <LinearGradient
+                  colors={Colors.accentGradient}
+                  start={{ x: 0, y: 0 }}
+                  end={{ x: 1, y: 1 }}
+                  style={styles.accentDecoration}
+                />
                 <View style={styles.statItem}>
                   <Text style={styles.statValue}>{stats.discounts}</Text>
                   <Text style={styles.statLabel}>Active Deals</Text>
@@ -427,6 +433,16 @@ const styles = StyleSheet.create({
   statDivider: {
     width: 1,
     backgroundColor: "rgba(255, 255, 255, 0.1)",
+  },
+  accentDecoration: {
+    position: 'absolute',
+    top: -Spacing.xl,
+    right: -Spacing.xl,
+    width: 120,
+    height: 120,
+    borderRadius: 60,
+    opacity: 0.4,
+    transform: [{ scale: 1.5 }],
   },
   section: {
     paddingHorizontal: Spacing.lg,
