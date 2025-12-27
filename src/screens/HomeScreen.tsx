@@ -48,12 +48,12 @@ export default function HomeScreen() {
 
   const moveX = moveAnim.interpolate({
     inputRange: [0, 1],
-    outputRange: [-20, 20],
+    outputRange: [0, 50],
   })
 
   const moveY = moveAnim.interpolate({
     inputRange: [0, 1],
-    outputRange: [-10, 10],
+    outputRange: [0, 30],
   })
 
   const stats = {
@@ -151,35 +151,33 @@ export default function HomeScreen() {
         <Animated.View style={{ opacity: fadeAnim, transform: [{ translateY: slideAnim }] }}>
           <Card style={styles.statsCard}>
             <LinearGradient
-              colors={Colors.primaryGradient}
+              colors={["#2962FF", "#080C1F"]}
               start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
+              end={{ x: 0.5, y: 1.5 }}
               style={styles.statsGradient}
             >
+              <Animated.View 
+                style={[
+                  styles.glowOverlay, 
+                  { 
+                    transform: [
+                      { translateX: moveX },
+                      { translateY: moveY },
+                    ] 
+                  }
+                ]} 
+              >
+                <LinearGradient
+                  colors={["rgba(255, 255, 255, 0.15)", "transparent"]}
+                  style={{ flex: 1, borderRadius: 100 }}
+                />
+              </Animated.View>
+              
               <Text style={styles.statsTitle}>Your Total Savings</Text>
-              <Text style={styles.statsAmount}>${stats.savings.toLocaleString()}</Text>
+              <Text style={styles.statsAmount}>{stats.savings.toLocaleString()} AED</Text>
               <Text style={styles.statsSubtext}>This semester</Text>
 
               <View style={styles.statsRow}>
-                <Animated.View 
-                  style={[
-                    styles.accentDecoration, 
-                    { 
-                      transform: [
-                        { translateX: moveX },
-                        { translateY: moveY },
-                        { scale: 1.8 }
-                      ] 
-                    }
-                  ]} 
-                >
-                  <LinearGradient
-                    colors={Colors.accentGradient}
-                    start={{ x: 0, y: 0 }}
-                    end={{ x: 1, y: 1 }}
-                    style={{ flex: 1, borderRadius: 60 }}
-                  />
-                </Animated.View>
                 <View style={styles.statItem}>
                   <Text style={styles.statValue}>{stats.discounts}</Text>
                   <Text style={styles.statLabel}>Active Deals</Text>
@@ -472,16 +470,14 @@ const styles = StyleSheet.create({
     width: 1,
     backgroundColor: "rgba(255, 255, 255, 0.1)",
   },
-  accentDecoration: {
+  glowOverlay: {
     position: 'absolute',
-    top: -Spacing.lg,
-    right: -Spacing.lg,
-    width: 140,
-    height: 140,
-    borderRadius: 70,
-    opacity: 0.25,
-    // Note: Blur is handled via opacity and gradient smoothing in web-only environments
-    // without dedicated blur libs, but we'll optimize for a soft mesh look
+    top: -100,
+    right: -50,
+    width: 300,
+    height: 300,
+    borderRadius: 150,
+    opacity: 0.6,
   },
   section: {
     paddingHorizontal: Spacing.lg,
