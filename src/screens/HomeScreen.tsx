@@ -136,28 +136,28 @@ export default function HomeScreen() {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Quick Actions</Text>
           <View style={styles.quickActions}>
-            <TouchableOpacity style={styles.actionButton}>
+            <TouchableOpacity style={styles.actionButton} onPress={() => navigation.navigate("QR")}>
               <View style={[styles.actionIcon, { backgroundColor: `${Colors.primary}20` }]}>
                 <Ionicons name="qr-code" size={24} color={Colors.primary} />
               </View>
               <Text style={styles.actionText}>Scan QR</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.actionButton}>
+            <TouchableOpacity style={styles.actionButton} onPress={() => navigation.navigate("Pay")}>
               <View style={[styles.actionIcon, { backgroundColor: `${Colors.success}20` }]}>
                 <Ionicons name="card" size={24} color={Colors.success} />
               </View>
               <Text style={styles.actionText}>SV Pay</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.actionButton}>
+            <TouchableOpacity style={styles.actionButton} onPress={() => navigation.navigate("Orbit")}>
               <View style={[styles.actionIcon, { backgroundColor: `${Colors.warning}20` }]}>
                 <Ionicons name="planet" size={24} color={Colors.warning} />
               </View>
               <Text style={styles.actionText}>Orbit AI</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.actionButton}>
+            <TouchableOpacity style={styles.actionButton} onPress={() => navigation.navigate("Me")}>
               <View style={[styles.actionIcon, { backgroundColor: `${Colors.error}20` }]}>
                 <Ionicons name="wallet" size={24} color={Colors.error} />
               </View>
@@ -300,51 +300,64 @@ const styles = StyleSheet.create({
     marginBottom: Spacing.lg,
     padding: 0,
     overflow: "hidden",
+    borderRadius: 24,
+    elevation: 10,
+    shadowColor: Colors.primary,
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.3,
+    shadowRadius: 12,
   },
   statsGradient: {
-    padding: Spacing.lg,
+    padding: Spacing.xl,
   },
   statsTitle: {
     fontSize: FontSize.md,
     color: Colors.text.primary,
-    opacity: 0.9,
+    opacity: 0.7,
+    fontWeight: "600",
+    letterSpacing: 0.5,
   },
   statsAmount: {
-    fontSize: 48,
-    fontWeight: "700",
+    fontSize: 56,
+    fontWeight: "800",
     color: Colors.text.primary,
-    marginVertical: Spacing.xs,
+    marginVertical: Spacing.sm,
+    letterSpacing: -1,
   },
   statsSubtext: {
     fontSize: FontSize.sm,
     color: Colors.text.primary,
-    opacity: 0.8,
+    opacity: 0.6,
+    fontWeight: "500",
   },
   statsRow: {
     flexDirection: "row",
-    marginTop: Spacing.lg,
-    paddingTop: Spacing.lg,
+    marginTop: Spacing.xl,
+    paddingTop: Spacing.xl,
     borderTopWidth: 1,
-    borderTopColor: "rgba(255, 255, 255, 0.2)",
+    borderTopColor: "rgba(255, 255, 255, 0.1)",
   },
   statItem: {
     flex: 1,
     alignItems: "center",
   },
   statValue: {
-    fontSize: FontSize.xxl,
+    fontSize: 24,
     fontWeight: "700",
     color: Colors.text.primary,
   },
   statLabel: {
-    fontSize: FontSize.sm,
+    fontSize: FontSize.xs,
     color: Colors.text.primary,
-    opacity: 0.8,
+    opacity: 0.6,
     marginTop: 4,
+    fontWeight: "600",
+    textTransform: "uppercase",
+    letterSpacing: 1,
   },
   statDivider: {
     width: 1,
-    backgroundColor: "rgba(255, 255, 255, 0.2)",
+    backgroundColor: "rgba(255, 255, 255, 0.1)",
   },
   section: {
     paddingHorizontal: Spacing.lg,
@@ -354,50 +367,62 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: Spacing.md,
+    marginBottom: Spacing.lg,
   },
   sectionTitle: {
-    fontSize: FontSize.xl,
-    fontWeight: "700",
+    fontSize: 22,
+    fontWeight: "800",
     color: Colors.text.primary,
-    marginBottom: Spacing.md,
+    letterSpacing: -0.5,
   },
   seeAllText: {
     fontSize: FontSize.md,
     color: Colors.primary,
-    fontWeight: "600",
+    fontWeight: "700",
   },
   quickActions: {
     flexDirection: "row",
     justifyContent: "space-between",
+    backgroundColor: Colors.surface,
+    padding: Spacing.lg,
+    borderRadius: 24,
+    borderWidth: 1,
+    borderColor: Colors.border,
   },
   actionButton: {
     alignItems: "center",
     gap: Spacing.sm,
   },
   actionIcon: {
-    width: 56,
-    height: 56,
-    borderRadius: 28,
+    width: 64,
+    height: 64,
+    borderRadius: 20,
     justifyContent: "center",
     alignItems: "center",
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.05)",
   },
   actionText: {
-    fontSize: FontSize.xs,
+    fontSize: 13,
     color: Colors.text.secondary,
-    fontWeight: "600",
+    fontWeight: "700",
   },
   dealCard: {
     marginBottom: Spacing.md,
+    padding: Spacing.md,
+    borderRadius: 20,
+    backgroundColor: Colors.surface,
+    borderWidth: 1,
+    borderColor: Colors.border,
   },
   dealContent: {
     flexDirection: "row",
     alignItems: "center",
   },
   dealLogo: {
-    width: 56,
-    height: 56,
-    borderRadius: BorderRadius.md,
+    width: 64,
+    height: 64,
+    borderRadius: 16,
     backgroundColor: Colors.surfaceLight,
     marginRight: Spacing.md,
   },
@@ -411,13 +436,15 @@ const styles = StyleSheet.create({
     marginBottom: Spacing.xs,
   },
   dealName: {
-    fontSize: FontSize.md,
-    fontWeight: "600",
+    fontSize: 17,
+    fontWeight: "700",
     color: Colors.text.primary,
+    letterSpacing: -0.3,
   },
   badgeText: {
-    fontSize: FontSize.xs,
-    fontWeight: "600",
+    fontSize: 10,
+    fontWeight: "800",
+    textTransform: "uppercase",
   },
   dealDetails: {
     flexDirection: "row",
@@ -429,21 +456,25 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   dealDetailText: {
-    fontSize: FontSize.sm,
+    fontSize: 13,
     color: Colors.text.tertiary,
+    fontWeight: "500",
   },
   activityCard: {
-    marginBottom: Spacing.sm,
+    marginBottom: Spacing.md,
+    padding: Spacing.md,
+    borderRadius: 16,
+    backgroundColor: Colors.surface,
   },
   activityContent: {
     flexDirection: "row",
     alignItems: "center",
   },
   activityIcon: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    backgroundColor: `${Colors.success}20`,
+    width: 44,
+    height: 44,
+    borderRadius: 14,
+    backgroundColor: `${Colors.success}15`,
     justifyContent: "center",
     alignItems: "center",
     marginRight: Spacing.md,
@@ -452,26 +483,28 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   activityMerchant: {
-    fontSize: FontSize.md,
-    fontWeight: "600",
+    fontSize: 16,
+    fontWeight: "700",
     color: Colors.text.primary,
     marginBottom: 2,
   },
   activityTime: {
-    fontSize: FontSize.sm,
+    fontSize: 13,
     color: Colors.text.tertiary,
+    fontWeight: "500",
   },
   activityAmount: {
     alignItems: "flex-end",
   },
   activitySaved: {
-    fontSize: FontSize.md,
-    fontWeight: "700",
+    fontSize: 18,
+    fontWeight: "800",
     color: Colors.success,
     marginBottom: 2,
   },
   activityDiscount: {
-    fontSize: FontSize.xs,
+    fontSize: 12,
     color: Colors.text.tertiary,
+    fontWeight: "600",
   },
 })
