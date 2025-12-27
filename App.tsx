@@ -15,13 +15,14 @@ import MeScreen from "./src/screens/MeScreen"
 import LoginScreen from "./src/screens/auth/LoginScreen"
 import OTPScreen from "./src/screens/auth/OTPScreen"
 import SplashScreen from "./src/screens/auth/SplashScreen"
+import WaitlistScreen from "./src/screens/auth/WaitlistScreen"
 
 const Tab = createBottomTabNavigator()
 
 export default function App() {
   const [showSplash, setShowSplash] = useState(true)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const [authStep, setAuthStep] = useState<"login" | "otp">("login")
+  const [authStep, setAuthStep] = useState<"login" | "otp" | "waitlist">("login")
   const [email, setEmail] = useState("")
 
   if (showSplash) {
@@ -46,14 +47,22 @@ export default function App() {
         </SafeAreaProvider>
       )
     }
+    if (authStep === "otp") {
+      return (
+        <SafeAreaProvider>
+          <StatusBar style="light" backgroundColor={Colors.background} />
+          <OTPScreen 
+            email={email}
+            onVerify={() => setAuthStep("waitlist")}
+            onBack={() => setAuthStep("login")}
+          />
+        </SafeAreaProvider>
+      )
+    }
     return (
       <SafeAreaProvider>
         <StatusBar style="light" backgroundColor={Colors.background} />
-        <OTPScreen 
-          email={email}
-          onVerify={() => setIsAuthenticated(true)}
-          onBack={() => setAuthStep("login")}
-        />
+        <WaitlistScreen onComplete={() => setIsAuthenticated(true)} />
       </SafeAreaProvider>
     )
   }
