@@ -12,6 +12,7 @@ import {
   Smartphone,
   Globe,
   Lock,
+  User,
 } from "lucide-react"
 import { motion } from "motion/react"
 import { useState } from "react"

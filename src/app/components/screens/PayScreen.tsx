@@ -44,58 +44,49 @@ export function PayScreen() {
         <p className="text-[#A0A4B8]">Track your spending and transactions</p>
       </div>
 
-      {/* Balance Overview */}
+      {/* Apple-like Wallet Card */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-        className="bg-gradient-to-br from-[#10B981] to-[#059669] rounded-[30px] p-6 mb-6"
-      >
-        <p className="text-white/80 text-sm mb-2">Current Balance</p>
-        <h2 className="text-4xl font-bold text-white mb-6">$247.50</h2>
-
-        <div className="flex gap-3">
-          <button
-            className="flex-1 bg-white text-[#10B981] py-3 rounded-[30px] font-medium flex items-center justify-center gap-2"
-            style={{ borderRadius: "30px" }}
-          >
-            <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
-            Send
-          </button>
-          <button
-            className="flex-1 bg-white/20 text-white py-3 rounded-[30px] font-medium flex items-center justify-center gap-2"
-            style={{ borderRadius: "30px" }}
-          >
-            <ArrowDownLeft className="w-4 h-4" aria-hidden="true" />
-            Request
-          </button>
-        </div>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4, delay: 0.1 }}
-        className="bg-gradient-to-br from-[#2962FF] to-[#1E4FD9] rounded-[25px] p-5 mb-6 cursor-pointer hover:scale-[1.02] transition-transform"
+        transition={{ duration: 0.6 }}
+        className="relative h-[240px] mb-8 cursor-pointer group"
         onClick={handleOpenSVPay}
       >
-        <div className="flex items-center gap-3 mb-3">
-          <div className="size-12 rounded-full bg-white/20 flex items-center justify-center">
-            <Store className="size-6 text-white" />
+        {/* Main Card */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1C1C1E] to-[#000000] rounded-[24px] p-8 border border-white/10 shadow-2xl overflow-hidden group-hover:scale-[1.02] transition-transform duration-500">
+          <div className="flex justify-between items-start mb-12">
+            <div className="flex items-center gap-2">
+              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#2962FF] to-[#00B0FF] flex items-center justify-center">
+                <div className="w-5 h-5 bg-white rounded-sm rotate-45" />
+              </div>
+              <span className="text-white font-bold tracking-tight">SV Pay</span>
+            </div>
+            <div className="w-12 h-8 bg-white/5 rounded-md flex items-center justify-center border border-white/10">
+              <div className="w-6 h-4 bg-white/20 rounded-sm" />
+            </div>
           </div>
-          <div className="flex-1">
-            <p className="text-white font-semibold text-lg">SV Pay</p>
-            <p className="text-white/80 text-sm">Use your student discounts</p>
+          
+          <div>
+            <p className="text-white/40 text-xs font-medium tracking-widest uppercase mb-1">Total Balance</p>
+            <h2 className="text-4xl font-bold text-white tracking-tight">£247.50</h2>
           </div>
-          <ArrowUpRight className="size-5 text-white" />
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="flex-1 bg-white/20 h-1.5 rounded-full overflow-hidden">
-            <div className="bg-white h-full w-2/3 rounded-full" />
-          </div>
-          <span className="text-white/90 text-xs font-medium">2/3 used today</span>
+
+          {/* Decorative Mesh */}
+          <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-[#2962FF] opacity-10 blur-[80px] rounded-full" />
         </div>
       </motion.div>
+
+      {/* Action Buttons */}
+      <div className="flex gap-4 mb-10">
+        <button className="flex-1 bg-white text-black py-4 rounded-[18px] font-bold flex items-center justify-center gap-2 shadow-lg active:scale-95 transition-transform">
+          <ArrowUpRight className="w-5 h-5" />
+          Send
+        </button>
+        <button className="flex-1 bg-[#1C1C1E] text-white py-4 rounded-[18px] font-bold flex items-center justify-center gap-2 border border-white/5 shadow-lg active:scale-95 transition-transform">
+          <ArrowDownLeft className="w-5 h-5" />
+          Request
+        </button>
+      </div>
 
       {/* Quick Stats */}
       <div className="grid grid-cols-2 gap-4 mb-6">
@@ -106,7 +97,7 @@ export function PayScreen() {
           className="bg-[#0F1429] rounded-[20px] p-4 border border-white/10"
         >
           <p className="text-[#A0A4B8] text-sm mb-1">This Week</p>
-          <p className="text-white text-xl font-semibold">$45.50</p>
+          <p className="text-white text-xl font-semibold">£45.50</p>
           <p className="text-[#EF4444] text-xs mt-1">↑ 12% from last week</p>
         </motion.div>
         <motion.div
@@ -116,7 +107,7 @@ export function PayScreen() {
           className="bg-[#0F1429] rounded-[20px] p-4 border border-white/10"
         >
           <p className="text-[#A0A4B8] text-sm mb-1">This Month</p>
-          <p className="text-white text-xl font-semibold">$182.75</p>
+          <p className="text-white text-xl font-semibold">£182.75</p>
           <p className="text-[#10B981] text-xs mt-1">↓ 8% from last month</p>
         </motion.div>
       </div>
@@ -159,7 +150,7 @@ export function PayScreen() {
               </div>
               <div className="text-right">
                 <p className={`font-semibold ${transaction.type === "income" ? "text-[#10B981]" : "text-white"}`}>
-                  {transaction.type === "income" ? "+" : "-"}${Math.abs(transaction.amount).toFixed(2)}
+                  {transaction.type === "income" ? "+" : "-"}£{Math.abs(transaction.amount).toFixed(2)}
                 </p>
                 <p className="text-[#A0A4B8] text-xs mt-1">{transaction.category}</p>
               </div>

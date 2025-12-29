@@ -1,173 +1,143 @@
-import { QrCode, CreditCard, Orbit, TrendingUp, Users, CheckCircle2, ChevronRight } from "lucide-react";
+import { QrCode, CreditCard, Orbit, TrendingUp, Users, CheckCircle2, ChevronRight, Bell, Menu, Search, MessageSquare, User } from "lucide-react";
 import { motion } from "motion/react";
 
 export function HomeScreen() {
-  // Stat cards data
-  const stats = [
-    { 
-      id: 1, 
-      label: "Membership", 
-      value: "Premium", 
-      icon: CheckCircle2, 
-      color: "#10B981",
-      bgColor: "#10B98120"
+  const nearbyOffers = [
+    {
+      id: "1",
+      name: "Costa",
+      description: "Top of the Hill Coffee",
+      discount: "50% OFF",
+      distance: "40m",
+      logo: "https://logo.clearbit.com/costa.co.uk",
+      category: "Food",
     },
-    { 
-      id: 2, 
-      label: "Daily QR", 
-      value: "3/5", 
-      subtext: "remaining",
-      icon: QrCode, 
-      color: "#2962FF",
-      bgColor: "#2962FF20"
+    {
+      id: "2",
+      name: "Nando's",
+      description: "Proper Nando's",
+      discount: "20% OFF",
+      distance: "50m",
+      logo: "https://logo.clearbit.com/nandos.co.uk",
+      category: "Food",
     },
-    { 
-      id: 3, 
-      label: "Referrals", 
-      value: "12/20", 
-      subtext: "to unlock reward",
-      icon: Users, 
-      color: "#A0A4B8",
-      bgColor: "#A0A4B820"
+    {
+      id: "3",
+      name: "Zara",
+      description: "Top of the Hill Coffee",
+      discount: "20% OFF",
+      distance: "20m",
+      logo: "https://logo.clearbit.com/zara.com",
+      category: "Clothing",
     },
   ];
 
-  // Recent activity data
-  const activities = [
-    { id: 1, title: "QR Code Scan - Laundry", time: "2 hours ago", type: "qr" },
-    { id: 2, title: "Payment - Meal Plan", amount: "$45.00", time: "Yesterday", type: "payment" },
-    { id: 3, title: "Joined Study Group", time: "2 days ago", type: "orbit" },
-    { id: 4, title: "QR Code Scan - Gym Entry", time: "3 days ago", type: "qr" },
-  ];
-
-  // CTA buttons matching bottom nav
-  const ctaButtons = [
-    { id: "qr", label: "QR Code", icon: QrCode, color: "#2962FF" },
-    { id: "pay", label: "SV Pay", icon: CreditCard, color: "#10B981" },
-    { id: "orbit", label: "Orbit", icon: Orbit, color: "#EF4444" },
+  const smartSaves = [
+    {
+      id: "ss1",
+      title: "Smart Save",
+      merchant: "Top of the Hill Coffee",
+      description: "Get smart savings in Top of the Hill Coffee.",
+      discount: "20% OFF",
+      color: "from-[#0F1629] to-[#1A2139]",
+    }
   ];
 
   return (
-    <div className="flex flex-col pb-24 px-6 pt-8 min-h-screen">
-      {/* Welcome Header */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-        className="mb-8"
-      >
-        <p className="text-[#A0A4B8] text-sm mb-1">Welcome back,</p>
-        <h1 className="text-3xl font-semibold text-white">Alex Johnson</h1>
-      </motion.div>
-
-      {/* Stat Cards */}
-      <div className="mb-8">
-        <div className="grid grid-cols-3 gap-3">
-          {stats.map((stat, index) => {
-            const Icon = stat.icon;
-            return (
-              <motion.div
-                key={stat.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="bg-[#0F1429] border border-white/10 rounded-[20px] p-4 flex flex-col"
-              >
-                <div 
-                  className="w-10 h-10 rounded-full flex items-center justify-center mb-3"
-                  style={{ backgroundColor: stat.bgColor }}
-                >
-                  <Icon 
-                    className="w-5 h-5" 
-                    style={{ color: stat.color }}
-                    aria-hidden="true" 
-                  />
-                </div>
-                <p className="text-[#A0A4B8] text-xs mb-1">{stat.label}</p>
-                <p className="text-white text-xl font-semibold">{stat.value}</p>
-                {stat.subtext && (
-                  <p className="text-[#A0A4B8] text-xs mt-1">{stat.subtext}</p>
-                )}
-              </motion.div>
-            );
-          })}
+    <div className="flex flex-col pb-24 px-6 pt-8 min-h-screen bg-[#080C1F]">
+      {/* Navbar Area */}
+      <div className="flex items-center justify-between mb-8">
+        <Menu className="w-6 h-6 text-white" />
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#2962FF] to-[#00B0FF] flex items-center justify-center">
+            <div className="w-4 h-4 bg-white rounded-sm rotate-45" />
+          </div>
+          <span className="text-white font-bold text-xl">StudentVerse</span>
+        </div>
+        <div className="relative">
+          <Bell className="w-6 h-6 text-white" />
+          <div className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full border-2 border-[#080C1F]" />
         </div>
       </div>
 
-      {/* CTA Buttons */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4, delay: 0.3 }}
-        className="mb-8"
-      >
-        <div className="grid grid-cols-3 gap-3">
-          {ctaButtons.map((button) => {
-            const Icon = button.icon;
-            return (
-              <button
-                key={button.id}
-                className="bg-[#0F1429] border border-white/10 rounded-[30px] p-4 flex flex-col items-center justify-center gap-3 min-h-[100px] hover:border-white/20 transition-colors"
-                style={{ borderRadius: "30px" }}
-                aria-label={button.label}
-              >
-                <div 
-                  className="w-12 h-12 rounded-full flex items-center justify-center"
-                  style={{ 
-                    backgroundColor: `${button.color}20`,
-                    borderRadius: "50px" 
-                  }}
-                >
-                  <Icon 
-                    className="w-6 h-6" 
-                    style={{ color: button.color }}
-                    aria-hidden="true" 
-                  />
-                </div>
-                <span className="text-white text-sm font-medium">{button.label}</span>
-              </button>
-            );
-          })}
+      {/* Greeting Area */}
+      <div className="flex items-center justify-between mb-8">
+        <h1 className="text-3xl font-bold text-white">Hello, Ahmed</h1>
+        <div className="bg-[#1A2139] px-4 py-2 rounded-full flex items-center gap-2 border border-white/10">
+          <div className="w-5 h-5 bg-yellow-500 rounded-full" />
+          <span className="text-white font-bold">850 VP</span>
         </div>
-      </motion.div>
+      </div>
 
-      {/* Recent Activity */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4, delay: 0.4 }}
-      >
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-semibold text-white">Recent Activity</h2>
-          <button className="text-[#2962FF] text-sm font-medium">View All</button>
+      {/* Smart Save Carousel (Mock) */}
+      <div className="mb-8">
+        {smartSaves.map((save) => (
+          <motion.div
+            key={save.id}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className={`bg-gradient-to-br ${save.color} rounded-[32px] p-6 border border-white/10 relative overflow-hidden h-[200px] flex flex-col justify-center`}
+          >
+            <div className="relative z-10">
+              <p className="text-white text-lg font-bold mb-1">{save.title}</p>
+              <h2 className="text-2xl font-bold text-white mb-2">{save.merchant}</h2>
+              <p className="text-[#A0A4B8] text-sm mb-6 max-w-[200px]">{save.description}</p>
+              <button className="bg-white text-black px-6 py-2 rounded-full text-sm font-bold w-fit">
+                Shop now
+              </button>
+            </div>
+            {/* The 20% OFF Badge */}
+            <div className="absolute right-6 top-1/2 -translate-y-1/2 w-24 h-24 rounded-full bg-[#00FFD1]/20 border border-[#00FFD1]/30 flex flex-col items-center justify-center backdrop-blur-md">
+              <span className="text-[#00FFD1] text-2xl font-bold">{save.discount}</span>
+              <span className="text-[#00FFD1] text-xs font-bold">OFF</span>
+            </div>
+            {/* Background Mesh (Mock) */}
+            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#2962FF] opacity-20 blur-[50px] rounded-full" />
+          </motion.div>
+        ))}
+        {/* Carousel Indicators */}
+        <div className="flex justify-center gap-1 mt-4">
+          <div className="w-4 h-1.5 bg-white rounded-full" />
+          <div className="w-1.5 h-1.5 bg-white/20 rounded-full" />
+          <div className="w-1.5 h-1.5 bg-white/20 rounded-full" />
+          <div className="w-1.5 h-1.5 bg-white/20 rounded-full" />
         </div>
-        
-        <div className="space-y-2">
-          {activities.map((activity, index) => (
+      </div>
+
+      {/* Nearby Offers Area */}
+      <div>
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-xl font-bold text-white">Nearby Offers</h2>
+          <button className="text-[#A0A4B8] text-sm font-medium">See all</button>
+        </div>
+
+        <div className="space-y-4">
+          {nearbyOffers.map((offer) => (
             <motion.button
-              key={activity.id}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3, delay: 0.5 + index * 0.05 }}
-              className="w-full bg-[#0F1429] border border-white/10 rounded-[20px] p-4 flex items-center justify-between text-left hover:border-white/20 transition-colors"
+              key={offer.id}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => window.location.hash = "#qr"}
+              className="w-full bg-[#1A2139] rounded-[24px] p-4 flex items-center gap-4 border border-white/5"
             >
-              <div className="flex-1">
-                <p className="text-white font-medium mb-1">{activity.title}</p>
-                <div className="flex items-center gap-2">
-                  <p className="text-[#A0A4B8] text-sm">{activity.time}</p>
-                  {activity.amount && (
-                    <>
-                      <span className="text-[#A0A4B8]">•</span>
-                      <p className="text-white text-sm font-medium">{activity.amount}</p>
-                    </>
-                  )}
+              <div className="w-16 h-16 rounded-2xl bg-white overflow-hidden flex items-center justify-center p-2">
+                <img src={offer.logo} alt={offer.name} className="w-full h-full object-contain" />
+              </div>
+              <div className="flex-1 text-left">
+                <div className="flex justify-between items-start mb-1">
+                  <h3 className="text-white font-bold text-lg">{offer.name}</h3>
+                  <span className="text-[#00FFD1] font-bold text-sm">{offer.discount}</span>
+                </div>
+                <p className="text-[#A0A4B8] text-sm mb-2">{offer.description}</p>
+                <div className="flex items-center gap-1 text-yellow-500">
+                  <span className="text-sm font-bold">★ {offer.distance}</span>
                 </div>
               </div>
-              <ChevronRight className="w-5 h-5 text-[#A0A4B8] flex-shrink-0" aria-hidden="true" />
             </motion.button>
           ))}
         </div>
-      </motion.div>
+      </div>
+
+      {/* Bottom Nav Simulation (Hidden as handled by parent) */}
     </div>
   );
 }
