@@ -55,7 +55,6 @@ export function BottomNav({ activeTab, onTabChange }: BottomNavProps) {
                   className={`w-6 h-6 transition-colors ${
                     isActive ? "text-[#2962FF]" : "text-[#A0A4B8]"
                   }`}
-                  aria-hidden="true"
                 />
               </div>
               
