@@ -1,143 +1,129 @@
-import { QrCode, CreditCard, Orbit, TrendingUp, Users, CheckCircle2, ChevronRight, Bell, Menu, Search, MessageSquare, User } from "lucide-react";
+import { QrCode, CreditCard, Orbit, Wallet, Bell, Menu, Search, MessageSquare, User, Zap, Star, LayoutGrid, Globe, Compass } from "lucide-react";
 import { motion } from "motion/react";
 
 export function HomeScreen() {
-  const nearbyOffers = [
-    {
-      id: "1",
-      name: "Costa",
-      description: "Top of the Hill Coffee",
-      discount: "50% OFF",
-      distance: "40m",
-      logo: "https://logo.clearbit.com/costa.co.uk",
-      category: "Food",
-    },
-    {
-      id: "2",
-      name: "Nando's",
-      description: "Proper Nando's",
-      discount: "20% OFF",
-      distance: "50m",
-      logo: "https://logo.clearbit.com/nandos.co.uk",
-      category: "Food",
-    },
-    {
-      id: "3",
-      name: "Zara",
-      description: "Top of the Hill Coffee",
-      discount: "20% OFF",
-      distance: "20m",
-      logo: "https://logo.clearbit.com/zara.com",
-      category: "Clothing",
-    },
+  const categories = [
+    { id: "all", label: "All", active: true },
+    { id: "entertainment", label: "Entertainment", active: false },
+    { id: "clothing", label: "Clothing", active: false },
+    { id: "food", label: "Food", active: false },
   ];
 
-  const smartSaves = [
-    {
-      id: "ss1",
-      title: "Smart Save",
-      merchant: "Top of the Hill Coffee",
-      description: "Get smart savings in Top of the Hill Coffee.",
-      discount: "20% OFF",
-      color: "from-[#0F1629] to-[#1A2139]",
-    }
+  const quickActions = [
+    { id: "scan", label: "Scan QR", icon: QrCode, color: "bg-blue-500/10 text-blue-500" },
+    { id: "pay", label: "SV Pay", icon: CreditCard, color: "bg-emerald-500/10 text-emerald-500" },
+    { id: "orbit", label: "Orbit AI", icon: Orbit, color: "bg-orange-500/10 text-orange-500" },
+    { id: "wallet", label: "Wallet", icon: Wallet, color: "bg-rose-500/10 text-rose-500" },
   ];
 
   return (
     <div className="flex flex-col pb-24 px-6 pt-8 min-h-screen bg-[#080C1F]">
       {/* Navbar Area */}
       <div className="flex items-center justify-between mb-8">
-        <Menu className="w-6 h-6 text-white" />
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#2962FF] to-[#00B0FF] flex items-center justify-center">
-            <div className="w-4 h-4 bg-white rounded-sm rotate-45" />
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10">
+             <div className="w-5 h-5 bg-gradient-to-br from-[#FF4D4D] via-[#F9CB28] to-[#2962FF] rounded-sm rotate-45" />
           </div>
-          <span className="text-white font-bold text-xl">StudentVerse</span>
+          <div>
+            <p className="text-[#A0A4B8] text-[10px] uppercase tracking-wider font-bold">Good Morning</p>
+            <h1 className="text-white font-bold text-xl">John Student</h1>
+          </div>
         </div>
         <div className="relative">
-          <Bell className="w-6 h-6 text-white" />
-          <div className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full border-2 border-[#080C1F]" />
+          <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
+            <Bell className="w-5 h-5 text-white" />
+          </div>
+          <div className="absolute top-0 right-0 w-4 h-4 bg-[#FF4D4D] rounded-full border-2 border-[#080C1F] flex items-center justify-center">
+            <span className="text-white text-[10px] font-bold">3</span>
+          </div>
         </div>
       </div>
 
-      {/* Greeting Area */}
-      <div className="flex items-center justify-between mb-8">
-        <h1 className="text-3xl font-bold text-white">Hello, Ahmed</h1>
-        <div className="bg-[#1A2139] px-4 py-2 rounded-full flex items-center gap-2 border border-white/10">
-          <div className="w-5 h-5 bg-yellow-500 rounded-full" />
-          <span className="text-white font-bold">850 VP</span>
-        </div>
-      </div>
-
-      {/* Smart Save Carousel (Mock) */}
-      <div className="mb-8">
-        {smartSaves.map((save) => (
-          <motion.div
-            key={save.id}
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className={`bg-gradient-to-br ${save.color} rounded-[32px] p-6 border border-white/10 relative overflow-hidden h-[200px] flex flex-col justify-center`}
-          >
-            <div className="relative z-10">
-              <p className="text-white text-lg font-bold mb-1">{save.title}</p>
-              <h2 className="text-2xl font-bold text-white mb-2">{save.merchant}</h2>
-              <p className="text-[#A0A4B8] text-sm mb-6 max-w-[200px]">{save.description}</p>
-              <button className="bg-white text-black px-6 py-2 rounded-full text-sm font-bold w-fit">
-                Shop now
-              </button>
+      {/* Savings Card */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="bg-gradient-to-br from-[#2962FF] to-[#1E4FD9] rounded-[32px] p-8 mb-8 relative overflow-hidden shadow-xl"
+      >
+        <div className="relative z-10">
+          <p className="text-white/80 text-sm font-medium mb-4">Your Total Savings</p>
+          <h2 className="text-5xl font-bold text-white mb-2">£1,247</h2>
+          <p className="text-white/60 text-xs font-medium uppercase tracking-widest mb-10">This semester</p>
+          
+          <div className="h-[1px] bg-white/10 w-full mb-8" />
+          
+          <div className="flex items-center justify-between">
+            <div className="text-center flex-1">
+              <p className="text-white text-2xl font-bold mb-1">23</p>
+              <p className="text-white/60 text-[10px] uppercase font-bold tracking-tighter">Active Deals</p>
             </div>
-            {/* The 20% OFF Badge */}
-            <div className="absolute right-6 top-1/2 -translate-y-1/2 w-24 h-24 rounded-full bg-[#00FFD1]/20 border border-[#00FFD1]/30 flex flex-col items-center justify-center backdrop-blur-md">
-              <span className="text-[#00FFD1] text-2xl font-bold">{save.discount}</span>
-              <span className="text-[#00FFD1] text-xs font-bold">OFF</span>
+            <div className="w-[1px] h-8 bg-white/10" />
+            <div className="text-center flex-1">
+              <p className="text-white text-2xl font-bold mb-1">45</p>
+              <p className="text-white/60 text-[10px] uppercase font-bold tracking-tighter">Visits</p>
             </div>
-            {/* Background Mesh (Mock) */}
-            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#2962FF] opacity-20 blur-[50px] rounded-full" />
-          </motion.div>
-        ))}
-        {/* Carousel Indicators */}
-        <div className="flex justify-center gap-1 mt-4">
-          <div className="w-4 h-1.5 bg-white rounded-full" />
-          <div className="w-1.5 h-1.5 bg-white/20 rounded-full" />
-          <div className="w-1.5 h-1.5 bg-white/20 rounded-full" />
-          <div className="w-1.5 h-1.5 bg-white/20 rounded-full" />
+          </div>
         </div>
-      </div>
+        
+        {/* Abstract shapes for design */}
+        <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 blur-3xl rounded-full -mr-10 -mt-10" />
+      </motion.div>
 
-      {/* Nearby Offers Area */}
-      <div>
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-xl font-bold text-white">Nearby Offers</h2>
-          <button className="text-[#A0A4B8] text-sm font-medium">See all</button>
-        </div>
-
-        <div className="space-y-4">
-          {nearbyOffers.map((offer) => (
-            <motion.button
-              key={offer.id}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => window.location.hash = "#qr"}
-              className="w-full bg-[#1A2139] rounded-[24px] p-4 flex items-center gap-4 border border-white/5"
-            >
-              <div className="w-16 h-16 rounded-2xl bg-white overflow-hidden flex items-center justify-center p-2">
-                <img src={offer.logo} alt={offer.name} className="w-full h-full object-contain" />
+      {/* Quick Actions */}
+      <div className="mb-10">
+        <h3 className="text-white font-bold text-lg mb-6">Quick Actions</h3>
+        <div className="grid grid-cols-4 gap-4">
+          {quickActions.map((action) => (
+            <div key={action.id} className="flex flex-col items-center gap-3">
+              <div className={`w-14 h-14 rounded-2xl ${action.color} flex items-center justify-center border border-white/5`}>
+                <action.icon className="w-6 h-6" />
               </div>
-              <div className="flex-1 text-left">
-                <div className="flex justify-between items-start mb-1">
-                  <h3 className="text-white font-bold text-lg">{offer.name}</h3>
-                  <span className="text-[#00FFD1] font-bold text-sm">{offer.discount}</span>
-                </div>
-                <p className="text-[#A0A4B8] text-sm mb-2">{offer.description}</p>
-                <div className="flex items-center gap-1 text-yellow-500">
-                  <span className="text-sm font-bold">★ {offer.distance}</span>
-                </div>
-              </div>
-            </motion.button>
+              <span className="text-[#A0A4B8] text-[11px] font-medium">{action.label}</span>
+            </div>
           ))}
         </div>
       </div>
 
-      {/* Bottom Nav Simulation (Hidden as handled by parent) */}
+      {/* Nearby Deals */}
+      <div className="mb-6">
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-white font-bold text-xl">Nearby Deals</h2>
+          <button className="text-[#2962FF] text-sm font-bold">See All</button>
+        </div>
+
+        {/* Categories */}
+        <div className="flex gap-2 mb-8 overflow-x-auto pb-2 scrollbar-hide">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-colors whitespace-nowrap ${
+                cat.active ? "bg-[#2962FF] text-white" : "bg-white/5 text-[#A0A4B8] border border-white/5"
+              }`}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Deal Card (Partial) */}
+        <div className="bg-white/5 rounded-[28px] p-5 border border-white/5 flex items-center gap-4 mb-4">
+          <div className="w-16 h-16 rounded-2xl bg-[#0F1429] border border-white/5 flex items-center justify-center overflow-hidden">
+            <div className="w-full h-full bg-[#1A2139]" />
+          </div>
+          <div className="flex-1">
+            <div className="flex justify-between items-start mb-1">
+               <h4 className="text-white font-bold">Campus Coffee House</h4>
+               <div className="bg-orange-500/20 px-2 py-0.5 rounded-md">
+                 <span className="text-orange-500 text-[9px] font-bold uppercase">Popular</span>
+               </div>
+            </div>
+            <div className="flex items-center justify-between">
+               <p className="text-[#A0A4B8] text-sm">University Mall</p>
+               <ChevronRight className="w-4 h-4 text-[#A0A4B8]" />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

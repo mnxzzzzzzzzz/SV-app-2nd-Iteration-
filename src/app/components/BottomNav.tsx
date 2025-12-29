@@ -1,4 +1,4 @@
-import { Home, Search, ScanLine, MessageSquare, User } from "lucide-react";
+import { Home, QrCode, CreditCard, Compass, User } from "lucide-react";
 import { motion } from "motion/react";
 
 interface NavItem {
@@ -9,9 +9,9 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { id: "home", label: "Home", icon: Home },
-  { id: "search", label: "Search", icon: Search },
-  { id: "qr", label: "Scan", icon: ScanLine },
-  { id: "orbit", label: "Chat", icon: MessageSquare },
+  { id: "qr", label: "Scan", icon: QrCode },
+  { id: "pay", label: "Pay", icon: CreditCard },
+  { id: "orbit", label: "Orbit", icon: Compass },
   { id: "me", label: "Profile", icon: User },
 ];
 
