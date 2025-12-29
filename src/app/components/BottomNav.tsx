@@ -1,10 +1,10 @@
-import { Home, QrCode, CreditCard, Compass, User } from "lucide-react-native";
+import { Home, QrCode, CreditCard, Compass, User } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface NavItem {
   id: string;
   label: string;
-  icon: React.ComponentType<{ className?: string; "aria-hidden"?: boolean }>;
+  icon: React.ComponentType<{ size?: string | number; color?: string; className?: string }>;
 }
 
 const navItems: NavItem[] = [
@@ -52,9 +52,8 @@ export function BottomNav({ activeTab, onTabChange }: BottomNavProps) {
               {/* Icon */}
               <div className="relative">
                 <Icon 
-                  className={`w-6 h-6 transition-colors ${
-                    isActive ? "text-[#2962FF]" : "text-[#A0A4B8]"
-                  }`}
+                  size={24}
+                  color={isActive ? "#2962FF" : "#A0A4B8"}
                 />
               </div>
               

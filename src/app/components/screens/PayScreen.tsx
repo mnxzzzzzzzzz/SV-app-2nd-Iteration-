@@ -1,6 +1,4 @@
-"use client"
-
-import { ArrowUpRight, ArrowDownLeft, Clock, Store } from "lucide-react-native"
+import { ArrowUpRight, ArrowDownLeft, Clock, Store } from "lucide-react"
 import { motion } from "framer-motion"
 import { useState } from "react"
 import { SVPayScreen } from "../sv-pay/SVPayScreen"
@@ -79,11 +77,11 @@ export function PayScreen() {
       {/* Action Buttons */}
       <div className="flex gap-4 mb-10">
         <button className="flex-1 bg-white text-black py-4 rounded-[18px] font-bold flex items-center justify-center gap-2 shadow-lg active:scale-95 transition-transform">
-          <ArrowUpRight className="w-5 h-5" />
+          <ArrowUpRight size={20} />
           Send
         </button>
         <button className="flex-1 bg-[#1C1C1E] text-white py-4 rounded-[18px] font-bold flex items-center justify-center gap-2 border border-white/5 shadow-lg active:scale-95 transition-transform">
-          <ArrowDownLeft className="w-5 h-5" />
+          <ArrowDownLeft size={20} />
           Request
         </button>
       </div>
@@ -135,15 +133,15 @@ export function PayScreen() {
                   }`}
                 >
                   {transaction.type === "income" ? (
-                    <ArrowDownLeft className="w-5 h-5 text-[#10B981]" aria-hidden="true" />
+                    <ArrowDownLeft size={20} color="#10B981" />
                   ) : (
-                    <ArrowUpRight className="w-5 h-5 text-[#EF4444]" aria-hidden="true" />
+                    <ArrowUpRight size={20} color="#EF4444" />
                   )}
                 </div>
                 <div>
                   <p className="text-white font-medium">{transaction.title}</p>
                   <div className="flex items-center gap-1 mt-1">
-                    <Clock className="w-3 h-3 text-[#A0A4B8]" aria-hidden="true" />
+                    <Clock size={12} color="#A0A4B8" />
                     <p className="text-[#A0A4B8] text-xs">{transaction.date}</p>
                   </div>
                 </div>

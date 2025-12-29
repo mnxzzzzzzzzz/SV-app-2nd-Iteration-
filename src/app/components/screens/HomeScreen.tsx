@@ -1,4 +1,4 @@
-import { QrCode, CreditCard, Orbit, Wallet, Bell, Menu, Search, MessageSquare, User, Zap, Star, LayoutGrid, Globe, Compass, ChevronRight } from "lucide-react-native";
+import { QrCode, CreditCard, Orbit, Wallet, Bell, Menu, Search, MessageSquare, User, Zap, Star, LayoutGrid, Globe, Compass, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 export function HomeScreen() {
@@ -31,7 +31,7 @@ export function HomeScreen() {
         </div>
         <div className="relative">
           <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
-            <Bell className="w-5 h-5 text-white" />
+            <Bell size={20} color="white" />
           </div>
           <div className="absolute -top-1 -right-1 w-5 h-5 bg-[#FF4D4D] rounded-full border-2 border-[#080C1F] flex items-center justify-center">
             <span className="text-white text-[10px] font-bold">3</span>
@@ -79,7 +79,7 @@ export function HomeScreen() {
           {quickActions.map((action) => (
             <div key={action.id} className="flex flex-col items-center gap-2">
               <div className={`w-15 h-15 rounded-[22px] ${action.color} flex items-center justify-center border border-white/5 shadow-lg active:scale-95 transition-transform`}>
-                <action.icon className="w-6 h-6" />
+                <action.icon size={24} />
               </div>
               <span className="text-[#A0A4B8] text-[11px] font-semibold tracking-tight">{action.label}</span>
             </div>
@@ -128,7 +128,7 @@ export function HomeScreen() {
             <div className="flex items-center justify-between">
                <p className="text-[#A0A4B8] text-sm font-medium">University Mall</p>
                <div className="w-6 h-6 rounded-full bg-white/5 flex items-center justify-center">
-                 <ChevronRight className="w-4 h-4 text-[#A0A4B8]" />
+                 <ChevronRight size={16} color="#A0A4B8" />
                </div>
             </div>
           </div>
