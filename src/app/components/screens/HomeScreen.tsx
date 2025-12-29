@@ -1,4 +1,4 @@
-import { QrCode, CreditCard, Orbit, Wallet, Bell, Menu, Search, MessageSquare, User, Zap, Star, LayoutGrid, Globe, Compass, ChevronRight } from "lucide-react";
+import { QrCode, CreditCard, Orbit, Wallet, Bell, Menu, Search, MessageSquare, User, Zap, Star, LayoutGrid, Globe, Compass, ChevronRight } from "lucide-react-native";
 import { motion } from "framer-motion";
 
 export function HomeScreen() {

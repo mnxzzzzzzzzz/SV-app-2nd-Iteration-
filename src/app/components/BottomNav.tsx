@@ -1,4 +1,4 @@
-import { Home, QrCode, CreditCard, Compass, User } from "lucide-react";
+import { Home, QrCode, CreditCard, Compass, User } from "lucide-react-native";
 import { motion } from "framer-motion";
 
 interface NavItem {

@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowUpRight, ArrowDownLeft, Clock, Store } from "lucide-react"
+import { ArrowUpRight, ArrowDownLeft, Clock, Store } from "lucide-react-native"
 import { motion } from "framer-motion"
 import { useState } from "react"
 import { SVPayScreen } from "../sv-pay/SVPayScreen"
