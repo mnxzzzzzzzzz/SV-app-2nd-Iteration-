@@ -1,5 +1,5 @@
 import { QrCode, CreditCard, Orbit, Wallet, Bell, Menu, Search, MessageSquare, User, Zap, Star, LayoutGrid, Globe, Compass, ChevronRight } from "lucide-react";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 
 export function HomeScreen() {
   const categories = [
@@ -26,14 +26,14 @@ export function HomeScreen() {
           </div>
           <div>
             <p className="text-[#A0A4B8] text-[10px] uppercase tracking-wider font-bold">Good Morning</p>
-            <h1 className="text-white font-bold text-xl">John Student</h1>
+            <h1 className="text-white font-bold text-xl leading-none mt-1">John Student</h1>
           </div>
         </div>
         <div className="relative">
           <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
             <Bell className="w-5 h-5 text-white" />
           </div>
-          <div className="absolute top-0 right-0 w-4 h-4 bg-[#FF4D4D] rounded-full border-2 border-[#080C1F] flex items-center justify-center">
+          <div className="absolute -top-1 -right-1 w-5 h-5 bg-[#FF4D4D] rounded-full border-2 border-[#080C1F] flex items-center justify-center">
             <span className="text-white text-[10px] font-bold">3</span>
           </div>
         </div>
@@ -43,42 +43,45 @@ export function HomeScreen() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-gradient-to-br from-[#2962FF] to-[#1E4FD9] rounded-[32px] p-8 mb-8 relative overflow-hidden shadow-xl"
+        className="bg-gradient-to-br from-[#2962FF] via-[#1E4FD9] to-[#153BB0] rounded-[32px] p-8 mb-8 relative overflow-hidden shadow-[0_20px_50px_rgba(41,98,255,0.3)] border border-white/10"
       >
         <div className="relative z-10">
           <p className="text-white/80 text-sm font-medium mb-4">Your Total Savings</p>
-          <h2 className="text-5xl font-bold text-white mb-2">£1,247</h2>
-          <p className="text-white/60 text-xs font-medium uppercase tracking-widest mb-10">This semester</p>
+          <div className="flex items-baseline gap-1 mb-2">
+            <h2 className="text-5xl font-bold text-white tracking-tight">£1,247</h2>
+          </div>
+          <p className="text-white/60 text-[10px] font-bold uppercase tracking-[0.2em] mb-10">This semester</p>
           
           <div className="h-[1px] bg-white/10 w-full mb-8" />
           
           <div className="flex items-center justify-between">
             <div className="text-center flex-1">
               <p className="text-white text-2xl font-bold mb-1">23</p>
-              <p className="text-white/60 text-[10px] uppercase font-bold tracking-tighter">Active Deals</p>
+              <p className="text-white/40 text-[9px] uppercase font-bold tracking-wider">Active Deals</p>
             </div>
             <div className="w-[1px] h-8 bg-white/10" />
             <div className="text-center flex-1">
               <p className="text-white text-2xl font-bold mb-1">45</p>
-              <p className="text-white/60 text-[10px] uppercase font-bold tracking-tighter">Visits</p>
+              <p className="text-white/40 text-[9px] uppercase font-bold tracking-wider">Visits</p>
             </div>
           </div>
         </div>
         
-        {/* Abstract shapes for design */}
-        <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 blur-3xl rounded-full -mr-10 -mt-10" />
+        {/* Abstract design elements */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 blur-[80px] rounded-full -mr-32 -mt-32" />
+        <div className="absolute bottom-0 left-0 w-32 h-32 bg-black/10 blur-[40px] rounded-full -ml-16 -mb-16" />
       </motion.div>
 
       {/* Quick Actions */}
       <div className="mb-10">
-        <h3 className="text-white font-bold text-lg mb-6">Quick Actions</h3>
+        <h3 className="text-white font-bold text-lg mb-6 tracking-tight">Quick Actions</h3>
         <div className="grid grid-cols-4 gap-4">
           {quickActions.map((action) => (
-            <div key={action.id} className="flex flex-col items-center gap-3">
-              <div className={`w-14 h-14 rounded-2xl ${action.color} flex items-center justify-center border border-white/5`}>
+            <div key={action.id} className="flex flex-col items-center gap-2">
+              <div className={`w-15 h-15 rounded-[22px] ${action.color} flex items-center justify-center border border-white/5 shadow-lg active:scale-95 transition-transform`}>
                 <action.icon className="w-6 h-6" />
               </div>
-              <span className="text-[#A0A4B8] text-[11px] font-medium">{action.label}</span>
+              <span className="text-[#A0A4B8] text-[11px] font-semibold tracking-tight">{action.label}</span>
             </div>
           ))}
         </div>
@@ -87,7 +90,7 @@ export function HomeScreen() {
       {/* Nearby Deals */}
       <div className="mb-6">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-white font-bold text-xl">Nearby Deals</h2>
+          <h2 className="text-white font-bold text-xl tracking-tight">Nearby Deals</h2>
           <button className="text-[#2962FF] text-sm font-bold">See All</button>
         </div>
 
@@ -96,8 +99,10 @@ export function HomeScreen() {
           {categories.map((cat) => (
             <button
               key={cat.id}
-              className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-colors whitespace-nowrap ${
-                cat.active ? "bg-[#2962FF] text-white" : "bg-white/5 text-[#A0A4B8] border border-white/5"
+              className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all whitespace-nowrap ${
+                cat.active 
+                ? "bg-[#2962FF] text-white shadow-[0_8px_20px_rgba(41,98,255,0.3)]" 
+                : "bg-white/5 text-[#A0A4B8] border border-white/5 hover:bg-white/10"
               }`}
             >
               {cat.label}
@@ -105,24 +110,29 @@ export function HomeScreen() {
           ))}
         </div>
 
-        {/* Deal Card (Partial) */}
-        <div className="bg-white/5 rounded-[28px] p-5 border border-white/5 flex items-center gap-4 mb-4">
-          <div className="w-16 h-16 rounded-2xl bg-[#0F1429] border border-white/5 flex items-center justify-center overflow-hidden">
-            <div className="w-full h-full bg-[#1A2139]" />
+        {/* Deal Card */}
+        <motion.div 
+          whileTap={{ scale: 0.98 }}
+          className="bg-white/5 rounded-[28px] p-5 border border-white/5 flex items-center gap-4 mb-4 hover:bg-white/10 transition-colors cursor-pointer"
+        >
+          <div className="w-16 h-16 rounded-2xl bg-[#0F1429] border border-white/5 flex items-center justify-center overflow-hidden shadow-inner">
+            <div className="w-10 h-10 bg-[#1A2139] rounded-lg" />
           </div>
           <div className="flex-1">
             <div className="flex justify-between items-start mb-1">
-               <h4 className="text-white font-bold">Campus Coffee House</h4>
-               <div className="bg-orange-500/20 px-2 py-0.5 rounded-md">
-                 <span className="text-orange-500 text-[9px] font-bold uppercase">Popular</span>
+               <h4 className="text-white font-bold tracking-tight">Campus Coffee House</h4>
+               <div className="bg-orange-500/20 px-2 py-0.5 rounded-md border border-orange-500/10">
+                 <span className="text-orange-500 text-[8px] font-black uppercase tracking-wider">Popular</span>
                </div>
             </div>
             <div className="flex items-center justify-between">
-               <p className="text-[#A0A4B8] text-sm">University Mall</p>
-               <ChevronRight className="w-4 h-4 text-[#A0A4B8]" />
+               <p className="text-[#A0A4B8] text-sm font-medium">University Mall</p>
+               <div className="w-6 h-6 rounded-full bg-white/5 flex items-center justify-center">
+                 <ChevronRight className="w-4 h-4 text-[#A0A4B8]" />
+               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import { Home, QrCode, CreditCard, Compass, User } from "lucide-react";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 
 interface NavItem {
   id: string;
