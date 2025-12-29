@@ -42,6 +42,39 @@ export function MeScreen() {
       </div>
 
       <div className="px-6 space-y-6">
+        {/* Savings Card (Moved from Home) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="bg-gradient-to-br from-[#2962FF] via-[#1E4FD9] to-[#153BB0] rounded-[32px] p-8 mb-2 relative overflow-hidden shadow-[0_20px_50px_rgba(41,98,255,0.3)] border border-white/10"
+        >
+          <div className="relative z-10">
+            <p className="text-white/80 text-sm font-medium mb-4">Your Total Savings</p>
+            <div className="flex items-baseline gap-1 mb-2">
+              <h2 className="text-5xl font-bold text-white tracking-tight">£1,247</h2>
+            </div>
+            <p className="text-white/60 text-[10px] font-bold uppercase tracking-[0.2em] mb-10">This semester</p>
+            
+            <div className="h-[1px] bg-white/10 w-full mb-8" />
+            
+            <div className="flex items-center justify-between">
+              <div className="text-center flex-1">
+                <p className="text-white text-2xl font-bold mb-1">23</p>
+                <p className="text-white/40 text-[9px] uppercase font-bold tracking-wider">Active Deals</p>
+              </div>
+              <div className="w-[1px] h-8 bg-white/10" />
+              <div className="text-center flex-1">
+                <p className="text-white text-2xl font-bold mb-1">45</p>
+                <p className="text-white/40 text-[9px] uppercase font-bold tracking-wider">Visits</p>
+              </div>
+            </div>
+          </div>
+          
+          {/* Abstract design elements */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 blur-[80px] rounded-full -mr-32 -mt-32" />
+          <div className="absolute bottom-0 left-0 w-32 h-32 bg-black/10 blur-[40px] rounded-full -ml-16 -mb-16" />
+        </motion.div>
+
         {/* Profile Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

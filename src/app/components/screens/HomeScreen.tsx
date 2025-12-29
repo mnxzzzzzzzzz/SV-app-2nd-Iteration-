@@ -39,38 +39,34 @@ export function HomeScreen() {
         </div>
       </div>
 
-      {/* Savings Card */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="bg-gradient-to-br from-[#2962FF] via-[#1E4FD9] to-[#153BB0] rounded-[32px] p-8 mb-8 relative overflow-hidden shadow-[0_20px_50px_rgba(41,98,255,0.3)] border border-white/10"
-      >
-        <div className="relative z-10">
-          <p className="text-white/80 text-sm font-medium mb-4">Your Total Savings</p>
-          <div className="flex items-baseline gap-1 mb-2">
-            <h2 className="text-5xl font-bold text-white tracking-tight">£1,247</h2>
-          </div>
-          <p className="text-white/60 text-[10px] font-bold uppercase tracking-[0.2em] mb-10">This semester</p>
-          
-          <div className="h-[1px] bg-white/10 w-full mb-8" />
-          
-          <div className="flex items-center justify-between">
-            <div className="text-center flex-1">
-              <p className="text-white text-2xl font-bold mb-1">23</p>
-              <p className="text-white/40 text-[9px] uppercase font-bold tracking-wider">Active Deals</p>
-            </div>
-            <div className="w-[1px] h-8 bg-white/10" />
-            <div className="text-center flex-1">
-              <p className="text-white text-2xl font-bold mb-1">45</p>
-              <p className="text-white/40 text-[9px] uppercase font-bold tracking-wider">Visits</p>
-            </div>
-          </div>
+      {/* Top Deals Area */}
+      <div className="mb-8">
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-white font-bold text-xl tracking-tight">Top Deals</h2>
+          <button className="text-[#2962FF] text-sm font-bold">View all</button>
         </div>
         
-        {/* Abstract design elements */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 blur-[80px] rounded-full -mr-32 -mt-32" />
-        <div className="absolute bottom-0 left-0 w-32 h-32 bg-black/10 blur-[40px] rounded-full -ml-16 -mb-16" />
-      </motion.div>
+        <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
+          {[1, 2].map((i) => (
+            <motion.div
+              key={i}
+              className="min-w-[280px] bg-gradient-to-br from-[#1A2139] to-[#0F1429] rounded-[32px] p-6 border border-white/10 relative overflow-hidden"
+            >
+              <div className="relative z-10">
+                <div className="bg-white/10 w-fit px-3 py-1 rounded-full mb-4">
+                  <span className="text-[#00FFD1] text-[10px] font-black uppercase">Limited Time</span>
+                </div>
+                <h3 className="text-white font-bold text-xl mb-1">Exclusive Discount</h3>
+                <p className="text-[#A0A4B8] text-sm mb-6">Save up to 40% on all tech items this week.</p>
+                <button className="bg-white text-black px-6 py-2 rounded-full text-xs font-black">
+                  Claim Deal
+                </button>
+              </div>
+              <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-[#2962FF] opacity-20 blur-[40px] rounded-full" />
+            </motion.div>
+          ))}
+        </div>
+      </div>
 
       {/* Quick Actions */}
       <div className="mb-10">
