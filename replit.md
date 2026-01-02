@@ -46,7 +46,12 @@ The project maintains two rendering targets:
 2. OTP verification with 6-digit code
 3. Waitlist with referral system
 
-**SV Pay Flow**: Eligibility check before discount activation with loading/success/error states.
+**SV Pay Flow**: Financial Dashboard with:
+1. Animated balance counter with count-up effect
+2. Interactive 3D virtual card with tilt/parallax hover effect
+3. Quick action grid (Freeze Card, Online Payments, Aani Pay)
+4. Transaction history with category icons (food, shopping, transport, utility)
+5. Credit/debit transaction styling with color-coded icons
 
 ### Design System
 
