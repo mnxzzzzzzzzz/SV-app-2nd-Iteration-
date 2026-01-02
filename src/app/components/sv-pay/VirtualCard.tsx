@@ -54,14 +54,14 @@ export function VirtualCard({ user, balance = "247.50" }: VirtualCardProps) {
         >
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-sv-cyan via-sv-azure to-sv-violet flex items-center justify-center">
-              <span className="text-white font-bold text-lg">SV</span>
+              <span className="font-heading text-white font-bold text-lg">SV</span>
             </div>
-            <span className="text-sv-text-main/80 font-semibold tracking-wide">StudentVerse</span>
+            <span className="font-heading text-sv-text-main/80 font-semibold tracking-wide">StudentVerse</span>
           </div>
 
           <div>
-            <p className="text-sv-text-muted text-sm tracking-[0.2em] mb-2">•••• •••• •••• 4242</p>
-            <p className="text-sv-text-muted text-sm">{user?.displayName || "Guest"}</p>
+            <p className="text-meta text-sv-text-muted mb-2">•••• •••• •••• 4242</p>
+            <p className="font-body text-sv-text-muted text-sm">{user?.displayName || "Guest"}</p>
           </div>
 
           <div className="flex items-center gap-4">

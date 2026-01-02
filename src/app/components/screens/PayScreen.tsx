@@ -46,7 +46,7 @@ export function PayScreen() {
   return (
     <div className="min-h-screen bg-sv-navy text-sv-text-main pb-32 px-6 pt-12">
       <div className="flex items-center justify-between mb-8">
-        <h1 className="text-3xl font-bold tracking-tight" style={{ fontFamily: "'Syne', sans-serif" }}>
+        <h1 className="font-heading text-3xl font-bold tracking-tight">
           SV Pay
         </h1>
         <button className="w-11 h-11 rounded-full bg-sv-glass-bg backdrop-blur-md border border-sv-glass-border flex items-center justify-center hover:bg-sv-glass-highlight transition-colors">
@@ -60,8 +60,8 @@ export function PayScreen() {
         transition={{ duration: 0.5 }}
         className="mb-8"
       >
-        <p className="text-[10px] tracking-[0.25em] text-sv-text-muted uppercase mb-2">Total Balance</p>
-        <h2 className="text-5xl font-black mb-6 bg-gradient-to-r from-sv-text-main to-sv-text-main/80 bg-clip-text text-transparent">
+        <p className="text-label text-sv-text-muted mb-2">Total Balance</p>
+        <h2 className="font-heading text-5xl font-extrabold mb-6 bg-gradient-to-r from-sv-text-main to-sv-text-main/80 bg-clip-text text-transparent">
           <BalanceCounter value={balance} />
         </h2>
         
@@ -127,7 +127,7 @@ export function PayScreen() {
         transition={{ duration: 0.5, delay: 0.4 }}
       >
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold" style={{ fontFamily: "'Syne', sans-serif" }}>
+          <h3 className="font-heading text-lg font-semibold">
             Transaction History
           </h3>
           <button className="text-sv-cyan text-sm font-medium">View All</button>

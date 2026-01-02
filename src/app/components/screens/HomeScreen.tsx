@@ -25,8 +25,8 @@ export function HomeScreen() {
              <div className="w-5 h-5 bg-gradient-to-br from-sv-gold via-sv-cyan to-sv-azure rounded-sm rotate-45" />
           </div>
           <div>
-            <p className="text-sv-text-muted text-[10px] uppercase tracking-wider font-bold">Good Morning</p>
-            <h1 className="text-sv-text-main font-bold text-xl leading-none mt-1">John Student</h1>
+            <p className="text-label text-sv-text-muted">Good Morning</p>
+            <h1 className="font-heading text-sv-text-main font-bold text-xl leading-none mt-1">John Student</h1>
           </div>
         </div>
         <div className="relative">
@@ -42,8 +42,8 @@ export function HomeScreen() {
       {/* Top Deals Area */}
       <div className="mb-8">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-sv-text-main font-bold text-xl tracking-tight">Top Deals</h2>
-          <button className="text-sv-azure text-sm font-bold">View all</button>
+          <h2 className="font-heading text-sv-text-main font-bold text-xl tracking-tight">Top Deals</h2>
+          <button className="text-sv-azure text-sm font-semibold">View all</button>
         </div>
         
         <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
@@ -54,11 +54,11 @@ export function HomeScreen() {
             >
               <div className="relative z-10">
                 <div className="bg-sv-glass-highlight w-fit px-3 py-1 rounded-full mb-4 border border-sv-glass-border">
-                  <span className="text-sv-cyan text-[10px] font-black uppercase">Limited Time</span>
+                  <span className="text-label text-sv-cyan">Limited Time</span>
                 </div>
-                <h3 className="text-sv-text-main font-bold text-xl mb-1">Exclusive Discount</h3>
-                <p className="text-sv-text-muted text-sm mb-6">Save up to 40% on all tech items this week.</p>
-                <button className="bg-sv-azure text-white px-6 py-2 rounded-full text-xs font-bold hover:opacity-90 transition-opacity">
+                <h3 className="font-heading text-sv-text-main font-bold text-xl mb-1">Exclusive Discount</h3>
+                <p className="font-body text-sv-text-muted text-sm mb-6">Save up to 40% on all tech items this week.</p>
+                <button className="bg-sv-azure text-white px-6 py-2 rounded-full text-xs font-semibold hover:opacity-90 transition-opacity">
                   Claim Deal
                 </button>
               </div>
@@ -70,14 +70,14 @@ export function HomeScreen() {
 
       {/* Quick Actions */}
       <div className="mb-10">
-        <h3 className="text-sv-text-main font-bold text-lg mb-6 tracking-tight">Quick Actions</h3>
+        <h3 className="font-heading text-sv-text-main font-semibold text-lg mb-6 tracking-tight">Quick Actions</h3>
         <div className="grid grid-cols-4 gap-4">
           {quickActions.map((action) => (
             <div key={action.id} className="flex flex-col items-center gap-2">
               <div className={`w-15 h-15 rounded-xl ${action.color} flex items-center justify-center border border-sv-glass-border shadow-lg active:scale-95 transition-transform`}>
                 <action.icon size={24} />
               </div>
-              <span className="text-sv-text-muted text-[11px] font-semibold tracking-tight">{action.label}</span>
+              <span className="font-body text-sv-text-muted text-[11px] font-medium tracking-tight">{action.label}</span>
             </div>
           ))}
         </div>
@@ -86,8 +86,8 @@ export function HomeScreen() {
       {/* Nearby Deals */}
       <div className="mb-6">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-sv-text-main font-bold text-xl tracking-tight">Nearby Deals</h2>
-          <button className="text-sv-azure text-sm font-bold">See All</button>
+          <h2 className="font-heading text-sv-text-main font-bold text-xl tracking-tight">Nearby Deals</h2>
+          <button className="text-sv-azure text-sm font-semibold">See All</button>
         </div>
 
         {/* Categories */}
@@ -95,7 +95,7 @@ export function HomeScreen() {
           {categories.map((cat) => (
             <button
               key={cat.id}
-              className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all whitespace-nowrap ${
+              className={`px-6 py-2.5 rounded-xl text-sm font-semibold transition-all whitespace-nowrap ${
                 cat.active 
                 ? "bg-sv-azure text-white shadow-[0_8px_20px_rgba(41,98,255,0.3)]" 
                 : "bg-sv-glass-bg text-sv-text-muted border border-sv-glass-border hover:bg-sv-glass-highlight"
@@ -116,13 +116,13 @@ export function HomeScreen() {
           </div>
           <div className="flex-1">
             <div className="flex justify-between items-start mb-1">
-               <h4 className="text-sv-text-main font-bold tracking-tight">Campus Coffee House</h4>
+               <h4 className="font-heading text-sv-text-main font-bold tracking-tight">Campus Coffee House</h4>
                <div className="bg-sv-gold/20 px-2 py-0.5 rounded-md border border-sv-gold/10">
-                 <span className="text-sv-gold text-[8px] font-black uppercase tracking-wider">Popular</span>
+                 <span className="text-label text-sv-gold">Popular</span>
                </div>
             </div>
             <div className="flex items-center justify-between">
-               <p className="text-sv-text-muted text-sm font-medium">University Mall</p>
+               <p className="font-body text-sv-text-muted text-sm">University Mall</p>
                <div className="w-6 h-6 rounded-full bg-sv-glass-bg flex items-center justify-center">
                  <ChevronRight size={16} className="text-sv-text-muted" />
                </div>

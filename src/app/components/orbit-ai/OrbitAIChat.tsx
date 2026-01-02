@@ -149,8 +149,8 @@ export function OrbitAIChat() {
             <Sparkles className="w-5 h-5 text-white" aria-hidden="true" />
           </div>
           <div>
-            <h1 className="text-2xl font-semibold text-sv-text-main">Orbit AI</h1>
-            <p className="text-sv-text-muted text-sm">Your campus guide</p>
+            <h1 className="font-heading text-2xl font-bold text-sv-text-main">Orbit AI</h1>
+            <p className="font-body text-sv-text-muted text-sm">Your campus guide</p>
           </div>
         </div>
       </div>

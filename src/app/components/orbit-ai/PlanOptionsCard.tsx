@@ -13,8 +13,8 @@ export function PlanOptionsCard({ plan, onStartPlan }: PlanOptionsCardProps) {
   return (
     <div className="bg-sv-glass-bg border border-sv-glass-border rounded-xl p-4 backdrop-blur-md">
       {/* Title & Description */}
-      <h3 className="text-sv-text-main font-semibold mb-1">{plan.title}</h3>
-      <p className="text-sv-text-muted text-sm mb-4">{plan.description}</p>
+      <h3 className="font-heading text-sv-text-main font-semibold mb-1">{plan.title}</h3>
+      <p className="font-body text-sv-text-muted text-sm mb-4">{plan.description}</p>
 
       {/* Tags */}
       <div className="flex flex-wrap gap-2 mb-4">

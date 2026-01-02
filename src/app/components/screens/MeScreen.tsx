@@ -33,7 +33,7 @@ export function MeScreen() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="text-3xl font-bold text-sv-text-main"
+          className="font-heading text-3xl font-bold text-sv-text-main"
         >
           Profile
         </motion.h1>
@@ -47,23 +47,23 @@ export function MeScreen() {
           className="bg-gradient-to-br from-sv-azure via-sv-azure/80 to-sv-violet rounded-2xl p-8 mb-2 relative overflow-hidden shadow-[0_20px_50px_rgba(41,98,255,0.3)] border border-sv-glass-border"
         >
           <div className="relative z-10">
-            <p className="text-white/80 text-sm font-medium mb-4">Your Total Savings</p>
+            <p className="font-body text-white/80 text-sm font-medium mb-4">Your Total Savings</p>
             <div className="flex items-baseline gap-1 mb-2">
-              <h2 className="text-5xl font-bold text-white tracking-tight">£1,247</h2>
+              <h2 className="font-heading text-5xl font-bold text-white tracking-tight">£1,247</h2>
             </div>
-            <p className="text-white/60 text-[10px] font-bold uppercase tracking-[0.2em] mb-10">This semester</p>
+            <p className="text-label text-white/60 mb-10">This semester</p>
             
             <div className="h-[1px] bg-white/10 w-full mb-8" />
             
             <div className="flex items-center justify-between">
               <div className="text-center flex-1">
-                <p className="text-white text-2xl font-bold mb-1">23</p>
-                <p className="text-white/40 text-[9px] uppercase font-bold tracking-wider">Active Deals</p>
+                <p className="font-heading text-white text-2xl font-bold mb-1">23</p>
+                <p className="text-label text-white/40">Active Deals</p>
               </div>
               <div className="w-[1px] h-8 bg-white/10" />
               <div className="text-center flex-1">
-                <p className="text-white text-2xl font-bold mb-1">45</p>
-                <p className="text-white/40 text-[9px] uppercase font-bold tracking-wider">Visits</p>
+                <p className="font-heading text-white text-2xl font-bold mb-1">45</p>
+                <p className="text-label text-white/40">Visits</p>
               </div>
             </div>
           </div>
@@ -84,8 +84,8 @@ export function MeScreen() {
           </div>
 
           <div className="flex-1">
-            <h2 className="text-xl font-semibold text-sv-text-main mb-1">Alex Johnson</h2>
-            <p className="text-sv-text-muted text-sm">STU-2024-1847</p>
+            <h2 className="font-heading text-xl font-semibold text-sv-text-main mb-1">Alex Johnson</h2>
+            <p className="text-meta text-sv-text-muted">STU-2024-1847</p>
           </div>
         </motion.div>
 
@@ -101,9 +101,9 @@ export function MeScreen() {
               <Mail className="w-5 h-5 text-sv-azure" aria-hidden="true" />
             </div>
             <div className="flex-1">
-              <p className="text-sv-text-muted text-xs mb-1">Account Email</p>
-              <p className="text-sv-text-main font-medium">alex.johnson@student.edu</p>
-              <p className="text-success text-xs mt-1">Verified</p>
+              <p className="text-label text-sv-text-muted mb-1">Account Email</p>
+              <p className="font-body text-sv-text-main font-medium">alex.johnson@student.edu</p>
+              <p className="text-label text-success mt-1">Verified</p>
             </div>
           </div>
         </motion.div>
@@ -114,7 +114,7 @@ export function MeScreen() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.15 }}
         >
-          <h3 className="text-lg font-semibold text-sv-text-main mb-3 flex items-center gap-2">
+          <h3 className="font-heading text-lg font-semibold text-sv-text-main mb-3 flex items-center gap-2">
             <Shield className="w-5 h-5 text-sv-azure" aria-hidden="true" />
             Security
           </h3>
@@ -126,8 +126,8 @@ export function MeScreen() {
                   <Lock className="w-5 h-5 text-success" aria-hidden="true" />
                 </div>
                 <div>
-                  <p className="text-sv-text-main font-medium">Two-Factor Authentication</p>
-                  <p className="text-sv-text-muted text-xs">Add an extra layer of security</p>
+                  <p className="font-body text-sv-text-main font-medium">Two-Factor Authentication</p>
+                  <p className="font-body text-sv-text-muted text-xs">Add an extra layer of security</p>
                 </div>
               </div>
               <Switch
@@ -143,8 +143,8 @@ export function MeScreen() {
                   <Smartphone className="w-5 h-5 text-sv-azure" aria-hidden="true" />
                 </div>
                 <div>
-                  <p className="text-sv-text-main font-medium">Biometric Login</p>
-                  <p className="text-sv-text-muted text-xs">Use fingerprint or face ID</p>
+                  <p className="font-body text-sv-text-main font-medium">Biometric Login</p>
+                  <p className="font-body text-sv-text-muted text-xs">Use fingerprint or face ID</p>
                 </div>
               </div>
               <Switch
@@ -162,7 +162,7 @@ export function MeScreen() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.2 }}
         >
-          <h3 className="text-lg font-semibold text-sv-text-main mb-3">Settings</h3>
+          <h3 className="font-heading text-lg font-semibold text-sv-text-main mb-3">Settings</h3>
 
           <div className="space-y-3">
             <button className="w-full flex items-center justify-between p-4 bg-sv-glass-bg rounded-xl border border-sv-glass-border text-left hover:bg-sv-glass-highlight transition-colors backdrop-blur-sm">

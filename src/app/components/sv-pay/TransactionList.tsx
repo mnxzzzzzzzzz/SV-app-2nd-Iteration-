@@ -57,15 +57,15 @@ export function TransactionList({ transactions }: TransactionListProps) {
                 />
               </div>
               <div>
-                <p className="text-sv-text-main font-medium">{transaction.merchant}</p>
-                <p className="text-sv-text-muted text-sm">{formatDate(transaction.date)}</p>
+                <p className="font-body text-sv-text-main font-medium">{transaction.merchant}</p>
+                <p className="font-body text-sv-text-muted text-sm">{formatDate(transaction.date)}</p>
               </div>
             </div>
             <div className="text-right">
-              <p className={`font-semibold ${isCredit ? "text-success" : "text-sv-text-main"}`}>
+              <p className={`font-heading font-semibold ${isCredit ? "text-success" : "text-sv-text-main"}`}>
                 {isCredit ? "+" : "-"}£{transaction.amount}
               </p>
-              <p className="text-sv-text-muted text-xs capitalize">{transaction.category}</p>
+              <p className="text-label text-sv-text-muted">{transaction.category}</p>
             </div>
           </div>
         )

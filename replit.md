@@ -76,6 +76,11 @@ Centralized design tokens in:
 - `--sv-text-main`: #FFFFFF
 - `--sv-text-muted`: #A0A4B8
 
+**Typography System** (Google Fonts):
+- `--font-heading`: 'Outfit' - Bold headings and display text
+- `--font-body`: 'IBM Plex Sans' - Body text and UI elements
+- `--font-mono`: 'IBM Plex Mono' - Labels, metadata, uppercase text
+
 **Glassmorphism System**:
 - `--sv-glass-bg`: rgba(255,255,255,0.03)
 - `--sv-glass-border`: rgba(255,255,255,0.1)
@@ -88,7 +93,13 @@ Centralized design tokens in:
 - `--sv-radius-xl`: 20px
 - `--sv-radius-full`: 9999px
 
-**Utility Classes** (Tailwind extensions):
+**Typography Utility Classes**:
+- `.font-heading`, `.font-body`, `.font-mono` - Font family utilities
+- `.text-label` - Mono font, 10px, uppercase, wide tracking (for labels)
+- `.text-meta` - Mono font, 12px, uppercase (for metadata)
+- `.text-display` - Heading font, 48px, extra bold (for hero text)
+
+**Color Utility Classes** (Tailwind extensions):
 - `bg-sv-navy`, `bg-sv-azure`, `bg-sv-cyan`, `bg-sv-gold`, `bg-sv-violet`
 - `text-sv-text-main`, `text-sv-text-muted`
 - `bg-sv-glass-bg`, `border-sv-glass-border`, `bg-sv-glass-highlight`

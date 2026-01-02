@@ -34,7 +34,7 @@ export function SplashScreen({ onComplete }: { onComplete: () => void }) {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-4xl font-bold text-sv-text-main tracking-tight"
+          className="font-heading text-4xl font-bold text-sv-text-main tracking-tight"
         >
           StudentVerse
         </motion.h1>
@@ -44,7 +44,7 @@ export function SplashScreen({ onComplete }: { onComplete: () => void }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="text-sv-text-muted text-lg"
+          className="font-body text-sv-text-muted text-lg"
         >
           Smarter student living
         </motion.p>

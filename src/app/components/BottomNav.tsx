@@ -66,7 +66,7 @@ export function BottomNav({ activeTab, onTabChange }: BottomNavProps) {
               
               {/* Label */}
               <span 
-                className={`text-xs transition-colors ${
+                className={`font-body text-xs font-medium transition-colors ${
                   isActive ? "text-sv-text-main" : "text-sv-text-muted"
                 }`}
               >
