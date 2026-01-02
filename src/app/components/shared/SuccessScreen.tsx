@@ -17,7 +17,7 @@ export function SuccessScreen({
   buttonText = "Done",
 }: SuccessScreenProps) {
   return (
-    <div className="fixed inset-0 z-50 flex flex-col bg-[#080C1F]">
+    <div className="fixed inset-0 z-50 flex flex-col bg-sv-navy">
       {/* Content */}
       <div className="flex-1 flex flex-col items-center justify-center p-5">
         <motion.div
@@ -36,7 +36,7 @@ export function SuccessScreen({
           className="mb-10"
         >
           <div
-            className="w-[100px] h-[100px] rounded-[50px] flex items-center justify-center bg-[#10B981]"
+            className="w-[100px] h-[100px] rounded-full flex items-center justify-center bg-success"
             style={{
               boxShadow: "0 0 15px rgba(16, 185, 129, 0.4)",
             }}
@@ -52,7 +52,7 @@ export function SuccessScreen({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-[32px] font-semibold text-white text-center mb-4"
+          className="text-[32px] font-semibold text-sv-text-main text-center mb-4"
         >
           {title}
         </motion.h1>
@@ -62,7 +62,7 @@ export function SuccessScreen({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-base text-[#A0A4B8] text-center max-w-sm"
+          className="text-base text-sv-text-muted text-center max-w-sm"
         >
           {message}
         </motion.p>
@@ -70,13 +70,13 @@ export function SuccessScreen({
 
       {/* Footer Action */}
       {onDone && (
-        <div className="p-6 border-t border-white/10 bg-[#0F1429]">
+        <div className="p-6 border-t border-sv-glass-border bg-sv-glass-bg backdrop-blur-md">
           <motion.button
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             onClick={onDone}
-            className="w-full bg-[#2962FF] text-white py-[14px] px-8 rounded-[30px] text-base font-semibold hover:bg-[#1E4FD9] transition-all active:scale-[0.98]"
+            className="w-full bg-sv-azure text-white py-[14px] px-8 rounded-full text-base font-semibold hover:opacity-90 transition-opacity active:scale-[0.98]"
           >
             {buttonText}
           </motion.button>

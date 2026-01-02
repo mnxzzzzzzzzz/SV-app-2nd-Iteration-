@@ -3,93 +3,135 @@
 :root {
   --font-size: 16px;
   
-  /* StudentVerse Design System Colors */
-  --background: #080C1F;
-  --foreground: #FFFFFF;
-  --card: #0F1429;
-  --card-foreground: #FFFFFF;
-  --popover: #0F1429;
-  --popover-foreground: #FFFFFF;
-  --primary: #2962FF;
+  /* StudentVerse Brand Palette */
+  --sv-navy: #0A0F1E;
+  --sv-azure: #2962FF;
+  --sv-cyan: #00F0FF;
+  --sv-gold: #FFD700;
+  --sv-violet: #7B2CBF;
+  --sv-text-main: #FFFFFF;
+  --sv-text-muted: #A0A4B8;
+  
+  /* Success/Destructive Tokens */
+  --sv-success: #10B981;
+  --sv-destructive: #EF4444;
+  
+  /* Glassmorphism */
+  --sv-glass-bg: rgba(255, 255, 255, 0.03);
+  --sv-glass-border: rgba(255, 255, 255, 0.1);
+  --sv-glass-highlight: rgba(255, 255, 255, 0.06);
+  
+  /* Border Radius */
+  --sv-radius-sm: 8px;
+  --sv-radius-md: 12px;
+  --sv-radius-lg: 16px;
+  --sv-radius-xl: 20px;
+  --sv-radius-full: 9999px;
+  
+  /* Design System Colors - Mapped from Brand */
+  --background: var(--sv-navy);
+  --foreground: var(--sv-text-main);
+  --card: var(--sv-glass-bg);
+  --card-foreground: var(--sv-text-main);
+  --popover: rgba(15, 20, 41, 0.95);
+  --popover-foreground: var(--sv-text-main);
+  --primary: var(--sv-azure);
   --primary-foreground: #FFFFFF;
-  --secondary: #1A1F3A;
-  --secondary-foreground: #FFFFFF;
-  --muted: #1A1F3A;
-  --muted-foreground: #A0A4B8;
-  --accent: #2962FF;
-  --accent-foreground: #FFFFFF;
-  --destructive: #EF4444;
+  --secondary: rgba(41, 98, 255, 0.1);
+  --secondary-foreground: var(--sv-azure);
+  --muted: rgba(255, 255, 255, 0.03);
+  --muted-foreground: var(--sv-text-muted);
+  --accent: var(--sv-cyan);
+  --accent-foreground: var(--sv-navy);
+  --destructive: var(--sv-destructive);
   --destructive-foreground: #FFFFFF;
-  --success: #10B981;
+  --success: var(--sv-success);
   --success-foreground: #FFFFFF;
-  --neutral: #A0A4B8;
-  --border: rgba(160, 164, 184, 0.2);
-  --input: rgba(160, 164, 184, 0.1);
-  --input-background: #0F1429;
-  --switch-background: #1A1F3A;
+  --warning: var(--sv-gold);
+  --warning-foreground: var(--sv-navy);
+  --neutral: var(--sv-text-muted);
+  --border: var(--sv-glass-border);
+  --input: var(--sv-glass-bg);
+  --input-background: rgba(15, 20, 41, 0.8);
+  --switch-background: rgba(255, 255, 255, 0.05);
   --font-weight-medium: 500;
   --font-weight-normal: 400;
-  --ring: #2962FF;
-  --chart-1: #2962FF;
-  --chart-2: #10B981;
-  --chart-3: #EF4444;
-  --chart-4: #A0A4B8;
-  --chart-5: #1A1F3A;
+  --ring: var(--sv-azure);
+  --chart-1: var(--sv-azure);
+  --chart-2: var(--success);
+  --chart-3: var(--destructive);
+  --chart-4: var(--sv-gold);
+  --chart-5: var(--sv-violet);
   
-  /* StudentVerse Border Radius */
-  --radius: 0.625rem;
+  /* Border Radius System */
+  --radius: var(--sv-radius-md);
   --radius-button: 30px;
   --radius-circle: 50px;
   
-  --sidebar: #0F1429;
-  --sidebar-foreground: #FFFFFF;
-  --sidebar-primary: #2962FF;
+  /* Sidebar */
+  --sidebar: rgba(15, 20, 41, 0.8);
+  --sidebar-foreground: var(--sv-text-main);
+  --sidebar-primary: var(--sv-azure);
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #1A1F3A;
-  --sidebar-accent-foreground: #FFFFFF;
-  --sidebar-border: rgba(160, 164, 184, 0.2);
-  --sidebar-ring: #2962FF;
+  --sidebar-accent: var(--sv-glass-bg);
+  --sidebar-accent-foreground: var(--sv-text-main);
+  --sidebar-border: var(--sv-glass-border);
+  --sidebar-ring: var(--sv-azure);
 }
 
 .dark {
-  /* Already using dark theme as default */
-  --background: #080C1F;
-  --foreground: #FFFFFF;
-  --card: #0F1429;
-  --card-foreground: #FFFFFF;
-  --popover: #0F1429;
-  --popover-foreground: #FFFFFF;
-  --primary: #2962FF;
+  --background: var(--sv-navy);
+  --foreground: var(--sv-text-main);
+  --card: var(--sv-glass-bg);
+  --card-foreground: var(--sv-text-main);
+  --popover: rgba(15, 20, 41, 0.95);
+  --popover-foreground: var(--sv-text-main);
+  --primary: var(--sv-azure);
   --primary-foreground: #FFFFFF;
-  --secondary: #1A1F3A;
-  --secondary-foreground: #FFFFFF;
-  --muted: #1A1F3A;
-  --muted-foreground: #A0A4B8;
-  --accent: #2962FF;
-  --accent-foreground: #FFFFFF;
+  --secondary: rgba(41, 98, 255, 0.1);
+  --secondary-foreground: var(--sv-azure);
+  --muted: rgba(255, 255, 255, 0.03);
+  --muted-foreground: var(--sv-text-muted);
+  --accent: var(--sv-cyan);
+  --accent-foreground: var(--sv-navy);
   --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
-  --border: rgba(160, 164, 184, 0.2);
-  --input: rgba(160, 164, 184, 0.1);
-  --ring: #2962FF;
+  --border: var(--sv-glass-border);
+  --input: var(--sv-glass-bg);
+  --ring: var(--sv-azure);
   --font-weight-medium: 500;
   --font-weight-normal: 400;
-  --chart-1: #2962FF;
-  --chart-2: #10B981;
-  --chart-3: #EF4444;
-  --chart-4: #A0A4B8;
-  --chart-5: #1A1F3A;
-  --sidebar: #0F1429;
-  --sidebar-foreground: #FFFFFF;
-  --sidebar-primary: #2962FF;
+  --chart-1: var(--sv-azure);
+  --chart-2: var(--success);
+  --chart-3: var(--destructive);
+  --chart-4: var(--sv-gold);
+  --chart-5: var(--sv-violet);
+  --sidebar: rgba(15, 20, 41, 0.8);
+  --sidebar-foreground: var(--sv-text-main);
+  --sidebar-primary: var(--sv-azure);
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #1A1F3A;
-  --sidebar-accent-foreground: #FFFFFF;
-  --sidebar-border: rgba(160, 164, 184, 0.2);
-  --sidebar-ring: #2962FF;
+  --sidebar-accent: var(--sv-glass-bg);
+  --sidebar-accent-foreground: var(--sv-text-main);
+  --sidebar-border: var(--sv-glass-border);
+  --sidebar-ring: var(--sv-azure);
 }
 
 @theme inline {
+  /* Brand Colors */
+  --color-sv-navy: var(--sv-navy);
+  --color-sv-azure: var(--sv-azure);
+  --color-sv-cyan: var(--sv-cyan);
+  --color-sv-gold: var(--sv-gold);
+  --color-sv-violet: var(--sv-violet);
+  --color-sv-success: var(--sv-success);
+  --color-sv-destructive: var(--sv-destructive);
+  --color-sv-text-main: var(--sv-text-main);
+  --color-sv-text-muted: var(--sv-text-muted);
+  --color-sv-glass-bg: var(--sv-glass-bg);
+  --color-sv-glass-border: var(--sv-glass-border);
+  --color-sv-glass-highlight: var(--sv-glass-highlight);
+  
+  /* Design System Colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -108,6 +150,8 @@
   --color-destructive-foreground: var(--destructive-foreground);
   --color-success: var(--success);
   --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
   --color-neutral: var(--neutral);
   --color-border: var(--border);
   --color-input: var(--input);
@@ -119,12 +163,17 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  
+  /* Radius */
+  --radius-sm: var(--sv-radius-sm);
+  --radius-md: var(--sv-radius-md);
+  --radius-lg: var(--sv-radius-lg);
+  --radius-xl: var(--sv-radius-xl);
+  --radius-full: var(--sv-radius-full);
   --radius-button: var(--radius-button);
   --radius-circle: var(--radius-circle);
+  
+  /* Sidebar */
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -143,11 +192,6 @@
   body {
     @apply bg-background text-foreground;
   }
-
-  /**
-  * Default typography styles for HTML elements (h1-h4, p, label, button, input).
-  * These are in @layer base, so Tailwind utility classes (like text-sm, text-lg) automatically override them.
-  */
 
   html {
     font-size: var(--font-size);
@@ -193,5 +237,57 @@
     font-size: var(--text-base);
     font-weight: var(--font-weight-normal);
     line-height: 1.5;
+  }
+}
+
+/* Glassmorphism utility classes */
+@layer utilities {
+  .glass-surface {
+    background: var(--sv-glass-bg);
+    border: 1px solid var(--sv-glass-border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  
+  .glass-card {
+    background: var(--sv-glass-bg);
+    border: 1px solid var(--sv-glass-border);
+    border-radius: var(--sv-radius-lg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+  
+  .glass-button {
+    background: var(--sv-glass-bg);
+    border: 1px solid var(--sv-glass-border);
+    border-radius: var(--sv-radius-md);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all 0.2s ease;
+  }
+  
+  .glass-button:hover {
+    background: var(--sv-glass-highlight);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+  
+  .glow-cyan {
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+  }
+  
+  .glow-azure {
+    box-shadow: 0 0 20px rgba(41, 98, 255, 0.3);
+  }
+  
+  .glow-violet {
+    box-shadow: 0 0 20px rgba(123, 44, 191, 0.3);
+  }
+  
+  .glow-gold {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  }
+  
+  .glow-success {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
   }
 }

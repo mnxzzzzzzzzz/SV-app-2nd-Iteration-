@@ -4,11 +4,19 @@
 
 StudentVerse is a mobile-first student lifestyle application built with React Native (Expo) for native mobile platforms and React with Vite for web preview. The app provides students with QR-based discount redemptions at merchants, a digital payment wallet (SV Pay), an AI-powered activity planner (Orbit), and profile management features.
 
-The application follows a dark theme design system with a consistent color palette centered around deep navy backgrounds (#080C1F) and electric blue accents (#2962FF).
+The application follows a dark theme design system with a comprehensive StudentVerse brand palette using CSS variables for consistent theming.
 
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
+
+## Recent Changes
+
+### Brand System Refactor (January 2026)
+- Implemented comprehensive StudentVerse brand system using CSS variables with `--sv-` prefix
+- Updated 30+ components to use CSS variables instead of hardcoded colors
+- Applied consistent glassmorphism effects across all components
+- Updated color palette: Navy (#0A0F1E), Azure (#2962FF), Cyan (#00F0FF), Gold (#FFD700), Violet (#7B2CBF)
 
 ## System Architecture
 
@@ -56,10 +64,34 @@ The project maintains two rendering targets:
 ### Design System
 
 Centralized design tokens in:
+- `/src/styles/theme.css` - CSS custom properties for web (50+ variables)
 - `/src/constants/Colors.ts` - Native color/spacing/typography constants
-- `/src/styles/theme.css` - CSS custom properties for web
 
-Core colors: Background (#080C1F), Primary (#2962FF), Success (#10B981), Error (#EF4444), Neutral (#A0A4B8)
+**Brand Color Palette** (CSS Variables):
+- `--sv-navy`: #0A0F1E (Background)
+- `--sv-azure`: #2962FF (Primary)
+- `--sv-cyan`: #00F0FF (Accent)
+- `--sv-gold`: #FFD700 (Warning)
+- `--sv-violet`: #7B2CBF (Secondary Accent)
+- `--sv-text-main`: #FFFFFF
+- `--sv-text-muted`: #A0A4B8
+
+**Glassmorphism System**:
+- `--sv-glass-bg`: rgba(255,255,255,0.03)
+- `--sv-glass-border`: rgba(255,255,255,0.1)
+- `--sv-glass-highlight`: rgba(255,255,255,0.06)
+
+**Border Radius System**:
+- `--sv-radius-sm`: 8px
+- `--sv-radius-md`: 12px
+- `--sv-radius-lg`: 16px
+- `--sv-radius-xl`: 20px
+- `--sv-radius-full`: 9999px
+
+**Utility Classes** (Tailwind extensions):
+- `bg-sv-navy`, `bg-sv-azure`, `bg-sv-cyan`, `bg-sv-gold`, `bg-sv-violet`
+- `text-sv-text-main`, `text-sv-text-muted`
+- `bg-sv-glass-bg`, `border-sv-glass-border`, `bg-sv-glass-highlight`
 
 UI components use shadcn/ui patterns with Radix primitives for accessibility.
 

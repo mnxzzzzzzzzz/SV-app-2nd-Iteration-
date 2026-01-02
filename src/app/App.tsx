@@ -107,7 +107,7 @@ export default function App() {
               window.location.hash = "";
               setShowDesignSystem(false);
             }}
-            className="sticky top-0 z-10 w-full bg-[#0F1429] text-white py-4 px-6 border-b border-white/10"
+            className="sticky top-0 z-10 w-full bg-sv-glass-bg backdrop-blur-md text-sv-text-main py-4 px-6 border-b border-sv-glass-border"
           >
             ← Back to App
           </button>
@@ -133,7 +133,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#080C1F]">
+    <div className="min-h-screen bg-sv-navy">
       {/* Splash Screen */}
       {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
 
@@ -141,7 +141,7 @@ export default function App() {
       {!showSplash && (
         <>
           {/* Mobile Container */}
-          <div className="max-w-[480px] mx-auto min-h-screen bg-[#080C1F] relative">
+          <div className="max-w-[480px] mx-auto min-h-screen bg-sv-navy relative">
             {/* Authentication Flow */}
             {authStep !== "authenticated" && renderAuthScreen()}
 

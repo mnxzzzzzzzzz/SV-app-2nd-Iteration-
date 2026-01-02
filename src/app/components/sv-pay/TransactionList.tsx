@@ -43,29 +43,29 @@ export function TransactionList({ transactions }: TransactionListProps) {
         return (
           <div
             key={transaction.id}
-            className="flex items-center justify-between bg-white/5 border border-white/5 backdrop-blur-md rounded-2xl p-5"
+            className="flex items-center justify-between bg-sv-glass-bg border border-sv-glass-border backdrop-blur-md rounded-xl p-5"
           >
             <div className="flex items-center gap-4">
               <div
                 className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-                  isCredit ? "bg-green-500/10" : "bg-red-500/10"
+                  isCredit ? "bg-success/10" : "bg-destructive/10"
                 }`}
               >
                 <Icon
                   size={22}
-                  className={isCredit ? "text-green-400" : "text-red-400"}
+                  className={isCredit ? "text-success" : "text-destructive"}
                 />
               </div>
               <div>
-                <p className="text-white font-medium">{transaction.merchant}</p>
-                <p className="text-[#A0A4B8] text-sm">{formatDate(transaction.date)}</p>
+                <p className="text-sv-text-main font-medium">{transaction.merchant}</p>
+                <p className="text-sv-text-muted text-sm">{formatDate(transaction.date)}</p>
               </div>
             </div>
             <div className="text-right">
-              <p className={`font-semibold ${isCredit ? "text-green-400" : "text-white"}`}>
+              <p className={`font-semibold ${isCredit ? "text-success" : "text-sv-text-main"}`}>
                 {isCredit ? "+" : "-"}£{transaction.amount}
               </p>
-              <p className="text-[#A0A4B8] text-xs capitalize">{transaction.category}</p>
+              <p className="text-sv-text-muted text-xs capitalize">{transaction.category}</p>
             </div>
           </div>
         )

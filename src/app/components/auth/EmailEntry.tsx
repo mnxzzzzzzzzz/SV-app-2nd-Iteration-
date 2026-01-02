@@ -41,7 +41,6 @@ export function EmailEntry({ onSubmit }: EmailEntryProps) {
 
     setIsLoading(true)
 
-    // Simulate API call
     setTimeout(() => {
       setIsLoading(false)
       onSubmit(email)
@@ -49,7 +48,7 @@ export function EmailEntry({ onSubmit }: EmailEntryProps) {
   }
 
   return (
-    <div className="min-h-screen bg-[#080C1F] flex flex-col items-center justify-center px-6 max-w-[480px] mx-auto">
+    <div className="min-h-screen bg-sv-navy flex flex-col items-center justify-center px-6 max-w-[480px] mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -72,8 +71,8 @@ export function EmailEntry({ onSubmit }: EmailEntryProps) {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-center mb-10"
         >
-          <h1 className="text-3xl font-semibold text-white mb-2">Welcome</h1>
-          <p className="text-[#A0A4B8]">Enter your student email to continue</p>
+          <h1 className="text-3xl font-semibold text-sv-text-main mb-2">Welcome</h1>
+          <p className="text-sv-text-muted">Enter your student email to continue</p>
         </motion.div>
 
         {/* Email Form */}
@@ -86,12 +85,12 @@ export function EmailEntry({ onSubmit }: EmailEntryProps) {
         >
           {/* Email Input */}
           <div>
-            <label htmlFor="email" className="block text-white text-sm font-medium mb-3">
+            <label htmlFor="email" className="block text-sv-text-main text-sm font-medium mb-3">
               Email Address
             </label>
             <div className="relative">
               <div className="absolute left-4 top-1/2 -translate-y-1/2">
-                <Mail className="w-5 h-5 text-[#A0A4B8]" aria-hidden="true" />
+                <Mail className="w-5 h-5 text-sv-text-muted" aria-hidden="true" />
               </div>
               <input
                 id="email"
@@ -102,13 +101,12 @@ export function EmailEntry({ onSubmit }: EmailEntryProps) {
                   setError("")
                 }}
                 placeholder="your.name@university.edu"
-                className="w-full bg-[#0F1429] border border-white/10 rounded-[30px] pl-12 pr-4 py-4 text-white placeholder:text-[#A0A4B8] focus:outline-none focus:border-[#2962FF] transition-colors"
-                style={{ borderRadius: "30px" }}
+                className="w-full bg-sv-glass-bg border border-sv-glass-border rounded-full pl-12 pr-4 py-4 text-sv-text-main placeholder:text-sv-text-muted focus:outline-none focus:border-sv-azure transition-colors backdrop-blur-sm"
                 aria-describedby={error ? "email-error" : "email-hint"}
                 aria-invalid={error ? "true" : "false"}
               />
             </div>
-            <p id="email-hint" className="text-[#A0A4B8] text-sm mt-2 ml-4">
+            <p id="email-hint" className="text-sv-text-muted text-sm mt-2 ml-4">
               Only .edu or .ac.ae email addresses
             </p>
             {error && (
@@ -116,7 +114,7 @@ export function EmailEntry({ onSubmit }: EmailEntryProps) {
                 id="email-error"
                 initial={{ opacity: 0, y: -5 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-[#EF4444] text-sm mt-2 ml-4"
+                className="text-destructive text-sm mt-2 ml-4"
                 role="alert"
               >
                 {error}
@@ -128,8 +126,7 @@ export function EmailEntry({ onSubmit }: EmailEntryProps) {
           <button
             type="submit"
             disabled={isLoading || !email}
-            className="w-full bg-[#2962FF] text-white py-4 rounded-[30px] font-medium flex items-center justify-center gap-2 hover:bg-[#1E4FD9] transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-h-[56px]"
-            style={{ borderRadius: "30px" }}
+            className="w-full bg-sv-azure text-white py-4 rounded-full font-medium flex items-center justify-center gap-2 hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed min-h-[56px]"
             aria-label="Send OTP to email"
           >
             {isLoading ? (
@@ -164,7 +161,7 @@ export function EmailEntry({ onSubmit }: EmailEntryProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="text-center text-[#A0A4B8] text-sm mt-8"
+          className="text-center text-sv-text-muted text-sm mt-8"
         >
           By continuing, you agree to our Terms & Privacy Policy
         </motion.p>

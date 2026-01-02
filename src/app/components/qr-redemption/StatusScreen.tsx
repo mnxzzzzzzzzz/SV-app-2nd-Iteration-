@@ -15,45 +15,45 @@ const STATUS_CONFIG = {
     icon: CheckCircle2,
     title: "Applied!",
     subtitle: "Your discount has been successfully redeemed",
-    bgColor: "bg-[#10B981]/10",
-    borderColor: "border-[#10B981]/30",
-    iconColor: "text-[#10B981]",
+    bgColor: "bg-success/10",
+    borderColor: "border-success/30",
+    iconColor: "text-success",
   },
   expired: {
     icon: XCircle,
     title: "Code Expired",
     subtitle: "The QR code has timed out",
     message: "Please generate a new code to redeem",
-    bgColor: "bg-[#EF4444]/10",
-    borderColor: "border-[#EF4444]/30",
-    iconColor: "text-[#EF4444]",
+    bgColor: "bg-destructive/10",
+    borderColor: "border-destructive/30",
+    iconColor: "text-destructive",
   },
   "already-used": {
     icon: XCircle,
     title: "Already Used",
     subtitle: "You have already used this discount today",
     message: "Come back tomorrow for another discount",
-    bgColor: "bg-[#EF4444]/10",
-    borderColor: "border-[#EF4444]/30",
-    iconColor: "text-[#EF4444]",
+    bgColor: "bg-destructive/10",
+    borderColor: "border-destructive/30",
+    iconColor: "text-destructive",
   },
   "wrong-device": {
     icon: XCircle,
     title: "Wrong Device",
     subtitle: "This code was generated on a different device",
     message: "Please use the device you generated the code on",
-    bgColor: "bg-[#EF4444]/10",
-    borderColor: "border-[#EF4444]/30",
-    iconColor: "text-[#EF4444]",
+    bgColor: "bg-destructive/10",
+    borderColor: "border-destructive/30",
+    iconColor: "text-destructive",
   },
   "cap-hit": {
     icon: XCircle,
     title: "Cap Hit",
     subtitle: "Maximum redemptions reached for today",
     message: "Try again tomorrow or explore other merchants",
-    bgColor: "bg-[#EF4444]/10",
-    borderColor: "border-[#EF4444]/30",
-    iconColor: "text-[#EF4444]",
+    bgColor: "bg-destructive/10",
+    borderColor: "border-destructive/30",
+    iconColor: "text-destructive",
   },
 } as const
 
@@ -63,7 +63,7 @@ export function StatusScreen({ status, merchant, onClose }: StatusScreenProps) {
   const isSuccess = status === "success"
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#080C1F]">
+    <div className="flex flex-col min-h-screen bg-sv-navy">
       {/* Content */}
       <div className="flex-1 flex flex-col items-center justify-center p-6">
         <motion.div
@@ -71,7 +71,6 @@ export function StatusScreen({ status, merchant, onClose }: StatusScreenProps) {
           animate={{ scale: 1 }}
           transition={{ type: "spring", stiffness: 200, damping: 15 }}
           className={`size-24 rounded-full flex items-center justify-center mb-6 ${config.bgColor} border-4 ${config.borderColor}`}
-          style={{ borderRadius: "50px" }}
         >
           <Icon className={`size-12 ${config.iconColor}`} strokeWidth={2.5} />
         </motion.div>
@@ -80,7 +79,7 @@ export function StatusScreen({ status, merchant, onClose }: StatusScreenProps) {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-3xl font-bold mb-3 text-center text-white"
+          className="text-3xl font-bold mb-3 text-center text-sv-text-main"
         >
           {config.title}
         </motion.h1>
@@ -88,7 +87,7 @@ export function StatusScreen({ status, merchant, onClose }: StatusScreenProps) {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-[#A0A4B8] text-center mb-6"
+          className="text-sv-text-muted text-center mb-6"
         >
           {config.subtitle}
         </motion.p>
@@ -101,9 +100,9 @@ export function StatusScreen({ status, merchant, onClose }: StatusScreenProps) {
           className="w-full max-w-sm mb-6"
         >
           <div
-            className={`p-4 rounded-[20px] border-2 flex items-center gap-3 ${config.bgColor} ${config.borderColor}`}
+            className={`p-4 rounded-xl border-2 flex items-center gap-3 ${config.bgColor} ${config.borderColor}`}
           >
-            <div className="size-12 rounded-[12px] overflow-hidden bg-white shrink-0">
+            <div className="size-12 rounded-xl overflow-hidden bg-white shrink-0">
               <img
                 src={merchant.logo || "/studentverse-symbol.svg"}
                 alt={merchant.name}
@@ -111,16 +110,16 @@ export function StatusScreen({ status, merchant, onClose }: StatusScreenProps) {
               />
             </div>
             <div className="flex-1 min-w-0">
-              <p className="font-semibold text-white">{merchant.name}</p>
+              <p className="font-semibold text-sv-text-main">{merchant.name}</p>
               <div className="flex items-center gap-2 mt-1">
                 <span
-                  className={`text-xs font-semibold px-2 py-0.5 rounded-[6px] ${
-                    isSuccess ? "bg-[#10B981] text-white" : "bg-white/10 text-[#A0A4B8]"
+                  className={`text-xs font-semibold px-2 py-0.5 rounded-md ${
+                    isSuccess ? "bg-success text-white" : "bg-sv-glass-bg text-sv-text-muted"
                   }`}
                 >
                   {merchant.discount}% OFF
                 </span>
-                {isSuccess && <span className="text-xs text-[#10B981]">Applied</span>}
+                {isSuccess && <span className="text-xs text-success">Applied</span>}
               </div>
             </div>
           </div>
@@ -132,9 +131,9 @@ export function StatusScreen({ status, merchant, onClose }: StatusScreenProps) {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className={`w-full max-w-sm p-4 rounded-[15px] border ${config.bgColor} ${config.borderColor}`}
+            className={`w-full max-w-sm p-4 rounded-xl border ${config.bgColor} ${config.borderColor}`}
           >
-            <p className="text-sm text-center text-white">{config.message}</p>
+            <p className="text-sm text-center text-sv-text-main">{config.message}</p>
           </motion.div>
         )}
 
@@ -145,7 +144,7 @@ export function StatusScreen({ status, merchant, onClose }: StatusScreenProps) {
             transition={{ delay: 0.5 }}
             className="flex flex-wrap justify-center gap-2 mt-6"
           >
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#0F1429] border border-white/20 rounded-[10px] text-xs text-white">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-sv-glass-bg border border-sv-glass-border rounded-lg text-xs text-sv-text-main">
               <Icon className="size-3" />
               {config.title}
             </span>
@@ -153,19 +152,17 @@ export function StatusScreen({ status, merchant, onClose }: StatusScreenProps) {
         )}
       </div>
 
-      <div className="p-6 border-t border-white/10 space-y-3 bg-[#0F1429]">
+      <div className="p-6 border-t border-sv-glass-border space-y-3 bg-sv-glass-bg backdrop-blur-md">
         <button
           onClick={onClose}
-          className="w-full bg-[#2962FF] text-white py-4 rounded-[15px] font-medium hover:bg-[#1E4FD9] transition-colors"
+          className="w-full bg-sv-azure text-white py-4 rounded-xl font-medium hover:opacity-90 transition-opacity"
         >
           {isSuccess ? "Done" : "Get New Code"}
         </button>
         {!isSuccess && (
           <button
-            onClick={() => {
-              /* Contact support logic */
-            }}
-            className="w-full bg-transparent border-2 border-white/20 text-white py-4 rounded-[15px] font-medium hover:bg-white/5 transition-colors"
+            onClick={() => {}}
+            className="w-full bg-transparent border-2 border-sv-glass-border text-sv-text-main py-4 rounded-xl font-medium hover:bg-sv-glass-highlight transition-colors"
           >
             Contact Support
           </button>

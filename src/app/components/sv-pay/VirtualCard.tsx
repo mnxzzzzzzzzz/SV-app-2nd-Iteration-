@@ -36,9 +36,9 @@ export function VirtualCard({ user, balance = "247.50" }: VirtualCardProps) {
           transformStyle: "preserve-3d",
         }}
         transition={{ type: "spring", stiffness: 400, damping: 30 }}
-        className="relative w-full aspect-[1.6/1] rounded-[24px] overflow-hidden border border-white/20 cursor-pointer"
+        className="relative w-full aspect-[1.6/1] rounded-2xl overflow-hidden border border-sv-glass-border cursor-pointer"
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-[#080C1F] via-[#1a1f3d] to-[#7B2CBF]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-sv-navy via-sv-navy/80 to-sv-violet" />
         
         <motion.div
           className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent"
@@ -53,20 +53,20 @@ export function VirtualCard({ user, balance = "247.50" }: VirtualCardProps) {
           style={{ transform: "translateZ(50px)" }}
         >
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#00F0FF] via-[#2962FF] to-[#7B2CBF] flex items-center justify-center">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-sv-cyan via-sv-azure to-sv-violet flex items-center justify-center">
               <span className="text-white font-bold text-lg">SV</span>
             </div>
-            <span className="text-white/80 font-semibold tracking-wide">StudentVerse</span>
+            <span className="text-sv-text-main/80 font-semibold tracking-wide">StudentVerse</span>
           </div>
 
           <div>
-            <p className="text-white/40 text-sm tracking-[0.2em] mb-2">•••• •••• •••• 4242</p>
-            <p className="text-white/60 text-sm">{user?.displayName || "Guest"}</p>
+            <p className="text-sv-text-muted text-sm tracking-[0.2em] mb-2">•••• •••• •••• 4242</p>
+            <p className="text-sv-text-muted text-sm">{user?.displayName || "Guest"}</p>
           </div>
 
           <div className="flex items-center gap-4">
             <div className="w-10 h-7 bg-gradient-to-r from-[#EB001B] to-[#F79E1B] rounded opacity-80" />
-            <div className="w-8 h-5 border-2 border-white/30 rounded" />
+            <div className="w-8 h-5 border-2 border-sv-glass-border rounded" />
           </div>
         </div>
       </motion.div>

@@ -65,32 +65,32 @@ export function MerchantList({ onSelectMerchant, onBack }: MerchantListProps) {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Header */}
-      <div className="flex flex-col gap-4 p-4 border-b border-white/10 bg-[#0F1429]">
+      <div className="flex flex-col gap-4 p-4 border-b border-sv-glass-border bg-sv-glass-bg backdrop-blur-md">
         <div className="flex items-center gap-3">
-          <button onClick={onBack} className="p-2 hover:bg-white/10 rounded-lg transition-colors" aria-label="Go back">
-            <ArrowLeft className="size-5 text-white" />
+          <button onClick={onBack} className="p-2 hover:bg-sv-glass-highlight rounded-xl transition-colors" aria-label="Go back">
+            <ArrowLeft className="size-5 text-sv-text-main" />
           </button>
           <div>
-            <h1 className="text-xl font-semibold text-white">Student Discounts</h1>
-            <p className="text-sm text-[#A0A4B8]">Find and redeem exclusive offers</p>
+            <h1 className="text-xl font-semibold text-sv-text-main">Student Discounts</h1>
+            <p className="text-sm text-sv-text-muted">Find and redeem exclusive offers</p>
           </div>
         </div>
 
         {/* Search Bar */}
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-[#A0A4B8]" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-sv-text-muted" />
           <input
             type="search"
             placeholder="Search merchants or categories..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-3 bg-[#080C1F] border border-white/10 rounded-[15px] text-white placeholder:text-[#A0A4B8] focus:outline-none focus:border-[#2962FF] transition-colors"
+            className="w-full pl-10 pr-4 py-3 bg-sv-navy border border-sv-glass-border rounded-xl text-sv-text-main placeholder:text-sv-text-muted focus:outline-none focus:border-sv-azure transition-colors"
           />
         </div>
       </div>
 
       {/* Merchant Cards */}
-      <div className="flex-1 overflow-y-auto p-4 bg-[#080C1F]">
+      <div className="flex-1 overflow-y-auto p-4 bg-sv-navy">
         <div className="grid gap-3">
           {filteredMerchants.map((merchant, index) => (
             <motion.div
@@ -99,11 +99,11 @@ export function MerchantList({ onSelectMerchant, onBack }: MerchantListProps) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: index * 0.1 }}
               onClick={() => onSelectMerchant(merchant)}
-              className="bg-[#0F1429] border border-white/10 rounded-[20px] p-4 cursor-pointer hover:border-[#2962FF] transition-all active:scale-[0.98]"
+              className="bg-sv-glass-bg border border-sv-glass-border rounded-xl p-4 cursor-pointer hover:border-sv-azure transition-all active:scale-[0.98] backdrop-blur-sm"
             >
               <div className="flex items-start gap-4">
                 {/* Logo */}
-                <div className="size-12 rounded-[12px] overflow-hidden bg-white shrink-0">
+                <div className="size-12 rounded-xl overflow-hidden bg-white shrink-0">
                   <img
                     src={merchant.logo || "/studentverse-symbol.svg"}
                     alt={merchant.name}
@@ -115,16 +115,16 @@ export function MerchantList({ onSelectMerchant, onBack }: MerchantListProps) {
                 <div className="flex-1 min-w-0">
                   <div className="flex items-start justify-between gap-2 mb-2">
                     <div className="min-w-0">
-                      <h3 className="font-semibold text-base leading-tight mb-0.5 text-white">{merchant.name}</h3>
-                      <p className="text-xs text-[#A0A4B8]">{merchant.category}</p>
+                      <h3 className="font-semibold text-base leading-tight mb-0.5 text-sv-text-main">{merchant.name}</h3>
+                      <p className="text-xs text-sv-text-muted">{merchant.category}</p>
                     </div>
-                    <span className="bg-[#10B981] text-white text-xs font-semibold px-2.5 py-1 rounded-[8px] shrink-0">
+                    <span className="bg-success text-white text-xs font-semibold px-2.5 py-1 rounded-lg shrink-0">
                       {merchant.discount}% OFF
                     </span>
                   </div>
 
                   {/* Info Row */}
-                  <div className="flex items-center gap-4 text-xs text-[#A0A4B8]">
+                  <div className="flex items-center gap-4 text-xs text-sv-text-muted">
                     <div className="flex items-center gap-1">
                       <MapPin className="size-3" />
                       <span>{merchant.distance}</span>
@@ -143,9 +143,9 @@ export function MerchantList({ onSelectMerchant, onBack }: MerchantListProps) {
 
           {filteredMerchants.length === 0 && (
             <div className="flex flex-col items-center justify-center py-12 text-center">
-              <Search className="size-12 text-[#A0A4B8]/50 mb-3" />
-              <h3 className="font-semibold mb-1 text-white">No merchants found</h3>
-              <p className="text-sm text-[#A0A4B8]">Try adjusting your search terms</p>
+              <Search className="size-12 text-sv-text-muted/50 mb-3" />
+              <h3 className="font-semibold mb-1 text-sv-text-main">No merchants found</h3>
+              <p className="text-sm text-sv-text-muted">Try adjusting your search terms</p>
             </div>
           )}
         </div>

@@ -12,7 +12,7 @@ export function LoadingScreen({
   subtitle = "Please wait while we verify your information",
 }: LoadingScreenProps) {
   return (
-    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#080C1F] p-5">
+    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-sv-navy p-5">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -30,11 +30,7 @@ export function LoadingScreen({
           transition={{ duration: 0.6 }}
         >
           <motion.div
-            className="w-20 h-20 rounded-full border-4"
-            style={{
-              borderColor: "rgba(41, 98, 255, 0.1)",
-              borderTopColor: "#2962FF",
-            }}
+            className="w-20 h-20 rounded-full border-4 border-sv-azure/10 border-t-sv-azure"
             animate={{ rotate: 360 }}
             transition={{
               duration: 1,
@@ -44,22 +40,20 @@ export function LoadingScreen({
           />
         </motion.div>
 
-        {/* Title */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-[32px] font-semibold text-white text-center mb-4"
+          className="text-[32px] font-semibold text-sv-text-main text-center mb-4"
         >
           {title}
         </motion.h1>
 
-        {/* Subtitle */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-base text-[#A0A4B8] text-center"
+          className="text-base text-sv-text-muted text-center"
         >
           {subtitle}
         </motion.p>

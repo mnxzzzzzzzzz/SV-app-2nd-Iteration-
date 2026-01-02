@@ -16,7 +16,6 @@ export function OTPVerification({ email, onVerify, onBack }: OTPVerificationProp
   const [canResend, setCanResend] = useState(false);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
-  // Countdown timer
   useEffect(() => {
     if (countdown > 0) {
       const timer = setTimeout(() => setCountdown(countdown - 1), 1000);
@@ -26,7 +25,6 @@ export function OTPVerification({ email, onVerify, onBack }: OTPVerificationProp
     }
   }, [countdown]);
 
-  // Mask email for display
   const maskEmail = (email: string) => {
     const [username, domain] = email.split("@");
     const maskedUsername = username.slice(0, 2) + "***" + username.slice(-1);
@@ -34,7 +32,6 @@ export function OTPVerification({ email, onVerify, onBack }: OTPVerificationProp
   };
 
   const handleChange = (index: number, value: string) => {
-    // Only allow numbers
     if (value && !/^\d$/.test(value)) {
       return;
     }
@@ -44,7 +41,6 @@ export function OTPVerification({ email, onVerify, onBack }: OTPVerificationProp
     setOtp(newOtp);
     setError("");
 
-    // Auto-focus next input
     if (value && index < 5) {
       inputRefs.current[index + 1]?.focus();
     }
@@ -69,7 +65,6 @@ export function OTPVerification({ email, onVerify, onBack }: OTPVerificationProp
     });
     setOtp(newOtp);
     
-    // Focus the next empty input or the last one
     const nextEmptyIndex = newOtp.findIndex(val => !val);
     if (nextEmptyIndex !== -1) {
       inputRefs.current[nextEmptyIndex]?.focus();
@@ -89,10 +84,8 @@ export function OTPVerification({ email, onVerify, onBack }: OTPVerificationProp
     setIsLoading(true);
     setError("");
 
-    // Simulate API call
     setTimeout(() => {
       setIsLoading(false);
-      // For demo, accept "123456" as correct OTP
       if (otpCode === "123456") {
         onVerify();
       } else {
@@ -114,12 +107,12 @@ export function OTPVerification({ email, onVerify, onBack }: OTPVerificationProp
   const isComplete = otp.every(digit => digit !== "");
 
   return (
-    <div className="min-h-screen bg-[#080C1F] flex flex-col px-6 max-w-[480px] mx-auto">
+    <div className="min-h-screen bg-sv-navy flex flex-col px-6 max-w-[480px] mx-auto">
       {/* Header */}
       <div className="pt-8 pb-6">
         <button
           onClick={onBack}
-          className="flex items-center gap-2 text-[#A0A4B8] hover:text-white transition-colors min-h-[48px]"
+          className="flex items-center gap-2 text-sv-text-muted hover:text-sv-text-main transition-colors min-h-[48px]"
           aria-label="Go back"
         >
           <ArrowLeft className="w-5 h-5" aria-hidden="true" />
@@ -139,10 +132,9 @@ export function OTPVerification({ email, onVerify, onBack }: OTPVerificationProp
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="flex items-center justify-center w-20 h-20 rounded-full bg-[#2962FF]/20 mx-auto mb-8"
-            style={{ borderRadius: "50px" }}
+            className="flex items-center justify-center w-20 h-20 rounded-full bg-sv-azure/20 mx-auto mb-8"
           >
-            <CheckCircle2 className="w-10 h-10 text-[#2962FF]" aria-hidden="true" />
+            <CheckCircle2 className="w-10 h-10 text-sv-azure" aria-hidden="true" />
           </motion.div>
 
           {/* Title & Description */}
@@ -152,11 +144,11 @@ export function OTPVerification({ email, onVerify, onBack }: OTPVerificationProp
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-center mb-10"
           >
-            <h1 className="text-3xl font-semibold text-white mb-3">Verify Your Email</h1>
-            <p className="text-[#A0A4B8]">
+            <h1 className="text-3xl font-semibold text-sv-text-main mb-3">Verify Your Email</h1>
+            <p className="text-sv-text-muted">
               We sent a 6-digit code to
             </p>
-            <p className="text-white font-medium mt-1">{maskEmail(email)}</p>
+            <p className="text-sv-text-main font-medium mt-1">{maskEmail(email)}</p>
           </motion.div>
 
           {/* OTP Input */}
@@ -178,7 +170,7 @@ export function OTPVerification({ email, onVerify, onBack }: OTPVerificationProp
                   onChange={(e) => handleChange(index, e.target.value)}
                   onKeyDown={(e) => handleKeyDown(index, e)}
                   onPaste={handlePaste}
-                  className="w-12 h-14 bg-[#0F1429] border border-white/10 rounded-[16px] text-white text-center text-xl font-semibold focus:outline-none focus:border-[#2962FF] transition-colors"
+                  className="w-12 h-14 bg-sv-glass-bg border border-sv-glass-border rounded-xl text-sv-text-main text-center text-xl font-semibold focus:outline-none focus:border-sv-azure transition-colors backdrop-blur-sm"
                   aria-label={`Digit ${index + 1}`}
                 />
               ))}
@@ -188,7 +180,7 @@ export function OTPVerification({ email, onVerify, onBack }: OTPVerificationProp
               <motion.p
                 initial={{ opacity: 0, y: -5 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-[#EF4444] text-sm text-center"
+                className="text-destructive text-sm text-center"
                 role="alert"
               >
                 {error}
@@ -204,14 +196,14 @@ export function OTPVerification({ email, onVerify, onBack }: OTPVerificationProp
             className="text-center mb-8"
           >
             {!canResend ? (
-              <p className="text-[#A0A4B8] text-sm">
+              <p className="text-sv-text-muted text-sm">
                 Resend code in{" "}
-                <span className="text-white font-medium">{countdown}s</span>
+                <span className="text-sv-text-main font-medium">{countdown}s</span>
               </p>
             ) : (
               <button
                 onClick={handleResend}
-                className="text-[#2962FF] text-sm font-medium hover:underline min-h-[44px]"
+                className="text-sv-azure text-sm font-medium hover:underline min-h-[44px]"
               >
                 Didn't receive the code? Resend
               </button>
@@ -225,8 +217,7 @@ export function OTPVerification({ email, onVerify, onBack }: OTPVerificationProp
             transition={{ duration: 0.6, delay: 0.5 }}
             onClick={handleVerify}
             disabled={!isComplete || isLoading}
-            className="w-full bg-[#2962FF] text-white py-4 rounded-[30px] font-medium flex items-center justify-center gap-2 hover:bg-[#1E4FD9] transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-h-[56px]"
-            style={{ borderRadius: "30px" }}
+            className="w-full bg-sv-azure text-white py-4 rounded-full font-medium flex items-center justify-center gap-2 hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed min-h-[56px]"
           >
             {isLoading ? (
               <div className="flex gap-2">

@@ -39,15 +39,12 @@ export function OrbitAIChat() {
   }, [messages])
 
   const generateAIResponse = async (userMessage: string): Promise<Message> => {
-    // Simulate API delay
     await new Promise((resolve) => setTimeout(resolve, 1500))
 
-    // Simple validation - check if message is too short or invalid
     if (userMessage.trim().length < 5) {
       throw new Error("Please provide more details about where you'd like to go or what you'd like to do.")
     }
 
-    // Generate mock plan options based on user input
     const planOptions: PlanOption[] = [
       {
         id: "1",
@@ -134,7 +131,6 @@ export function OrbitAIChat() {
 
   const handleStartPlan = (planId: string) => {
     console.log("[v0] Starting plan:", planId)
-    // In production, this would navigate to a plan detail screen or initiate the plan
     const confirmMessage: Message = {
       id: Date.now().toString(),
       type: "ai",
@@ -145,16 +141,16 @@ export function OrbitAIChat() {
   }
 
   return (
-    <div className="flex flex-col h-screen pb-24 pt-8" style={{ backgroundColor: "#080C1F" }}>
+    <div className="flex flex-col h-screen pb-24 pt-8 bg-sv-navy">
       {/* Header */}
       <div className="px-6 mb-6 flex-shrink-0">
         <div className="flex items-center gap-3 mb-2">
-          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#2962FF] to-[#1E4FD9] flex items-center justify-center">
+          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-sv-azure to-sv-violet flex items-center justify-center">
             <Sparkles className="w-5 h-5 text-white" aria-hidden="true" />
           </div>
           <div>
-            <h1 className="text-2xl font-semibold text-white">Orbit AI</h1>
-            <p className="text-[#A0A4B8] text-sm">Your campus guide</p>
+            <h1 className="text-2xl font-semibold text-sv-text-main">Orbit AI</h1>
+            <p className="text-sv-text-muted text-sm">Your campus guide</p>
           </div>
         </div>
       </div>
@@ -197,23 +193,23 @@ export function OrbitAIChat() {
         {/* Loading indicator */}
         {chatState === "loading" && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex items-center gap-2 mb-4">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#2962FF] to-[#1E4FD9] flex items-center justify-center">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-sv-azure to-sv-violet flex items-center justify-center">
               <Sparkles className="w-5 h-5 text-white" aria-hidden="true" />
             </div>
-            <div className="bg-[#0F1429] rounded-[20px] px-4 py-3 border border-white/10">
+            <div className="bg-sv-glass-bg rounded-xl px-4 py-3 border border-sv-glass-border backdrop-blur-sm">
               <div className="flex gap-1">
                 <motion.div
-                  className="w-2 h-2 bg-[#A0A4B8] rounded-full"
+                  className="w-2 h-2 bg-sv-text-muted rounded-full"
                   animate={{ opacity: [0.3, 1, 0.3] }}
                   transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY, delay: 0 }}
                 />
                 <motion.div
-                  className="w-2 h-2 bg-[#A0A4B8] rounded-full"
+                  className="w-2 h-2 bg-sv-text-muted rounded-full"
                   animate={{ opacity: [0.3, 1, 0.3] }}
                   transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY, delay: 0.2 }}
                 />
                 <motion.div
-                  className="w-2 h-2 bg-[#A0A4B8] rounded-full"
+                  className="w-2 h-2 bg-sv-text-muted rounded-full"
                   animate={{ opacity: [0.3, 1, 0.3] }}
                   transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY, delay: 0.4 }}
                 />
@@ -227,12 +223,12 @@ export function OrbitAIChat() {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex items-start gap-3 bg-[#EF4444]/10 border border-[#EF4444]/20 rounded-[20px] p-4 mb-4"
+            className="flex items-start gap-3 bg-destructive/10 border border-destructive/20 rounded-xl p-4 mb-4"
           >
-            <AlertCircle className="w-5 h-5 text-[#EF4444] flex-shrink-0 mt-0.5" aria-hidden="true" />
+            <AlertCircle className="w-5 h-5 text-destructive flex-shrink-0 mt-0.5" aria-hidden="true" />
             <div>
-              <p className="text-[#EF4444] text-sm font-medium mb-1">Error processing request</p>
-              <p className="text-[#A0A4B8] text-sm">Please try again with a different prompt.</p>
+              <p className="text-destructive text-sm font-medium mb-1">Error processing request</p>
+              <p className="text-sv-text-muted text-sm">Please try again with a different prompt.</p>
             </div>
           </motion.div>
         )}
@@ -240,7 +236,7 @@ export function OrbitAIChat() {
         <div ref={messagesEndRef} />
       </div>
 
-      {/* Example Prompts - Show only when chat is empty or just greeting */}
+      {/* Example Prompts */}
       {messages.length <= 1 && (
         <div className="px-6 mb-4 flex-shrink-0">
           <div className="flex flex-wrap gap-2">
@@ -251,7 +247,7 @@ export function OrbitAIChat() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.2, delay: index * 0.05 }}
                 onClick={() => handleExamplePrompt(prompt)}
-                className="bg-[#0F1429] border border-white/10 rounded-full px-4 py-2 text-sm text-[#A0A4B8] hover:border-[#2962FF]/50 hover:text-white transition-colors"
+                className="bg-sv-glass-bg border border-sv-glass-border rounded-full px-4 py-2 text-sm text-sv-text-muted hover:border-sv-azure/50 hover:text-sv-text-main transition-colors backdrop-blur-sm"
               >
                 {prompt}
               </motion.button>
@@ -262,7 +258,7 @@ export function OrbitAIChat() {
 
       {/* Input Area */}
       <div className="px-6 flex-shrink-0">
-        <div className="bg-[#0F1429] border border-white/10 rounded-[20px] p-3 flex items-end gap-3">
+        <div className="bg-sv-glass-bg border border-sv-glass-border rounded-xl p-3 flex items-end gap-3 backdrop-blur-md">
           <Textarea
             ref={textareaRef}
             value={input}
@@ -274,13 +270,13 @@ export function OrbitAIChat() {
               }
             }}
             placeholder="Ask Orbit anything..."
-            className="flex-1 bg-transparent border-none resize-none min-h-[44px] max-h-[120px] text-white placeholder:text-[#A0A4B8] focus-visible:ring-0 focus-visible:ring-offset-0 p-0"
+            className="flex-1 bg-transparent border-none resize-none min-h-[44px] max-h-[120px] text-sv-text-main placeholder:text-sv-text-muted focus-visible:ring-0 focus-visible:ring-offset-0 p-0"
             rows={1}
           />
           <Button
             onClick={handleSendMessage}
             disabled={!input.trim() || chatState === "loading"}
-            className="rounded-full w-11 h-11 p-0 bg-[#2962FF] hover:bg-[#2962FF]/90 disabled:opacity-50 flex-shrink-0"
+            className="rounded-full w-11 h-11 p-0 bg-sv-azure hover:bg-sv-azure/90 disabled:opacity-50 flex-shrink-0"
             size="icon"
           >
             <Send className="w-5 h-5" aria-hidden="true" />

@@ -44,13 +44,13 @@ export function PayScreen() {
   ]
 
   return (
-    <div className="min-h-screen bg-[#080C1F] text-slate-100 pb-32 px-6 pt-12">
+    <div className="min-h-screen bg-sv-navy text-sv-text-main pb-32 px-6 pt-12">
       <div className="flex items-center justify-between mb-8">
         <h1 className="text-3xl font-bold tracking-tight" style={{ fontFamily: "'Syne', sans-serif" }}>
           SV Pay
         </h1>
-        <button className="w-11 h-11 rounded-full bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
-          <Plus size={20} className="text-white" />
+        <button className="w-11 h-11 rounded-full bg-sv-glass-bg backdrop-blur-md border border-sv-glass-border flex items-center justify-center hover:bg-sv-glass-highlight transition-colors">
+          <Plus size={20} className="text-sv-text-main" />
         </button>
       </div>
 
@@ -60,8 +60,8 @@ export function PayScreen() {
         transition={{ duration: 0.5 }}
         className="mb-8"
       >
-        <p className="text-[10px] tracking-[0.25em] text-[#A0A4B8] uppercase mb-2">Total Balance</p>
-        <h2 className="text-5xl font-black mb-6 bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
+        <p className="text-[10px] tracking-[0.25em] text-sv-text-muted uppercase mb-2">Total Balance</p>
+        <h2 className="text-5xl font-black mb-6 bg-gradient-to-r from-sv-text-main to-sv-text-main/80 bg-clip-text text-transparent">
           <BalanceCounter value={balance} />
         </h2>
         
@@ -74,15 +74,15 @@ export function PayScreen() {
         transition={{ duration: 0.5, delay: 0.2 }}
         className="grid grid-cols-3 gap-3 mb-8"
       >
-        <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-4 flex flex-col items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-[#00F0FF]/10 flex items-center justify-center">
-            <Lock size={18} className="text-[#00F0FF]" />
+        <div className="bg-sv-glass-bg backdrop-blur-md border border-sv-glass-border rounded-xl p-4 flex flex-col items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-sv-cyan/10 flex items-center justify-center">
+            <Lock size={18} className="text-sv-cyan" />
           </div>
-          <span className="text-xs text-center text-[#A0A4B8]">Freeze Card</span>
+          <span className="text-xs text-center text-sv-text-muted">Freeze Card</span>
           <button
             onClick={() => setCardFrozen(!cardFrozen)}
             className={`w-12 h-7 rounded-full p-1 transition-colors ${
-              cardFrozen ? "bg-[#00F0FF]" : "bg-white/20"
+              cardFrozen ? "bg-sv-cyan" : "bg-sv-glass-highlight"
             }`}
           >
             <motion.div
@@ -92,15 +92,15 @@ export function PayScreen() {
           </button>
         </div>
 
-        <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-4 flex flex-col items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-[#7B2CBF]/10 flex items-center justify-center">
-            <Globe size={18} className="text-[#7B2CBF]" />
+        <div className="bg-sv-glass-bg backdrop-blur-md border border-sv-glass-border rounded-xl p-4 flex flex-col items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-sv-violet/10 flex items-center justify-center">
+            <Globe size={18} className="text-sv-violet" />
           </div>
-          <span className="text-xs text-center text-[#A0A4B8]">Online Pay</span>
+          <span className="text-xs text-center text-sv-text-muted">Online Pay</span>
           <button
             onClick={() => setOnlinePayments(!onlinePayments)}
             className={`w-12 h-7 rounded-full p-1 transition-colors ${
-              onlinePayments ? "bg-[#7B2CBF]" : "bg-white/20"
+              onlinePayments ? "bg-sv-violet" : "bg-sv-glass-highlight"
             }`}
           >
             <motion.div
@@ -110,12 +110,12 @@ export function PayScreen() {
           </button>
         </div>
 
-        <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-4 flex flex-col items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-[#00F0FF]/10 flex items-center justify-center">
-            <Smartphone size={18} className="text-[#00F0FF]" />
+        <div className="bg-sv-glass-bg backdrop-blur-md border border-sv-glass-border rounded-xl p-4 flex flex-col items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-sv-cyan/10 flex items-center justify-center">
+            <Smartphone size={18} className="text-sv-cyan" />
           </div>
-          <span className="text-xs text-center text-[#A0A4B8]">Aani Pay</span>
-          <button className="px-4 py-1.5 bg-[#00F0FF] text-[#080C1F] rounded-full text-xs font-semibold hover:bg-[#00F0FF]/90 transition-colors">
+          <span className="text-xs text-center text-sv-text-muted">Aani Pay</span>
+          <button className="px-4 py-1.5 bg-sv-cyan text-sv-navy rounded-full text-xs font-semibold hover:opacity-90 transition-opacity">
             Open
           </button>
         </div>
@@ -130,7 +130,7 @@ export function PayScreen() {
           <h3 className="text-lg font-semibold" style={{ fontFamily: "'Syne', sans-serif" }}>
             Transaction History
           </h3>
-          <button className="text-[#00F0FF] text-sm font-medium">View All</button>
+          <button className="text-sv-cyan text-sm font-medium">View All</button>
         </div>
         
         <TransactionList transactions={transactions} />

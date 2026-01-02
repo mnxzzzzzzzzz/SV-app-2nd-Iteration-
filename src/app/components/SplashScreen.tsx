@@ -5,7 +5,7 @@ import { motion } from "motion/react"
 export function SplashScreen({ onComplete }: { onComplete: () => void }) {
   return (
     <motion.div
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#080C1F]"
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-sv-navy"
       initial={{ opacity: 1 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -34,7 +34,7 @@ export function SplashScreen({ onComplete }: { onComplete: () => void }) {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-4xl font-bold text-white tracking-tight"
+          className="text-4xl font-bold text-sv-text-main tracking-tight"
         >
           StudentVerse
         </motion.h1>
@@ -44,7 +44,7 @@ export function SplashScreen({ onComplete }: { onComplete: () => void }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="text-[#A0A4B8] text-lg"
+          className="text-sv-text-muted text-lg"
         >
           Smarter student living
         </motion.p>
@@ -61,7 +61,7 @@ export function SplashScreen({ onComplete }: { onComplete: () => void }) {
           {[0, 1, 2].map((i) => (
             <motion.div
               key={i}
-              className="w-2 h-2 rounded-full bg-[#2962FF]"
+              className="w-2 h-2 rounded-full bg-sv-azure"
               animate={{
                 scale: [1, 1.2, 1],
                 opacity: [0.5, 1, 0.5],

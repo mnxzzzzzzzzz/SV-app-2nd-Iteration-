@@ -21,7 +21,7 @@ export function ErrorScreen({
   secondaryButtonText = "Contact Support",
 }: ErrorScreenProps) {
   return (
-    <div className="fixed inset-0 z-50 flex flex-col bg-[#080C1F]">
+    <div className="fixed inset-0 z-50 flex flex-col bg-sv-navy">
       {/* Content */}
       <div className="flex-1 flex flex-col items-center justify-center p-5">
         <motion.div
@@ -40,7 +40,7 @@ export function ErrorScreen({
           className="mb-10"
         >
           <div
-            className="w-[100px] h-[100px] rounded-[50px] flex items-center justify-center bg-[#EF4444]"
+            className="w-[100px] h-[100px] rounded-full flex items-center justify-center bg-destructive"
             style={{
               boxShadow: "0 0 15px rgba(239, 68, 68, 0.4)",
             }}
@@ -56,7 +56,7 @@ export function ErrorScreen({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-[32px] font-semibold text-white text-center mb-4"
+          className="text-[32px] font-semibold text-sv-text-main text-center mb-4"
         >
           {title}
         </motion.h1>
@@ -66,7 +66,7 @@ export function ErrorScreen({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-base text-[#A0A4B8] text-center max-w-sm mb-10"
+          className="text-base text-sv-text-muted text-center max-w-sm mb-10"
         >
           {message}
         </motion.p>
@@ -79,7 +79,7 @@ export function ErrorScreen({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             onClick={onGetNewCode}
-            className="w-full bg-[#2962FF] text-white py-[14px] px-8 rounded-[30px] text-base font-semibold hover:bg-[#1E4FD9] transition-all active:scale-[0.98]"
+            className="w-full bg-sv-azure text-white py-[14px] px-8 rounded-full text-base font-semibold hover:opacity-90 transition-opacity active:scale-[0.98]"
           >
             {primaryButtonText}
           </motion.button>
@@ -91,7 +91,7 @@ export function ErrorScreen({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             onClick={onContactSupport}
-            className="w-full bg-transparent border-2 border-[#2962FF] text-[#2962FF] py-[14px] px-8 rounded-[30px] text-base font-semibold hover:bg-[#2962FF]/10 transition-all active:scale-[0.98]"
+            className="w-full bg-transparent border-2 border-sv-azure text-sv-azure py-[14px] px-8 rounded-full text-base font-semibold hover:bg-sv-azure/10 transition-colors active:scale-[0.98]"
           >
             {secondaryButtonText}
           </motion.button>

@@ -1,22 +1,46 @@
 export const Colors = {
-  background: "#080C1F",
-  surface: "#0F1629",
-  surfaceLight: "#1A2139",
+  // StudentVerse Brand Palette
+  navy: "#0A0F1E",
+  azure: "#2962FF",
+  cyan: "#00F0FF",
+  gold: "#FFD700",
+  violet: "#7B2CBF",
+  
+  // Semantic Colors
+  background: "#0A0F1E",
+  surface: "rgba(255, 255, 255, 0.03)",
+  surfaceLight: "rgba(255, 255, 255, 0.06)",
+  
+  // Primary/Accent
   primary: "#2962FF",
-  primaryGradient: ["#1A2139", "#080C1F"] as const,
-  accentGradient: ["#448AFF", "transparent"] as const,
+  primaryGradient: ["#1A2139", "#0A0F1E"] as const,
+  accentGradient: ["#00F0FF", "#7B2CBF"] as const,
   glowGradient: ["rgba(255, 255, 255, 0.4)", "transparent"] as const,
   primaryDark: "#1E4FCC",
+  
+  // Status Colors
   success: "#10B981",
   error: "#EF4444",
-  warning: "#F59E0B",
+  destructive: "#EF4444",
+  warning: "#FFD700",
+  
+  // Text Colors
   text: {
     primary: "#FFFFFF",
-    secondary: "#94A3B8",
+    secondary: "#A0A4B8",
     tertiary: "#64748B",
   },
-  border: "#1E293B",
-  borderLight: "#334155",
+  
+  // Glassmorphism
+  glass: {
+    background: "rgba(255, 255, 255, 0.03)",
+    border: "rgba(255, 255, 255, 0.1)",
+    highlight: "rgba(255, 255, 255, 0.06)",
+  },
+  
+  // Borders
+  border: "rgba(255, 255, 255, 0.1)",
+  borderLight: "rgba(255, 255, 255, 0.15)",
 }
 
 export const Spacing = {
@@ -32,7 +56,7 @@ export const BorderRadius = {
   sm: 8,
   md: 12,
   lg: 16,
-  xl: 24,
+  xl: 20,
   full: 9999,
 }
 
