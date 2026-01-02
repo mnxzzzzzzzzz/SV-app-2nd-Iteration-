@@ -49,11 +49,15 @@ export function BottomNav({ activeTab, onTabChange }: BottomNavProps) {
                 />
               )}
               
-              {/* Icon */}
+              {/* Icon with glow effect for active Pay tab */}
               <div className="relative">
+                {isActive && item.id === "pay" && (
+                  <div className="absolute inset-0 -m-2 rounded-full bg-[#00F0FF]/20 blur-md" />
+                )}
                 <Icon 
                   size={24}
-                  color={isActive ? "#2962FF" : "#A0A4B8"}
+                  color={isActive ? (item.id === "pay" ? "#00F0FF" : "#2962FF") : "#A0A4B8"}
+                  className="relative z-10"
                 />
               </div>
               

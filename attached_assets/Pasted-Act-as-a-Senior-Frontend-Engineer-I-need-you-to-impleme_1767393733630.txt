@@ -1,0 +1,72 @@
+Act as a Senior Frontend Engineer. I need you to implement a "Financial Dashboard" feature (SV Pay) from scratch.
+
+Since you do not have access to the original codebase for this feature, please follow these implementation details strictly to ensure the design and logic match our requirements.
+
+### STEP 1: DATABASE (Schema & Storage)
+1.  *Schema*: In shared/schema.ts, define a transactions table using pg-core.
+    * Columns: id (serial pk), userId (text, not null), amount (numeric, not null), merchant (text, not null), category (text, not null), type (text, 'credit' | 'debit'), status (text, default 'completed'), date (timestamp).
+    * Export Transaction type and insertTransactionSchema.
+2.  *Storage*: In server/storage.ts, add getTransactions(userId).
+    * *Logic*: If the database returns empty results for the user, return this hardcoded demo array immediately so the UI is populated:
+        * { id: 1, merchant: "Virgin Mobile", amount: "50", type: "debit", category: "utility", date: new Date() }
+        * { id: 2, merchant: "Dubai Metro", amount: "15", type: "debit", category: "transport", date: new Date() }
+        * { id: 3, merchant: "Top Up", amount: "200", type: "credit", category: "default", date: new Date() }
+
+### STEP 2: UI COMPONENTS (Detailed Implementation)
+Create these files in client/src/components/:
+
+*1. VirtualCard.tsx (Interactive 3D Card)*
+* *Imports*: motion, useMotionValue, useTransform from "framer-motion".
+* *Logic*:
+    * Initialize x and y as motion values (0).
+    * Create transforms: rotateX maps y range [-100, 100] to [15, -15]. rotateY maps x range [-100, 100] to [-15, 15].
+    * handleMouse function: Calculate cursor distance from the card's center (event.clientX - center.x) and set x and y values.
+    * Reset x and y to 0 on onMouseLeave.
+* *JSX Structure*:
+    * Container: perspective-1000.
+    * Card Div: motion.div with style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}.
+    * *Design*:
+        * Background: bg-gradient-to-br from-[#080C1F] via-[#1a1f3d] to-[#7B2CBF].
+        * Overlay: Add a div with a gradient from transparent to white/10 that translates based on hover for a holographic effect.
+        * Content: "StudentVerse" Logo, mask number •••• 4242, and user.displayName (or "Guest").
+        * Border: border border-white/20.
+
+*2. TransactionList.tsx*
+* *Imports*: Icons from lucide-react.
+* *Logic*: Create a map object categoryIcons:
+    * food: Coffee, shopping: ShoppingBag, transport: Bus, utility: Wifi, transit: Train, default: CreditCard.
+* *JSX*: Map through transactions.
+    * *Styling*: Row container with bg-white/5 border border-white/5 backdrop-blur-md rounded-2xl p-5 mb-3.
+    * *Colors*:
+        * If type === 'debit': Icon bg bg-red-500/10 text-red-400. Amount text text-white.
+        * If type === 'credit': Icon bg bg-green-500/10 text-green-400. Amount text text-green-400.
+
+### STEP 3: PAGE ASSEMBLY (Pay.tsx)
+Create client/src/pages/Pay.tsx.
+
+1.  *Balance Counter Component* (Internal helper):
+    * Accepts value (string).
+    * Use useEffect with animate(0, parseFloat(value), { duration: 2, ... }) to update a local state displayValue. This makes the numbers "count up" on load.
+
+2.  *Main Page Layout*:
+    * *Wrapper*: min-h-screen bg-[#080C1F] text-slate-100 pb-32 px-6 pt-12.
+    * *Header*: flex justify-between. Title "SV Pay" (font-display). Button: Circular glass button with Plus icon.
+    * *Hero*:
+        * Label: "TOTAL BALANCE" (uppercase, text-[10px] tracking-widest).
+        * Value: text-5xl font-black using the <BalanceCounter />.
+        * Card: Render <VirtualCard user={user} />.
+    * *Action Grid*:
+        * Create 3 items: "Freeze Card" (Switch), "Online Payments" (Switch), and "Aani Pay" (Button).
+        * Style them with bg-white/5 rounded-2xl.
+    * *History*: Render <TransactionList />.
+
+### STEP 4: INTEGRATION
+1.  *App.tsx*: Import Pay and add <Route path="/pay" component={Pay} />.
+2.  *Navigation.tsx*: Add the "SV Pay" link.
+    * *Active Style*: When active, the icon should have a bg-[#00F0FF]/20 blurred glow behind it.
+
+### CRITICAL DESIGN RULES
+* *Primary Background*: #080C1F (Deep Navy).
+* *Accents*: #00F0FF (Neon Cyan) and #7B2CBF (Purple).
+* *Font*: Use 'Syne' (or generic sans if unavailable) for headers, 'Inter' for body.
+* *Glassmorphism*: All cards must use backdrop-filter: blur(12px) and border-white/10.
