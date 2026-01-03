@@ -44,7 +44,7 @@ export function PayScreen() {
   ]
 
   return (
-    <div className="min-h-screen bg-sv-navy text-sv-text-main pb-32 px-6 pt-12">
+    <div className="bg-sv-navy text-sv-text-main pb-8 px-6 pt-12">
       <div className="flex items-center justify-between mb-8">
         <h1 className="font-heading text-3xl font-bold tracking-tight">
           SV Pay

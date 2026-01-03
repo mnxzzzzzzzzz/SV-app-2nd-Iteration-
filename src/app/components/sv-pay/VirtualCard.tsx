@@ -53,10 +53,7 @@ export function VirtualCard({ user, balance = "247.50" }: VirtualCardProps) {
           style={{ transform: "translateZ(50px)" }}
         >
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-sv-cyan via-sv-azure to-sv-violet flex items-center justify-center">
-              <span className="font-heading text-white font-bold text-lg">SV</span>
-            </div>
-            <span className="font-heading text-sv-text-main/80 font-semibold tracking-wide">StudentVerse</span>
+            <img src="/studentverse-app-icon.png" alt="StudentVerse" className="h-10 w-auto" />
           </div>
 
           <div>
