@@ -198,21 +198,26 @@ export function OrbitAIChat() {
             </div>
             <span className="text-sv-text-main text-sm font-semibold">Active Deals</span>
           </div>
-          <div className="flex gap-2 overflow-x-auto pb-1">
+          <div className="space-y-2">
             {BRAND_OFFERS.slice(0, 3).map((offer) => (
               <button
                 key={offer.id}
                 onClick={() => handleExamplePrompt(`Tell me about ${offer.name} deals`)}
-                className="flex items-center gap-2 rounded-xl px-3 py-2.5 border border-white/10 whitespace-nowrap hover:border-white/20 transition-all"
+                className="w-full flex items-center gap-3 rounded-xl px-3 py-3 border border-white/10 hover:border-white/20 transition-all text-left"
                 style={{
                   background: 'rgba(255, 255, 255, 0.05)',
                 }}
               >
                 {offer.logoSrc && (
-                  <img src={offer.logoSrc} alt={offer.name} className="w-7 h-7 rounded-lg object-cover" />
+                  <img src={offer.logoSrc} alt={offer.name} className="w-10 h-10 rounded-lg object-cover flex-shrink-0" />
                 )}
-                <span className="text-sv-text-main text-sm font-medium">{offer.name}</span>
-                <span className="text-sv-cyan text-sm font-bold">{offer.discount}</span>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sv-text-main text-sm font-medium">{offer.name}</span>
+                    <span className="text-sv-cyan text-sm font-bold">{offer.discount}</span>
+                  </div>
+                  <p className="text-sv-text-muted text-xs truncate mt-0.5">{offer.dealTitle}</p>
+                </div>
               </button>
             ))}
           </div>
