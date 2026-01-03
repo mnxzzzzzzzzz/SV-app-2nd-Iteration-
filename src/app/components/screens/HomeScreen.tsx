@@ -66,43 +66,86 @@ export function HomeScreen() {
         </div>
       </div>
 
-      {/* Hero Promotional Card */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="relative rounded-[28px] overflow-hidden mb-8 aspect-square"
-        style={{ background: 'linear-gradient(160deg, #d8b4d8 0%, #e8c4d8 20%, #f0d0e0 40%, #e8c8b8 70%, #d8b090 100%)' }}
-      >
-        <div className="relative p-6 h-full flex flex-col">
-          <div className="flex items-center justify-between">
-            <span className="text-[#9a7a8a] text-sm font-medium tracking-widest uppercase" style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}>COFFEE PLANET</span>
-            <div className="w-9 h-9 rounded-full flex items-center justify-center" style={{ backgroundColor: 'rgba(154, 122, 138, 0.2)' }}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9a7a8a" strokeWidth="1.5">
-                <circle cx="12" cy="8" r="5" />
-                <path d="M3 21c0-4.5 4-8 9-8s9 3.5 9 8" />
-              </svg>
+      {/* Hero Promotional Cards - Two Side by Side */}
+      <div className="flex gap-3 mb-8">
+        {/* Coffee Planet Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="flex-1 rounded-[24px] overflow-hidden aspect-square"
+          style={{ background: 'linear-gradient(160deg, #d8b4d8 0%, #e8c4d8 20%, #f0d0e0 40%, #e8c8b8 70%, #d8b090 100%)' }}
+        >
+          <div className="relative p-4 h-full flex flex-col">
+            <div className="flex items-center justify-between">
+              <span className="text-[#9a7a8a] text-xs font-medium tracking-widest uppercase" style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}>COFFEE PLANET</span>
+              <div className="w-7 h-7 rounded-full flex items-center justify-center" style={{ backgroundColor: 'rgba(154, 122, 138, 0.2)' }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9a7a8a" strokeWidth="1.5">
+                  <circle cx="12" cy="8" r="5" />
+                  <path d="M3 21c0-4.5 4-8 9-8s9 3.5 9 8" />
+                </svg>
+              </div>
             </div>
+            
+            <div className="flex-1 flex items-center justify-center">
+              <h2 className="text-white text-xl font-bold text-center leading-tight tracking-tight" style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}>
+                Exclusive<br />matcha Deals
+              </h2>
+            </div>
+            
+            <button 
+              className="w-full py-3 rounded-xl text-white font-medium text-sm"
+              style={{ 
+                background: 'rgba(180, 140, 130, 0.35)',
+                backdropFilter: 'blur(12px)',
+                fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif'
+              }}
+            >
+              Shop Now
+            </button>
           </div>
-          
-          <div className="flex-1 flex items-center justify-center">
-            <h2 className="text-white text-[32px] font-bold text-center leading-tight tracking-tight" style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}>
-              Exclusive<br />matcha Deals
-            </h2>
+        </motion.div>
+
+        {/* Filli Café Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="flex-1 rounded-[24px] overflow-hidden aspect-square"
+          style={{ background: 'linear-gradient(160deg, #4a90d9 0%, #6a5acd 40%, #7b2cbf 70%, #8b3a9b 100%)' }}
+        >
+          <div className="relative p-4 h-full flex flex-col">
+            <div className="flex items-center justify-between">
+              <span className="text-[#a8c8f0] text-xs font-medium tracking-widest uppercase" style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}>FILLI CAFÉ</span>
+              <div className="w-7 h-7 rounded-full flex items-center justify-center" style={{ backgroundColor: 'rgba(168, 200, 240, 0.2)' }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#a8c8f0" strokeWidth="1.5">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+                  <circle cx="9" cy="9" r="1" fill="#a8c8f0" />
+                  <circle cx="15" cy="9" r="1" fill="#a8c8f0" />
+                </svg>
+              </div>
+            </div>
+            
+            <div className="flex-1 flex items-center justify-center">
+              <h2 className="text-white text-xl font-bold text-center leading-tight tracking-tight" style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}>
+                Irrestible<br />Donut Deals
+              </h2>
+            </div>
+            
+            <button 
+              className="w-full py-3 rounded-xl text-white font-medium text-sm"
+              style={{ 
+                background: 'rgba(100, 60, 140, 0.5)',
+                backdropFilter: 'blur(12px)',
+                fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif'
+              }}
+            >
+              Order Now
+            </button>
           </div>
-          
-          <button 
-            className="w-full py-4 rounded-2xl text-white font-medium text-base"
-            style={{ 
-              background: 'rgba(180, 140, 130, 0.35)',
-              backdropFilter: 'blur(12px)',
-              fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif'
-            }}
-          >
-            Shop Now
-          </button>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
 
       {/* Nearby Offers Section */}
       <div className="mb-6">
