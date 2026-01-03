@@ -146,7 +146,12 @@ export function OrbitAIChat() {
   }
 
   return (
-    <div className="flex flex-col h-screen pb-24 pt-8 bg-sv-navy">
+    <div 
+      className="flex flex-col h-screen pb-24 pt-8"
+      style={{ 
+        background: 'radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 40%), radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 40%), radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.08) 0%, transparent 50%), #0A0F1E' 
+      }}
+    >
       {/* Header */}
       <div className="px-6 mb-4 flex-shrink-0">
         <div className="flex items-center gap-3 mb-2">
@@ -159,6 +164,23 @@ export function OrbitAIChat() {
           </div>
         </div>
       </div>
+
+      {/* Gradient Suggestion Text - Only show when no conversation started */}
+      {messages.length <= 1 && (
+        <div className="px-6 mb-6 flex-shrink-0">
+          <p 
+            className="text-center text-xl font-medium leading-relaxed"
+            style={{
+              background: 'linear-gradient(90deg, #a78bfa 0%, #f472b6 30%, #60a5fa 60%, #22d3ee 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}
+          >
+            Ask about deals, places to eat,<br />or pick a suggestion below.
+          </p>
+        </div>
+      )}
 
       {/* Active Deals Banner */}
       <div className="px-6 mb-4 flex-shrink-0">
