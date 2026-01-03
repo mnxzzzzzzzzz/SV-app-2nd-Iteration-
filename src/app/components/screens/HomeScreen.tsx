@@ -73,32 +73,40 @@ export function HomeScreen() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="flex-1 rounded-[24px] overflow-hidden aspect-square"
-          style={{ background: 'linear-gradient(160deg, #d8b4d8 0%, #e8c4d8 20%, #f0d0e0 40%, #e8c8b8 70%, #d8b090 100%)' }}
+          className="flex-1 rounded-[32px] overflow-hidden aspect-square shadow-2xl"
+          style={{ 
+            background: 'radial-gradient(circle at 0% 0%, rgba(251, 146, 60, 0.15) 0%, transparent 50%), radial-gradient(circle at 100% 100%, rgba(168, 85, 247, 0.15) 0%, transparent 50%), #0f172a' 
+          }}
         >
-          <div className="relative p-4 h-full flex flex-col">
+          <div className="relative p-5 h-full flex flex-col justify-between">
             <div className="flex items-center justify-between">
-              <span className="text-[#9a7a8a] text-xs font-medium tracking-widest uppercase" style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}>COFFEE PLANET</span>
-              <div className="w-7 h-7 rounded-full flex items-center justify-center" style={{ backgroundColor: 'rgba(154, 122, 138, 0.2)' }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9a7a8a" strokeWidth="1.5">
+              <span className="text-gray-400 text-[10px] font-bold tracking-[0.15em] uppercase">
+                Coffee Planet
+              </span>
+              <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center bg-white/5">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5">
                   <circle cx="12" cy="8" r="5" />
                   <path d="M3 21c0-4.5 4-8 9-8s9 3.5 9 8" />
                 </svg>
               </div>
             </div>
             
-            <div className="flex-1 flex items-center justify-center">
-              <h2 className="text-white text-xl font-bold text-center leading-tight tracking-tight" style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}>
-                Exclusive<br />matcha Deals
+            <div className="flex-1 flex flex-col items-center justify-center">
+              <h2 className="text-white text-2xl font-extrabold text-center tracking-tight leading-[1.1]">
+                Exclusive<br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-purple-400 to-blue-400">
+                  Matcha Deals
+                </span>
               </h2>
             </div>
             
             <button 
-              className="w-full py-3 rounded-xl text-white font-medium text-sm"
+              className="w-full py-3 rounded-2xl text-white font-semibold text-sm transition-transform hover:scale-[1.02] active:scale-[0.98]"
               style={{ 
-                background: 'rgba(180, 140, 130, 0.35)',
+                background: 'rgba(255, 255, 255, 0.05)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
                 backdropFilter: 'blur(12px)',
-                fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif'
+                boxShadow: '0 4px 24px rgba(0, 0, 0, 0.2)'
               }}
             >
               Shop Now
@@ -111,34 +119,42 @@ export function HomeScreen() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex-1 rounded-[24px] overflow-hidden aspect-square"
-          style={{ background: 'linear-gradient(160deg, #4a90d9 0%, #6a5acd 40%, #7b2cbf 70%, #8b3a9b 100%)' }}
+          className="flex-1 rounded-[32px] overflow-hidden aspect-square shadow-2xl"
+          style={{ 
+            background: 'radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.15) 0%, transparent 50%), radial-gradient(circle at 100% 100%, rgba(147, 51, 234, 0.15) 0%, transparent 50%), #0f172a' 
+          }}
         >
-          <div className="relative p-4 h-full flex flex-col">
+          <div className="relative p-5 h-full flex flex-col justify-between">
             <div className="flex items-center justify-between">
-              <span className="text-[#a8c8f0] text-xs font-medium tracking-widest uppercase" style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}>FILLI CAFÉ</span>
-              <div className="w-7 h-7 rounded-full flex items-center justify-center" style={{ backgroundColor: 'rgba(168, 200, 240, 0.2)' }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#a8c8f0" strokeWidth="1.5">
+              <span className="text-gray-400 text-[10px] font-bold tracking-[0.15em] uppercase">
+                Filli Café
+              </span>
+              <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center bg-white/5">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5">
                   <circle cx="12" cy="12" r="10" />
                   <path d="M8 14s1.5 2 4 2 4-2 4-2" />
-                  <circle cx="9" cy="9" r="1" fill="#a8c8f0" />
-                  <circle cx="15" cy="9" r="1" fill="#a8c8f0" />
+                  <circle cx="9" cy="9" r="1" fill="white" />
+                  <circle cx="15" cy="9" r="1" fill="white" />
                 </svg>
               </div>
             </div>
             
-            <div className="flex-1 flex items-center justify-center">
-              <h2 className="text-white text-xl font-bold text-center leading-tight tracking-tight" style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}>
-                Irrestible<br />Donut Deals
+            <div className="flex-1 flex flex-col items-center justify-center">
+              <h2 className="text-white text-2xl font-extrabold text-center tracking-tight leading-[1.1]">
+                Irresistible<br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
+                  Donut Deals
+                </span>
               </h2>
             </div>
             
             <button 
-              className="w-full py-3 rounded-xl text-white font-medium text-sm"
+              className="w-full py-3 rounded-2xl text-white font-semibold text-sm transition-transform hover:scale-[1.02] active:scale-[0.98]"
               style={{ 
-                background: 'rgba(100, 60, 140, 0.5)',
+                background: 'rgba(255, 255, 255, 0.05)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
                 backdropFilter: 'blur(12px)',
-                fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif'
+                boxShadow: '0 4px 24px rgba(0, 0, 0, 0.2)'
               }}
             >
               Order Now
