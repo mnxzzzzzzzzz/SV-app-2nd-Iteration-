@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import "../global.css";
 
-import { SplashScreen } from "./components/SplashScreen";
 import { BottomNav } from "./components/BottomNav";
 import { HomeScreen } from "./components/screens/HomeScreen";
 import { QRScreen } from "./components/screens/QRScreen";
@@ -18,21 +17,12 @@ import { LoadingScreen } from "./components/shared/LoadingScreen";
 type AuthStep = "email" | "loading" | "otp" | "waitlist" | "authenticated";
 
 export default function App() {
-  const skipSplash = typeof window !== 'undefined' && window.location.hash === "#skip-auth";
-  const [showSplash, setShowSplash] = useState(!skipSplash);
+  const skipSplash = true; // Skip splash screen
+  const [showSplash, setShowSplash] = useState(false);
   const [activeTab, setActiveTab] = useState("home");
   const [showDesignSystem, setShowDesignSystem] = useState(false);
-  const [authStep, setAuthStep] = useState<AuthStep>(skipSplash ? "authenticated" : "email");
+  const [authStep, setAuthStep] = useState<AuthStep>("email");
   const [userEmail, setUserEmail] = useState("");
-
-  useEffect(() => {
-    // Auto-hide splash screen after animation completes
-    const timer = setTimeout(() => {
-      setShowSplash(false);
-    }, 2500);
-
-    return () => clearTimeout(timer);
-  }, []);
 
   useEffect(() => {
     // Listen for hash changes to show design system
@@ -136,34 +126,27 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-sv-navy">
-      {/* Splash Screen */}
-      {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
+    <div className="h-full bg-sv-navy">
+      {/* Authentication Flow - Full screen for proper centering */}
+      {authStep !== "authenticated" && (
+        <div className="h-full">
+          {renderAuthScreen()}
+        </div>
+      )}
 
-      {/* Main App */}
-      {!showSplash && (
-        <>
-          {/* Mobile Container */}
-          <div className="max-w-[480px] mx-auto min-h-screen bg-sv-navy relative">
-            {/* Authentication Flow */}
-            {authStep !== "authenticated" && renderAuthScreen()}
+      {/* Main App Content - Only show when authenticated */}
+      {authStep === "authenticated" && (
+        <div className="max-w-[480px] mx-auto h-full bg-sv-navy relative flex flex-col">
+          {/* Content Area */}
+          <main className="flex-1 overflow-y-auto pb-20">
+            {renderScreen()}
+          </main>
 
-            {/* Main App Content - Only show when authenticated */}
-            {authStep === "authenticated" && (
-              <>
-                {/* Content Area */}
-                <main className="overflow-y-auto">
-                  {renderScreen()}
-                </main>
-
-                {/* Bottom Navigation - Hidden when viewing design system */}
-                {!showDesignSystem && (
-                  <BottomNav activeTab={activeTab} onTabChange={setActiveTab} />
-                )}
-              </>
-            )}
-          </div>
-        </>
+          {/* Bottom Navigation - Hidden when viewing design system */}
+          {!showDesignSystem && (
+            <BottomNav activeTab={activeTab} onTabChange={setActiveTab} />
+          )}
+        </div>
       )}
     </div>
   );
