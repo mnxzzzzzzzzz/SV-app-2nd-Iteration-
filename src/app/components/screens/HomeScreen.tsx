@@ -1,4 +1,4 @@
-import { MapPin, ChevronRight, Menu, Bell } from "lucide-react";
+import { MapPin, Menu, Bell } from "lucide-react";
 import { motion } from "framer-motion";
 
 export function HomeScreen() {
@@ -113,24 +113,16 @@ export function HomeScreen() {
               whileTap={{ scale: 0.98 }}
               className="bg-sv-glass-bg rounded-2xl p-4 border border-sv-glass-border flex items-center gap-4 hover:bg-sv-glass-highlight transition-colors cursor-pointer backdrop-blur-sm"
             >
-              <div className="w-14 h-14 rounded-xl bg-sv-navy border border-sv-glass-border flex items-center justify-center text-2xl">
+              <div className="w-16 h-16 rounded-xl bg-sv-navy border border-sv-glass-border flex items-center justify-center text-3xl flex-shrink-0">
                 {offer.logo}
               </div>
               <div className="flex-1 min-w-0">
-                <div className="flex items-center justify-between mb-1">
-                  <h4 className="font-heading text-sv-text-main font-semibold truncate">{offer.name}</h4>
-                  <div className="bg-sv-azure/20 px-2 py-0.5 rounded-md border border-sv-azure/30 ml-2 flex-shrink-0">
-                    <span className="font-mono text-sv-azure text-xs font-semibold uppercase">{offer.discount}</span>
-                  </div>
-                </div>
-                <p className="font-body text-sv-text-muted text-sm truncate mb-1">{offer.description}</p>
+                <h4 className="text-sv-text-main font-semibold text-lg mb-1" style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}>{offer.name}</h4>
+                <p className="text-sv-text-muted text-base mb-1" style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}>{offer.description}</p>
                 <div className="flex items-center gap-1 text-sv-text-muted">
-                  <MapPin size={12} />
-                  <span className="font-mono text-xs">{offer.distance}</span>
+                  <MapPin size={14} />
+                  <span className="text-sm" style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}>{offer.distance}</span>
                 </div>
-              </div>
-              <div className="w-8 h-8 rounded-full bg-sv-glass-bg flex items-center justify-center border border-sv-glass-border flex-shrink-0">
-                <ChevronRight size={16} className="text-sv-text-muted" />
               </div>
             </motion.div>
           ))}
