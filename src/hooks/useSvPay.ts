@@ -105,11 +105,19 @@ export function useSvPay() {
     setState(initialSvPayState);
   }, []);
 
+  const clearError = useCallback(() => {
+    setState((prev) => ({
+      ...prev,
+      error: null,
+    }));
+  }, []);
+
   return {
     state,
     authorize,
     confirm,
     voidIntent,
     reset,
+    clearError,
   };
 }

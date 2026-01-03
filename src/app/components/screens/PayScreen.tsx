@@ -32,7 +32,7 @@ function BalanceCounter({ value }: { value: string }) {
 export function PayScreen() {
   const [cardFrozen, setCardFrozen] = useState(false)
   const [onlinePayments, setOnlinePayments] = useState(true)
-  const { state: payState, authorize, confirm, voidIntent, reset } = useSvPay()
+  const { state: payState, authorize, confirm, voidIntent, reset, clearError } = useSvPay()
 
   const user = { displayName: "Alex Johnson" }
   const balance = "247.50"
@@ -187,8 +187,14 @@ export function PayScreen() {
         )}
 
         {payState.error && (
-          <div className="mt-3 bg-red-500/10 border border-red-500/30 rounded-xl p-3">
-            <p className="font-body text-red-400 text-sm text-center">{payState.error}</p>
+          <div className="mt-3 bg-red-500/10 border border-red-500/30 rounded-xl p-3 flex items-center justify-between gap-2">
+            <p className="font-body text-red-400 text-sm flex-1">{payState.error}</p>
+            <button
+              onClick={clearError}
+              className="w-6 h-6 rounded-full bg-red-500/20 flex items-center justify-center hover:bg-red-500/30 transition-colors flex-shrink-0"
+            >
+              <X size={14} className="text-red-400" />
+            </button>
           </div>
         )}
       </motion.div>
