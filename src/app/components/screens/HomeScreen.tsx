@@ -1,7 +1,12 @@
 import { MapPin, Menu, Bell } from "lucide-react";
 import { motion } from "framer-motion";
+import { BRAND_OFFERS } from "../../../data/brandOffers";
 
-export function HomeScreen() {
+interface HomeScreenProps {
+  onOfferClick?: (offerId: string) => void;
+}
+
+export function HomeScreen({ onOfferClick }: HomeScreenProps) {
   const nearbyOffers = [
     {
       id: 1,
@@ -43,9 +48,9 @@ export function HomeScreen() {
         <button className="w-10 h-10 rounded-full bg-sv-glass-bg flex items-center justify-center border border-sv-glass-border">
           <Menu size={20} className="text-sv-text-main" />
         </button>
-        <div className="flex items-center gap-2">
-          <img src="/studentverse-app-icon.png" alt="StudentVerse" className="h-8 w-auto" />
-          <span className="font-heading text-sv-text-main font-semibold">StudentVerse</span>
+        <div className="flex items-center gap-3">
+          <img src="/studentverse-app-icon.png" alt="StudentVerse" className="h-10 w-auto" />
+          <span className="font-heading text-sv-text-main font-bold text-lg">StudentVerse</span>
         </div>
         <button className="w-10 h-10 rounded-full bg-sv-glass-bg flex items-center justify-center border border-sv-glass-border relative">
           <Bell size={20} className="text-sv-text-main" />
@@ -101,6 +106,7 @@ export function HomeScreen() {
             </div>
             
             <button 
+              onClick={() => onOfferClick?.('coffee-planet')}
               className="w-full py-3 rounded-2xl text-white font-semibold text-sm transition-transform hover:scale-[1.02] active:scale-[0.98]"
               style={{ 
                 background: 'rgba(255, 255, 255, 0.05)',
@@ -149,6 +155,7 @@ export function HomeScreen() {
             </div>
             
             <button 
+              onClick={() => onOfferClick?.('filli-cafe')}
               className="w-full py-3 rounded-2xl text-white font-semibold text-sm transition-transform hover:scale-[1.02] active:scale-[0.98]"
               style={{ 
                 background: 'rgba(255, 255, 255, 0.05)',
@@ -179,6 +186,7 @@ export function HomeScreen() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
               whileTap={{ scale: 0.98 }}
+              onClick={() => onOfferClick?.(offer.name.toLowerCase().replace(/\s+/g, '-'))}
               className="bg-sv-glass-bg rounded-2xl p-2 border border-sv-glass-border flex items-center gap-2 hover:bg-sv-glass-highlight transition-colors cursor-pointer backdrop-blur-sm"
             >
               <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0" style={{ backgroundColor: offer.logoType === 'icon' ? '#000' : 'transparent' }}>

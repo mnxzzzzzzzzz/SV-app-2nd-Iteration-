@@ -7,6 +7,7 @@ import { SearchScreen } from "./components/screens/SearchScreen";
 import { PayScreen } from "./components/screens/PayScreen";
 import { OrbitScreen } from "./components/screens/OrbitScreen";
 import { MeScreen } from "./components/screens/MeScreen";
+import { QRScreen } from "./components/screens/QRScreen";
 import { DesignSystemShowcase } from "./components/DesignSystemShowcase";
 import { EmailEntry } from "./components/auth/EmailEntry";
 import { OTPVerification } from "./components/auth/OTPVerification";
@@ -23,6 +24,12 @@ export default function App() {
   const [showDesignSystem, setShowDesignSystem] = useState(false);
   const [authStep, setAuthStep] = useState<AuthStep>("email");
   const [userEmail, setUserEmail] = useState("");
+  const [selectedOfferId, setSelectedOfferId] = useState<string | null>(null);
+
+  const handleOfferClick = (offerId: string) => {
+    setSelectedOfferId(offerId);
+    setActiveTab("qr");
+  };
 
   useEffect(() => {
     // Listen for hash changes to show design system
@@ -111,17 +118,19 @@ export default function App() {
 
     switch (activeTab) {
       case "home":
-        return <HomeScreen />;
+        return <HomeScreen onOfferClick={handleOfferClick} />;
       case "search":
-        return <SearchScreen />;
+        return <SearchScreen onOfferClick={handleOfferClick} />;
       case "pay":
         return <PayScreen />;
       case "orbit":
         return <OrbitScreen />;
+      case "qr":
+        return <QRScreen />;
       case "me":
         return <MeScreen />;
       default:
-        return <HomeScreen />;
+        return <HomeScreen onOfferClick={handleOfferClick} />;
     }
   };
 

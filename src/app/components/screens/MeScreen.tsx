@@ -12,14 +12,35 @@ import {
   Smartphone,
   Globe,
   Lock,
+  X,
+  Check,
 } from "lucide-react"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { useState } from "react"
 import { Switch } from "../ui/switch"
+
+const LANGUAGES = [
+  { code: "en", name: "English", flag: "🇬🇧" },
+  { code: "ar", name: "العربية", flag: "🇦🇪" },
+  { code: "hi", name: "हिन्दी", flag: "🇮🇳" },
+  { code: "zh", name: "中文", flag: "🇨🇳" },
+  { code: "es", name: "Español", flag: "🇪🇸" },
+]
+
+const REGIONS = [
+  { code: "ae", name: "United Arab Emirates", flag: "🇦🇪" },
+  { code: "uk", name: "United Kingdom", flag: "🇬🇧" },
+  { code: "us", name: "United States", flag: "🇺🇸" },
+  { code: "in", name: "India", flag: "🇮🇳" },
+  { code: "sg", name: "Singapore", flag: "🇸🇬" },
+]
 
 export function MeScreen() {
   const [twoFactorEnabled, setTwoFactorEnabled] = useState(false)
   const [biometricsEnabled, setBiometricsEnabled] = useState(true)
+  const [showLanguageModal, setShowLanguageModal] = useState(false)
+  const [selectedLanguage, setSelectedLanguage] = useState("en")
+  const [selectedRegion, setSelectedRegion] = useState("ae")
 
   const handleLogout = () => {
     console.log("Logging out...")
@@ -175,12 +196,20 @@ export function MeScreen() {
               <ChevronRight className="w-5 h-5 text-sv-text-muted" aria-hidden="true" />
             </button>
 
-            <button className="w-full flex items-center justify-between p-4 bg-sv-glass-bg rounded-xl border border-sv-glass-border text-left hover:bg-sv-glass-highlight transition-colors backdrop-blur-sm">
+            <button 
+              onClick={() => setShowLanguageModal(true)}
+              className="w-full flex items-center justify-between p-4 bg-sv-glass-bg rounded-xl border border-sv-glass-border text-left hover:bg-sv-glass-highlight transition-colors backdrop-blur-sm"
+            >
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full flex items-center justify-center bg-sv-text-muted/10">
                   <Globe className="w-5 h-5 text-sv-text-muted" aria-hidden="true" />
                 </div>
-                <span className="text-sv-text-main font-medium">Language & Region</span>
+                <div>
+                  <span className="text-sv-text-main font-medium block">Language & Region</span>
+                  <span className="text-sv-text-muted text-xs">
+                    {LANGUAGES.find(l => l.code === selectedLanguage)?.flag} {LANGUAGES.find(l => l.code === selectedLanguage)?.name} • {REGIONS.find(r => r.code === selectedRegion)?.name}
+                  </span>
+                </div>
               </div>
               <ChevronRight className="w-5 h-5 text-sv-text-muted" aria-hidden="true" />
             </button>
@@ -230,6 +259,99 @@ export function MeScreen() {
           <span>StudentVerse v1.0.0</span>
         </motion.div>
       </div>
+
+      {/* Language & Region Modal */}
+      <AnimatePresence>
+        {showLanguageModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/60 z-50 flex items-end justify-center"
+            onClick={() => setShowLanguageModal(false)}
+          >
+            <motion.div
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-sv-navy rounded-t-3xl w-full max-w-[480px] max-h-[80vh] overflow-y-auto"
+            >
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="font-heading text-xl font-bold text-sv-text-main">Language & Region</h2>
+                  <button
+                    onClick={() => setShowLanguageModal(false)}
+                    className="w-10 h-10 rounded-full bg-sv-glass-bg flex items-center justify-center border border-sv-glass-border"
+                  >
+                    <X className="w-5 h-5 text-sv-text-muted" />
+                  </button>
+                </div>
+
+                {/* Language Selection */}
+                <div className="mb-6">
+                  <h3 className="font-heading text-sm font-semibold text-sv-text-muted mb-3 uppercase tracking-wider">Language</h3>
+                  <div className="space-y-2">
+                    {LANGUAGES.map((lang) => (
+                      <button
+                        key={lang.code}
+                        onClick={() => setSelectedLanguage(lang.code)}
+                        className={`w-full flex items-center justify-between p-4 rounded-xl border transition-colors ${
+                          selectedLanguage === lang.code
+                            ? "bg-sv-azure/20 border-sv-azure/50"
+                            : "bg-sv-glass-bg border-sv-glass-border hover:bg-sv-glass-highlight"
+                        }`}
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className="text-2xl">{lang.flag}</span>
+                          <span className="text-sv-text-main font-medium">{lang.name}</span>
+                        </div>
+                        {selectedLanguage === lang.code && (
+                          <Check className="w-5 h-5 text-sv-azure" />
+                        )}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Region Selection */}
+                <div className="mb-6">
+                  <h3 className="font-heading text-sm font-semibold text-sv-text-muted mb-3 uppercase tracking-wider">Region</h3>
+                  <div className="space-y-2">
+                    {REGIONS.map((region) => (
+                      <button
+                        key={region.code}
+                        onClick={() => setSelectedRegion(region.code)}
+                        className={`w-full flex items-center justify-between p-4 rounded-xl border transition-colors ${
+                          selectedRegion === region.code
+                            ? "bg-sv-azure/20 border-sv-azure/50"
+                            : "bg-sv-glass-bg border-sv-glass-border hover:bg-sv-glass-highlight"
+                        }`}
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className="text-2xl">{region.flag}</span>
+                          <span className="text-sv-text-main font-medium">{region.name}</span>
+                        </div>
+                        {selectedRegion === region.code && (
+                          <Check className="w-5 h-5 text-sv-azure" />
+                        )}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => setShowLanguageModal(false)}
+                  className="w-full bg-sv-azure text-white py-4 rounded-xl font-semibold hover:bg-sv-azure/90 transition-colors"
+                >
+                  Save Changes
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }

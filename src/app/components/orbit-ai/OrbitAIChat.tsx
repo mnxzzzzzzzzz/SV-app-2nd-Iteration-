@@ -2,24 +2,25 @@
 
 import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Send, Sparkles, AlertCircle } from "lucide-react"
+import { Send, Sparkles, AlertCircle, Tag } from "lucide-react"
 import type { Message, PlanOption, ChatState } from "./types"
 import { MessageBubble } from "./MessageBubble"
 import { PlanOptionsCard } from "./PlanOptionsCard"
 import { Button } from "../ui/button"
 import { Textarea } from "../ui/textarea"
+import { BRAND_OFFERS } from "../../../data/brandOffers"
 
 const EXAMPLE_PROMPTS = [
-  "Find a quiet place to study",
-  "Best lunch spots on campus",
-  "Weekend activities under $20",
-  "Late night food options",
+  "Show me today's deals",
+  "Best coffee spots nearby",
+  "Where can I get discounts?",
+  "Student meal deals",
 ]
 
 const GREETING_MESSAGE: Message = {
   id: "greeting",
   type: "ai",
-  content: "Hi! I'm Orbit. Where should we go today?",
+  content: "Hi! I'm Orbit. Looking for deals or places to go?",
   timestamp: new Date(),
 }
 
@@ -41,50 +42,51 @@ export function OrbitAIChat() {
   const generateAIResponse = async (userMessage: string): Promise<Message> => {
     await new Promise((resolve) => setTimeout(resolve, 1500))
 
-    if (userMessage.trim().length < 5) {
-      throw new Error("Please provide more details about where you'd like to go or what you'd like to do.")
+    if (userMessage.trim().length < 3) {
+      throw new Error("Please provide more details about what you're looking for.")
     }
 
-    const planOptions: PlanOption[] = [
-      {
-        id: "1",
-        title: "Quick Coffee & Study Session",
-        description: "Start at the campus café, then head to the library's quiet zone",
-        tags: {
-          time: "2 hours",
-          budget: "$8-12",
-          dietary: ["Vegetarian", "Vegan options"],
-        },
-        highlights: ["Best coffee on campus", "Reserved study rooms available", "Free WiFi & charging stations"],
+    const lowerMessage = userMessage.toLowerCase()
+    const isDealQuery = lowerMessage.includes("deal") || lowerMessage.includes("discount") || lowerMessage.includes("offer") || lowerMessage.includes("save")
+    const isCoffeeQuery = lowerMessage.includes("coffee") || lowerMessage.includes("cafe") || lowerMessage.includes("matcha")
+    const isFoodQuery = lowerMessage.includes("food") || lowerMessage.includes("lunch") || lowerMessage.includes("meal") || lowerMessage.includes("donut")
+
+    let relevantOffers = BRAND_OFFERS
+
+    if (isCoffeeQuery) {
+      relevantOffers = BRAND_OFFERS.filter(o => o.category === "Cafe")
+    } else if (isFoodQuery) {
+      relevantOffers = BRAND_OFFERS.filter(o => o.category === "Cafe" || o.category === "Restaurant")
+    }
+
+    const planOptions: PlanOption[] = relevantOffers.slice(0, 3).map(offer => ({
+      id: offer.id,
+      title: offer.dealTitle,
+      description: `${offer.name}: ${offer.dealDescription}`,
+      tags: {
+        time: offer.distance ? `${offer.distance} away` : "Nearby",
+        budget: `${offer.discount} off`,
+        dietary: [offer.category],
       },
-      {
-        id: "2",
-        title: "Relaxed Afternoon Plan",
-        description: "Grab lunch at the food court, explore the campus bookstore, then study at the lounge",
-        tags: {
-          time: "3-4 hours",
-          budget: "$15-20",
-          dietary: ["All dietary options"],
-        },
-        highlights: ["Multiple food choices", "New book arrivals weekly", "Comfortable seating areas"],
-      },
-      {
-        id: "3",
-        title: "Evening Social & Study Mix",
-        description: "Dinner with friends at the dining hall, followed by group study at the 24hr lab",
-        tags: {
-          time: "4-5 hours",
-          budget: "$12-18",
-          dietary: ["Gluten-free", "Halal"],
-        },
-        highlights: ["Social dining experience", "Collaborative study spaces", "Open until midnight"],
-      },
-    ]
+      highlights: [
+        `Save ${offer.discount} on your purchase`,
+        `Valid until ${offer.validUntil}`,
+        offer.description,
+      ],
+    }))
+
+    const responseContent = isDealQuery 
+      ? "Here are the best deals I found for you!"
+      : isCoffeeQuery 
+        ? "Here are some great coffee spots with student deals!"
+        : isFoodQuery
+          ? "Found some tasty options with discounts!"
+          : "Here are my top recommendations based on your preferences:"
 
     return {
       id: Date.now().toString(),
       type: "options",
-      content: "I found some great options for you! Here are my top recommendations:",
+      content: responseContent,
       timestamp: new Date(),
       planOptions,
     }
@@ -131,10 +133,13 @@ export function OrbitAIChat() {
 
   const handleStartPlan = (planId: string) => {
     console.log("[v0] Starting plan:", planId)
+    const offer = BRAND_OFFERS.find(o => o.id === planId)
     const confirmMessage: Message = {
       id: Date.now().toString(),
       type: "ai",
-      content: "Great choice! Let me help you get started with this plan.",
+      content: offer 
+        ? `Great choice! Head to ${offer.name} and show your StudentVerse QR code to redeem your ${offer.discount} discount.`
+        : "Great choice! Let me help you get started with this plan.",
       timestamp: new Date(),
     }
     setMessages((prev) => [...prev, confirmMessage])
@@ -143,7 +148,7 @@ export function OrbitAIChat() {
   return (
     <div className="flex flex-col h-screen pb-24 pt-8 bg-sv-navy">
       {/* Header */}
-      <div className="px-6 mb-6 flex-shrink-0">
+      <div className="px-6 mb-4 flex-shrink-0">
         <div className="flex items-center gap-3 mb-2">
           <div className="w-10 h-10 rounded-full bg-gradient-to-br from-sv-azure to-sv-violet flex items-center justify-center">
             <Sparkles className="w-5 h-5 text-white" aria-hidden="true" />
@@ -151,6 +156,31 @@ export function OrbitAIChat() {
           <div>
             <h1 className="font-heading text-2xl font-bold text-sv-text-main">Orbit AI</h1>
             <p className="font-body text-sv-text-muted text-sm">Your campus guide</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Active Deals Banner */}
+      <div className="px-6 mb-4 flex-shrink-0">
+        <div className="bg-gradient-to-r from-sv-azure/20 to-sv-violet/20 rounded-xl p-3 border border-sv-azure/30">
+          <div className="flex items-center gap-2 mb-2">
+            <Tag className="w-4 h-4 text-sv-azure" />
+            <span className="text-sv-text-main text-sm font-medium">Active Deals</span>
+          </div>
+          <div className="flex gap-2 overflow-x-auto pb-1">
+            {BRAND_OFFERS.slice(0, 3).map((offer) => (
+              <button
+                key={offer.id}
+                onClick={() => handleExamplePrompt(`Tell me about ${offer.name} deals`)}
+                className="flex items-center gap-2 bg-sv-glass-bg rounded-lg px-3 py-2 border border-sv-glass-border whitespace-nowrap hover:bg-sv-glass-highlight transition-colors"
+              >
+                {offer.logoSrc && (
+                  <img src={offer.logoSrc} alt={offer.name} className="w-6 h-6 rounded object-cover" />
+                )}
+                <span className="text-sv-text-main text-xs font-medium">{offer.name}</span>
+                <span className="text-sv-azure text-xs font-bold">{offer.discount}</span>
+              </button>
+            ))}
           </div>
         </div>
       </div>
@@ -269,7 +299,7 @@ export function OrbitAIChat() {
                 handleSendMessage()
               }
             }}
-            placeholder="Ask Orbit anything..."
+            placeholder="Ask about deals, places, or activities..."
             className="flex-1 bg-transparent border-none resize-none min-h-[44px] max-h-[120px] text-sv-text-main placeholder:text-sv-text-muted focus-visible:ring-0 focus-visible:ring-offset-0 p-0"
             rows={1}
           />
