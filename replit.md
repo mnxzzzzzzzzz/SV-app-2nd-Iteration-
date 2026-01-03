@@ -12,6 +12,12 @@ Preferred communication style: Simple, everyday language.
 
 ## Recent Changes
 
+### Typography System Implementation (January 2026)
+- Added custom public/index.html with Google Fonts (Outfit, IBM Plex Sans, IBM Plex Mono) for Expo web
+- Typography CSS utility classes defined in public/index.html for Expo Metro bundler compatibility
+- Fixed framer-motion imports across all components (changed from motion/react to framer-motion)
+- Fonts: Outfit for headings, IBM Plex Sans for body text, IBM Plex Mono for labels/metadata
+
 ### Brand System Refactor (January 2026)
 - Implemented comprehensive StudentVerse brand system using CSS variables with `--sv-` prefix
 - Updated 30+ components to use CSS variables instead of hardcoded colors
@@ -109,7 +115,7 @@ UI components use shadcn/ui patterns with Radix primitives for accessibility.
 ## External Dependencies
 
 ### Animation Libraries
-- **Framer Motion (motion/react)** - Web animations and transitions
+- **Framer Motion** - Web animations and transitions (import from "framer-motion")
 - **React Native Animated API** - Native mobile animations
 
 ### UI Component Libraries

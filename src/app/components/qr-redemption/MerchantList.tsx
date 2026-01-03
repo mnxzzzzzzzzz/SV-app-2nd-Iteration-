@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { Search, MapPin, Clock, ArrowLeft } from "lucide-react"
-import { motion } from "motion/react"
+import { motion } from "framer-motion"
 import type { Merchant } from "./types"
 
 interface MerchantListProps {

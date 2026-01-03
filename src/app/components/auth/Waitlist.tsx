@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { Hourglass, Copy, Share2, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
 

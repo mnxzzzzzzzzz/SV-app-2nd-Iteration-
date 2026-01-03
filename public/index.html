@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>StudentVerse</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --font-heading: 'Outfit', sans-serif;
+      --font-body: 'IBM Plex Sans', sans-serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+      --sv-navy: #0A0F1E;
+      --sv-azure: #2962FF;
+      --sv-cyan: #00F0FF;
+      --sv-gold: #FFD700;
+      --sv-violet: #7B2CBF;
+      --sv-text-main: #FFFFFF;
+      --sv-text-muted: #A0A4B8;
+      --sv-glass-bg: rgba(255,255,255,0.03);
+      --sv-glass-border: rgba(255,255,255,0.1);
+      --sv-glass-highlight: rgba(255,255,255,0.06);
+    }
+    
+    html, body, #root {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #0A0F1E;
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    .font-heading { font-family: var(--font-heading) !important; }
+    .font-body { font-family: var(--font-body) !important; }
+    .font-mono { font-family: var(--font-mono) !important; }
+    
+    .text-label {
+      font-family: var(--font-mono) !important;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .text-meta {
+      font-family: var(--font-mono) !important;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .text-display {
+      font-family: var(--font-heading) !important;
+      font-size: 48px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    
+    .text-sv-text-main { color: var(--sv-text-main); }
+    .text-sv-text-muted { color: var(--sv-text-muted); }
+    .text-sv-azure { color: var(--sv-azure); }
+    .text-sv-cyan { color: var(--sv-cyan); }
+    .text-sv-gold { color: var(--sv-gold); }
+    .text-sv-violet { color: var(--sv-violet); }
+    
+    .bg-sv-navy { background-color: var(--sv-navy); }
+    .bg-sv-azure { background-color: var(--sv-azure); }
+    .bg-sv-cyan { background-color: var(--sv-cyan); }
+    .bg-sv-gold { background-color: var(--sv-gold); }
+    .bg-sv-violet { background-color: var(--sv-violet); }
+    .bg-sv-glass-bg { background-color: var(--sv-glass-bg); }
+    .bg-sv-glass-highlight { background-color: var(--sv-glass-highlight); }
+    
+    .border-sv-glass-border { border-color: var(--sv-glass-border); }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+</html>

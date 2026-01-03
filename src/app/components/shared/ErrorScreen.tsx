@@ -1,6 +1,6 @@
 "use client"
 
-import { motion } from "motion/react"
+import { motion } from "framer-motion"
 import { X } from "lucide-react"
 
 interface ErrorScreenProps {

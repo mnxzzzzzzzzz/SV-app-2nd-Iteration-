@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { ArrowLeft, Info } from "lucide-react"
-import { motion } from "motion/react"
+import { motion } from "framer-motion"
 import QRCode from "react-qr-code"
 import type { Merchant, RedemptionStatus } from "./types"
 

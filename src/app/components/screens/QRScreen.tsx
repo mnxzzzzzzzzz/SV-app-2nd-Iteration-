@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { motion } from "motion/react"
+import { motion } from "framer-motion"
 import { MerchantList } from "../qr-redemption/MerchantList"
 import { ActiveQR } from "../qr-redemption/ActiveQR"
 import { StatusScreen } from "../qr-redemption/StatusScreen"

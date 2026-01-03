@@ -1,7 +1,7 @@
 "use client"
 
 import { CheckCircle2, XCircle } from "lucide-react"
-import { motion } from "motion/react"
+import { motion } from "framer-motion"
 import type { RedemptionStatus, Merchant } from "./types"
 
 interface StatusScreenProps {

@@ -1,4 +1,11 @@
 import { useState, useEffect } from "react";
+import { Platform } from "react-native";
+
+// Load CSS for web platform
+if (Platform.OS === "web") {
+  require("../styles/index.css");
+}
+
 import { SplashScreen } from "./components/SplashScreen";
 import { BottomNav } from "./components/BottomNav";
 import { HomeScreen } from "./components/screens/HomeScreen";
@@ -16,10 +23,11 @@ import { LoadingScreen } from "./components/shared/LoadingScreen";
 type AuthStep = "email" | "loading" | "otp" | "waitlist" | "authenticated";
 
 export default function App() {
-  const [showSplash, setShowSplash] = useState(true);
+  const skipSplash = typeof window !== 'undefined' && window.location.hash === "#skip-auth";
+  const [showSplash, setShowSplash] = useState(!skipSplash);
   const [activeTab, setActiveTab] = useState("home");
   const [showDesignSystem, setShowDesignSystem] = useState(false);
-  const [authStep, setAuthStep] = useState<AuthStep>("email");
+  const [authStep, setAuthStep] = useState<AuthStep>(skipSplash ? "authenticated" : "email");
   const [userEmail, setUserEmail] = useState("");
 
   useEffect(() => {

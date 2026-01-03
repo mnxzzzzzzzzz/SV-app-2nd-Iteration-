@@ -1,7 +1,7 @@
 "use client"
 
 import { CheckCircle2, XCircle, Loader2, MapPin, BadgePercent, Shield } from "lucide-react"
-import { motion, AnimatePresence } from "motion/react"
+import { motion, AnimatePresence } from "framer-motion"
 import { useState } from "react"
 import type { SVPayMerchant, SVPayStatus, EligibilityCheck } from "./types"
 
