@@ -3,7 +3,7 @@ import "../global.css";
 
 import { BottomNav } from "./components/BottomNav";
 import { HomeScreen } from "./components/screens/HomeScreen";
-import { QRScreen } from "./components/screens/QRScreen";
+import { SearchScreen } from "./components/screens/SearchScreen";
 import { PayScreen } from "./components/screens/PayScreen";
 import { OrbitScreen } from "./components/screens/OrbitScreen";
 import { MeScreen } from "./components/screens/MeScreen";
@@ -112,8 +112,8 @@ export default function App() {
     switch (activeTab) {
       case "home":
         return <HomeScreen />;
-      case "qr":
-        return <QRScreen />;
+      case "search":
+        return <SearchScreen />;
       case "pay":
         return <PayScreen />;
       case "orbit":

@@ -1,4 +1,4 @@
-import { Home, QrCode, CreditCard, Compass, User } from "lucide-react";
+import { Home, Search, CreditCard, Compass, User } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface NavItem {
@@ -9,7 +9,7 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { id: "home", label: "Home", icon: Home },
-  { id: "qr", label: "Scan", icon: QrCode },
+  { id: "search", label: "Search", icon: Search },
   { id: "pay", label: "Pay", icon: CreditCard },
   { id: "orbit", label: "Orbit", icon: Compass },
   { id: "me", label: "Profile", icon: User },
