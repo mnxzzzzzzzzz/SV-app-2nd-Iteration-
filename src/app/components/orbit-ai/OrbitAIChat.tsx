@@ -149,7 +149,7 @@ export function OrbitAIChat() {
     <div 
       className="flex flex-col h-screen pb-24 pt-8"
       style={{ 
-        background: 'radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 40%), radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 40%), radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.08) 0%, transparent 50%), #0A0F1E' 
+        background: 'radial-gradient(circle at 15% 85%, rgba(139, 92, 246, 0.35) 0%, transparent 45%), radial-gradient(circle at 85% 15%, rgba(59, 130, 246, 0.25) 0%, transparent 45%), radial-gradient(circle at 50% 40%, rgba(236, 72, 153, 0.2) 0%, transparent 55%), #0A0F1E' 
       }}
     >
       {/* Header */}
