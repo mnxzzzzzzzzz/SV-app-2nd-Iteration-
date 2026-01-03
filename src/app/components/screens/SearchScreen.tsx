@@ -89,7 +89,7 @@ export function SearchScreen() {
       {/* Header */}
       <div className="mb-6">
         <h1 className="font-heading text-sv-text-main font-bold text-2xl mb-1">Search</h1>
-        <p className="text-sv-text-muted text-sm">Find merchants, cafes, and brands</p>
+        <p className="font-body text-sv-text-muted text-sm">Find merchants, cafes, and brands</p>
       </div>
 
       {/* Search Bar */}
@@ -102,7 +102,7 @@ export function SearchScreen() {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Search merchants, cafes, brands…"
-          className="w-full bg-sv-glass-bg border border-sv-glass-border rounded-2xl pl-12 pr-4 py-4 text-sv-text-main placeholder:text-sv-text-muted focus:outline-none focus:border-sv-azure transition-colors backdrop-blur-sm"
+          className="font-body w-full bg-sv-glass-bg border border-sv-glass-border rounded-2xl pl-12 pr-4 py-4 text-sv-text-main placeholder:text-sv-text-muted focus:outline-none focus:border-sv-azure transition-colors backdrop-blur-sm"
         />
       </div>
 
@@ -112,7 +112,7 @@ export function SearchScreen() {
           <button
             key={cat.id}
             onClick={() => setActiveCategory(cat.id)}
-            className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all whitespace-nowrap ${
+            className={`font-body px-5 py-2.5 rounded-full text-sm font-semibold transition-all whitespace-nowrap ${
               activeCategory === cat.id
                 ? "bg-sv-azure text-white shadow-[0_8px_20px_rgba(41,98,255,0.3)]"
                 : "bg-sv-glass-bg text-sv-text-muted border border-sv-glass-border hover:bg-sv-glass-highlight"
@@ -142,16 +142,16 @@ export function SearchScreen() {
                 <h4 className="font-heading text-sv-text-main font-semibold truncate">{vendor.name}</h4>
                 {vendor.isPopular && (
                   <div className="bg-sv-gold/20 px-2 py-0.5 rounded-md border border-sv-gold/30 flex-shrink-0">
-                    <span className="text-sv-gold text-[10px] font-semibold uppercase">Popular</span>
+                    <span className="font-mono text-sv-gold text-[10px] font-semibold uppercase">Popular</span>
                   </div>
                 )}
               </div>
               <div className="flex items-center gap-1 text-sv-text-muted mb-2">
                 <MapPin size={12} />
-                <span className="text-xs truncate">{vendor.location}</span>
+                <span className="font-body text-xs truncate">{vendor.location}</span>
               </div>
               <div className="bg-sv-azure/20 px-2 py-0.5 rounded-md border border-sv-azure/30 w-fit">
-                <span className="text-sv-azure text-xs font-semibold">{vendor.discount}</span>
+                <span className="font-mono text-sv-azure text-xs font-semibold uppercase">{vendor.discount}</span>
               </div>
             </div>
             <div className="w-8 h-8 rounded-full bg-sv-glass-bg flex items-center justify-center border border-sv-glass-border flex-shrink-0">
@@ -162,7 +162,7 @@ export function SearchScreen() {
 
         {filteredVendors.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-sv-text-muted">No vendors found</p>
+            <p className="font-body text-sv-text-muted">No vendors found</p>
           </div>
         )}
       </div>

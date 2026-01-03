@@ -80,16 +80,16 @@ export function HomeScreen() {
         <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-sv-violet opacity-40 blur-[50px] rounded-full" />
         
         <div className="relative p-6">
-          <div className="bg-sv-gold text-sv-navy px-3 py-1 rounded-full text-xs font-bold w-fit mb-4">
+          <div className="bg-sv-gold text-sv-navy px-3 py-1 rounded-full font-mono text-xs font-bold uppercase w-fit mb-4">
             20% OFF
           </div>
           <h2 className="font-heading text-sv-text-main text-2xl font-bold mb-2">
             Exclusive Student Deals
           </h2>
-          <p className="text-sv-text-main/70 text-sm mb-6 max-w-[200px]">
+          <p className="font-body text-sv-text-main/70 text-sm mb-6 max-w-[200px]">
             Save big on your favorite brands with StudentVerse
           </p>
-          <button className="bg-white text-sv-navy px-6 py-3 rounded-full font-semibold text-sm hover:opacity-90 transition-opacity">
+          <button className="font-body bg-white text-sv-navy px-6 py-3 rounded-full font-semibold text-sm hover:opacity-90 transition-opacity">
             Shop now
           </button>
         </div>
@@ -99,7 +99,7 @@ export function HomeScreen() {
       <div className="mb-6">
         <div className="flex items-center justify-between mb-5">
           <h2 className="font-heading text-sv-text-main font-bold text-xl">Nearby Offers</h2>
-          <button className="text-sv-azure text-sm font-semibold">See all</button>
+          <button className="font-body text-sv-azure text-sm font-semibold">See all</button>
         </div>
 
         {/* Vendor Cards */}
@@ -120,13 +120,13 @@ export function HomeScreen() {
                 <div className="flex items-center justify-between mb-1">
                   <h4 className="font-heading text-sv-text-main font-semibold truncate">{offer.name}</h4>
                   <div className="bg-sv-azure/20 px-2 py-0.5 rounded-md border border-sv-azure/30 ml-2 flex-shrink-0">
-                    <span className="text-sv-azure text-xs font-semibold">{offer.discount}</span>
+                    <span className="font-mono text-sv-azure text-xs font-semibold uppercase">{offer.discount}</span>
                   </div>
                 </div>
-                <p className="text-sv-text-muted text-sm truncate mb-1">{offer.description}</p>
+                <p className="font-body text-sv-text-muted text-sm truncate mb-1">{offer.description}</p>
                 <div className="flex items-center gap-1 text-sv-text-muted">
                   <MapPin size={12} />
-                  <span className="text-xs">{offer.distance}</span>
+                  <span className="font-mono text-xs">{offer.distance}</span>
                 </div>
               </div>
               <div className="w-8 h-8 rounded-full bg-sv-glass-bg flex items-center justify-center border border-sv-glass-border flex-shrink-0">
