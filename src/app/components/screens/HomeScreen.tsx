@@ -111,9 +111,9 @@ export function HomeScreen() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
               whileTap={{ scale: 0.98 }}
-              className="bg-sv-glass-bg rounded-2xl p-4 border border-sv-glass-border flex items-center gap-4 hover:bg-sv-glass-highlight transition-colors cursor-pointer backdrop-blur-sm"
+              className="bg-sv-glass-bg rounded-2xl p-3 border border-sv-glass-border flex items-center gap-3 hover:bg-sv-glass-highlight transition-colors cursor-pointer backdrop-blur-sm"
             >
-              <div className="w-16 h-16 rounded-xl bg-sv-navy border border-sv-glass-border flex items-center justify-center text-3xl flex-shrink-0">
+              <div className="w-20 h-20 rounded-xl bg-sv-navy border border-sv-glass-border flex items-center justify-center text-4xl flex-shrink-0">
                 {offer.logo}
               </div>
               <div className="flex-1 min-w-0">
