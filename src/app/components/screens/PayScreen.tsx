@@ -34,7 +34,7 @@ export function PayScreen() {
   const [onlinePayments, setOnlinePayments] = useState(true)
   const { state: payState, authorize, confirm, voidIntent, reset, clearError } = useSvPay()
 
-  const user = { displayName: "Alex Johnson" }
+  const user = { displayName: "Sanjar" }
   const balance = "247.50"
   const mockPaymentAmount = 25.00
 

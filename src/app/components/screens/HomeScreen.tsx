@@ -109,7 +109,7 @@ export function HomeScreen({ onOfferClick }: HomeScreenProps) {
 
       {/* Greeting Row */}
       <div className="mb-6">
-        <h1 className="font-heading text-sv-text-main font-bold text-2xl">Hello, Ahmed</h1>
+        <h1 className="font-heading text-sv-text-main font-bold text-2xl">Hello, Sanjar</h1>
       </div>
 
       {/* Hero Promotional Cards - Two Side by Side */}

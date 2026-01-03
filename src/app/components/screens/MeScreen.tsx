@@ -105,7 +105,7 @@ export function MeScreen() {
           </div>
 
           <div className="flex-1">
-            <h2 className="font-heading text-xl font-semibold text-sv-text-main mb-1">Alex Johnson</h2>
+            <h2 className="font-heading text-xl font-semibold text-sv-text-main mb-1">Sanjar</h2>
             <p className="text-meta text-sv-text-muted">STU-2024-1847</p>
           </div>
         </motion.div>
@@ -123,7 +123,7 @@ export function MeScreen() {
             </div>
             <div className="flex-1">
               <p className="text-label text-sv-text-muted mb-1">Account Email</p>
-              <p className="font-body text-sv-text-main font-medium">alex.johnson@student.edu</p>
+              <p className="font-body text-sv-text-main font-medium">sanjar@student.edu</p>
               <p className="text-label text-success mt-1">Verified</p>
             </div>
           </div>
