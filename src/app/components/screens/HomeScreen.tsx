@@ -38,7 +38,7 @@ export function HomeScreen() {
   ];
 
   return (
-    <div className="flex flex-col pb-24 px-5 pt-6" style={{ backgroundColor: '#080C1F' }}>
+    <div className="flex flex-col pb-24 px-5 pt-6" style={{ background: 'linear-gradient(to bottom, #0A0F1E 0%, #0d1225 50%, #1a1020 75%, #251518 100%)' }}>
       {/* Top Bar */}
       <div className="flex items-center justify-between mb-4">
         <button className="w-10 h-10 rounded-full bg-sv-glass-bg flex items-center justify-center border border-sv-glass-border">
