@@ -72,13 +72,13 @@ export function HomeScreen() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="relative rounded-[28px] overflow-hidden mb-8 aspect-square"
-        style={{ background: 'linear-gradient(135deg, #e8d5e7 0%, #f0d4e8 25%, #e8c8d8 50%, #d4b896 75%, #c8a882 100%)' }}
+        style={{ background: 'linear-gradient(160deg, #d8b4d8 0%, #e8c4d8 20%, #f0d0e0 40%, #e8c8b8 70%, #d8b090 100%)' }}
       >
-        <div className="relative p-5 h-full flex flex-col">
-          <div className="flex items-center justify-between mb-6">
-            <span className="text-[#8b6b7d] text-sm font-medium tracking-wide" style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}>COFFEE PLANET</span>
-            <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: 'rgba(139, 107, 125, 0.15)' }}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8b6b7d" strokeWidth="1.5">
+        <div className="relative p-6 h-full flex flex-col">
+          <div className="flex items-center justify-between">
+            <span className="text-[#9a7a8a] text-sm font-medium tracking-widest uppercase" style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}>COFFEE PLANET</span>
+            <div className="w-9 h-9 rounded-full flex items-center justify-center" style={{ backgroundColor: 'rgba(154, 122, 138, 0.2)' }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9a7a8a" strokeWidth="1.5">
                 <circle cx="12" cy="8" r="5" />
                 <path d="M3 21c0-4.5 4-8 9-8s9 3.5 9 8" />
               </svg>
@@ -86,16 +86,16 @@ export function HomeScreen() {
           </div>
           
           <div className="flex-1 flex items-center justify-center">
-            <h2 className="text-white text-4xl font-bold text-center leading-tight" style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif', textShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
+            <h2 className="text-white text-[32px] font-bold text-center leading-tight tracking-tight" style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}>
               Exclusive<br />matcha Deals
             </h2>
           </div>
           
           <button 
-            className="w-full py-4 rounded-2xl text-white font-medium text-lg"
+            className="w-full py-4 rounded-2xl text-white font-medium text-base"
             style={{ 
-              background: 'linear-gradient(135deg, rgba(200, 168, 130, 0.6) 0%, rgba(180, 140, 100, 0.4) 100%)',
-              backdropFilter: 'blur(10px)',
+              background: 'rgba(180, 140, 130, 0.35)',
+              backdropFilter: 'blur(12px)',
               fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif'
             }}
           >
