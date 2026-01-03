@@ -10,7 +10,7 @@ export function Header({ userName = "Guest" }: HeaderProps) {
       <div className="max-w-[480px] mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <img src="/studentverse-monogram.svg" alt="StudentVerse" className="h-10" />
+            <img src="/studentverse-app-icon.png" alt="StudentVerse" className="h-8 w-auto" />
           </div>
 
           {/* Notification Icon */}

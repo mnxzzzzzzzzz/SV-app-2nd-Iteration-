@@ -80,7 +80,7 @@ export function MeScreen() {
           className="flex items-center gap-4"
         >
           <div className="w-20 h-20 rounded-full flex items-center justify-center overflow-hidden bg-sv-azure/10 border border-sv-azure/20">
-            <img src="/studentverse-social-avatar.svg" alt="StudentVerse Avatar" className="w-full h-full" />
+            <img src="/studentverse-app-icon.png" alt="StudentVerse Avatar" className="w-full h-full object-contain" />
           </div>
 
           <div className="flex-1">

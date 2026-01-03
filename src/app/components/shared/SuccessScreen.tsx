@@ -26,7 +26,7 @@ export function SuccessScreen({
           transition={{ duration: 0.6 }}
           className="mb-[60px]"
         >
-          <img src="/studentverse-app-icon.svg" alt="StudentVerse" className="w-[200px] h-[200px]" />
+          <img src="/studentverse-app-icon.png" alt="StudentVerse" className="h-24 w-auto" />
         </motion.div>
 
         <motion.div

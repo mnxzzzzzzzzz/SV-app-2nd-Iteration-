@@ -26,7 +26,7 @@ export function SplashScreen({ onComplete }: { onComplete: () => void }) {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex items-center justify-center"
         >
-          <img src="/studentverse-app-icon.svg" alt="StudentVerse Logo" className="w-32 h-32" />
+          <img src="/studentverse-app-icon.png" alt="StudentVerse Logo" className="h-24 w-auto" />
         </motion.div>
 
         {/* App Name */}
