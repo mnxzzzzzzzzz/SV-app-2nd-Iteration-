@@ -88,8 +88,8 @@ export function HomeScreen({ onOfferClick }: HomeScreenProps) {
           <Menu size={20} className="text-sv-text-main" />
         </button>
         <div className="flex items-center gap-2">
-          <img src="/studentverse-symbol.svg" alt="StudentVerse" className="h-10 w-auto" />
-          <span className="font-heading font-extrabold text-3xl">
+          <img src="/studentverse-app-icon.png" alt="StudentVerse" className="h-9 w-auto" />
+          <span className="font-heading font-extrabold text-2xl">
             <span className="text-sv-text-main">Student</span>
             <span className="text-sv-text-muted">Verse</span>
           </span>
