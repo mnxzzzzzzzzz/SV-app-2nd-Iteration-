@@ -61,7 +61,7 @@ export function EmailEntry({ onSubmit }: EmailEntryProps) {
   }
 
   return (
-    <div className="min-h-screen bg-sv-navy flex flex-col items-center justify-center px-6 max-w-[480px] mx-auto">
+    <div className="min-h-screen flex flex-col items-center justify-center px-6 max-w-[480px] mx-auto" style={{ background: 'linear-gradient(to bottom, #0A0F1E 0%, #1a0a0a 40%, #3d1515 70%, #5c2a1a 85%, #8B4513 100%)' }}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -166,7 +166,7 @@ export function EmailEntry({ onSubmit }: EmailEntryProps) {
           <button
             type="submit"
             disabled={isLoading || !email || !password}
-            className="w-full bg-sv-azure text-white py-4 rounded-full font-medium flex items-center justify-center gap-2 hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed min-h-[56px]"
+            className="w-full bg-black text-white py-4 rounded-full font-medium flex items-center justify-center gap-2 hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed min-h-[56px]"
             aria-label="Sign up"
           >
             {isLoading ? (
