@@ -1,5 +1,4 @@
 import { Home, Search, CreditCard, Compass, User } from "lucide-react";
-import { motion } from "framer-motion";
 
 interface NavItem {
   id: string;
@@ -36,42 +35,16 @@ export function BottomNav({ activeTab, onTabChange }: BottomNavProps) {
             <button
               key={item.id}
               onClick={() => onTabChange(item.id)}
-              className="flex flex-col items-center justify-center gap-1 min-w-[56px] min-h-[48px] relative"
+              className="flex items-center justify-center min-w-[56px] min-h-[48px]"
               aria-label={item.label}
               aria-current={isActive ? "page" : undefined}
             >
-              {/* Active indicator */}
-              {isActive && (
-                <motion.div
-                  layoutId="activeTab"
-                  className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-1 bg-sv-azure rounded-full"
-                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                />
-              )}
-              
-              {/* Icon with glow effect for active Pay tab */}
-              <div className="relative">
-                {isActive && item.id === "pay" && (
-                  <div className="absolute inset-0 -m-2 rounded-full bg-sv-cyan/20 blur-md" />
-                )}
-                <Icon 
-                  size={24}
-                  className={`relative z-10 ${
-                    isActive 
-                      ? (item.id === "pay" ? "text-sv-cyan" : "text-sv-azure") 
-                      : "text-sv-text-muted"
-                  }`}
-                />
-              </div>
-              
-              {/* Label */}
-              <span 
-                className={`font-body text-xs font-medium transition-colors ${
+              <Icon 
+                size={24}
+                className={`transition-colors ${
                   isActive ? "text-sv-text-main" : "text-sv-text-muted"
                 }`}
-              >
-                {item.label}
-              </span>
+              />
             </button>
           );
         })}
