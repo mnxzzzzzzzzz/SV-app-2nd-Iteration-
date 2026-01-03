@@ -1,4 +1,4 @@
-import { MapPin, ChevronRight } from "lucide-react";
+import { MapPin, ChevronRight, Menu, Bell } from "lucide-react";
 import { motion } from "framer-motion";
 
 export function HomeScreen() {
@@ -39,20 +39,31 @@ export function HomeScreen() {
 
   return (
     <div className="flex flex-col pb-24 px-5 pt-6" style={{ backgroundColor: '#080C1F' }}>
-      {/* Header */}
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center gap-3">
-          <img src="/studentverse-app-icon.png" alt="StudentVerse" className="h-10 w-auto" />
-          <div>
-            <p className="text-sv-text-muted text-sm">Welcome back</p>
-            <h1 className="font-heading text-sv-text-main font-bold text-lg">Hello, Ahmed</h1>
-          </div>
+      {/* Top Bar */}
+      <div className="flex items-center justify-between mb-4">
+        <button className="w-10 h-10 rounded-full bg-sv-glass-bg flex items-center justify-center border border-sv-glass-border">
+          <Menu size={20} className="text-sv-text-main" />
+        </button>
+        <div className="flex items-center gap-2">
+          <img src="/studentverse-app-icon.png" alt="StudentVerse" className="h-8 w-auto" />
+          <span className="font-heading text-sv-text-main font-semibold">StudentVerse</span>
         </div>
-        <div className="bg-sv-glass-bg border border-sv-glass-border rounded-full px-4 py-2 flex items-center gap-2">
-          <div className="w-5 h-5 rounded-full bg-gradient-to-br from-sv-gold to-sv-cyan flex items-center justify-center">
-            <span className="text-[8px] font-bold text-sv-navy">VP</span>
+        <button className="w-10 h-10 rounded-full bg-sv-glass-bg flex items-center justify-center border border-sv-glass-border relative">
+          <Bell size={20} className="text-sv-text-main" />
+          <div className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full border-2 border-[#080C1F] flex items-center justify-center">
+            <span className="text-white text-[8px] font-bold">2</span>
           </div>
-          <span className="font-mono text-sv-text-main text-sm font-semibold">2,450</span>
+        </button>
+      </div>
+
+      {/* Greeting Row */}
+      <div className="flex items-center justify-between mb-6">
+        <h1 className="font-heading text-sv-text-main font-bold text-2xl">Hello, Ahmed</h1>
+        <div className="bg-sv-navy border border-sv-glass-border rounded-full px-4 py-2 flex items-center gap-2">
+          <div className="w-5 h-5 rounded-full bg-gradient-to-br from-sv-gold to-orange-500 flex items-center justify-center">
+            <span className="text-[8px] font-bold text-white">★</span>
+          </div>
+          <span className="font-mono text-sv-gold text-sm font-bold">850 VP</span>
         </div>
       </div>
 
