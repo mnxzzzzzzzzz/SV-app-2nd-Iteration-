@@ -121,7 +121,7 @@ export function HomeScreen({ onOfferClick }: HomeScreenProps) {
           transition={{ duration: 0.5 }}
           className="flex-1 rounded-[32px] overflow-hidden aspect-square shadow-2xl"
           style={{ 
-            background: 'radial-gradient(circle at 0% 0%, rgba(251, 146, 60, 0.15) 0%, transparent 50%), radial-gradient(circle at 100% 100%, rgba(168, 85, 247, 0.15) 0%, transparent 50%), #0f172a' 
+            background: 'radial-gradient(circle at 0% 0%, rgba(251, 146, 60, 0.4) 0%, transparent 55%), radial-gradient(circle at 100% 100%, rgba(168, 85, 247, 0.35) 0%, transparent 55%), #0f172a' 
           }}
         >
           <div className="relative p-5 h-full flex flex-col justify-between">
@@ -168,7 +168,7 @@ export function HomeScreen({ onOfferClick }: HomeScreenProps) {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="flex-1 rounded-[32px] overflow-hidden aspect-square shadow-2xl"
           style={{ 
-            background: 'radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.15) 0%, transparent 50%), radial-gradient(circle at 100% 100%, rgba(147, 51, 234, 0.15) 0%, transparent 50%), #0f172a' 
+            background: 'radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.4) 0%, transparent 55%), radial-gradient(circle at 100% 100%, rgba(147, 51, 234, 0.35) 0%, transparent 55%), #0f172a' 
           }}
         >
           <div className="relative p-5 h-full flex flex-col justify-between">
