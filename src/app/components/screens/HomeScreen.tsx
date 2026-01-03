@@ -71,25 +71,35 @@ export function HomeScreen() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="relative rounded-[20px] overflow-hidden mb-8"
+        className="relative rounded-[28px] overflow-hidden mb-8 aspect-square"
+        style={{ background: 'linear-gradient(135deg, #e8d5e7 0%, #f0d4e8 25%, #e8c8d8 50%, #d4b896 75%, #c8a882 100%)' }}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-sv-violet via-sv-azure to-sv-cyan opacity-80" />
-        <div className="absolute inset-0 bg-sv-glass-bg backdrop-blur-sm" />
-        <div className="absolute -top-20 -right-20 w-40 h-40 bg-sv-cyan opacity-30 blur-[60px] rounded-full" />
-        <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-sv-violet opacity-40 blur-[50px] rounded-full" />
-        
-        <div className="relative p-6">
-          <div className="bg-sv-gold text-sv-navy px-3 py-1 rounded-full font-mono text-xs font-bold uppercase w-fit mb-4">
-            20% OFF
+        <div className="relative p-5 h-full flex flex-col">
+          <div className="flex items-center justify-between mb-6">
+            <span className="text-[#8b6b7d] text-sm font-medium tracking-wide" style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}>COFFEE PLANET</span>
+            <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: 'rgba(139, 107, 125, 0.15)' }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8b6b7d" strokeWidth="1.5">
+                <circle cx="12" cy="8" r="5" />
+                <path d="M3 21c0-4.5 4-8 9-8s9 3.5 9 8" />
+              </svg>
+            </div>
           </div>
-          <h2 className="font-heading text-sv-text-main text-2xl font-bold mb-2">
-            Exclusive Student Deals
-          </h2>
-          <p className="font-body text-sv-text-main/70 text-sm mb-6 max-w-[200px]">
-            Save big on your favorite brands with StudentVerse
-          </p>
-          <button className="font-body bg-white text-sv-navy px-6 py-3 rounded-full font-semibold text-sm hover:opacity-90 transition-opacity">
-            Shop now
+          
+          <div className="flex-1 flex items-center justify-center">
+            <h2 className="text-white text-4xl font-bold text-center leading-tight" style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif', textShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
+              Exclusive<br />matcha Deals
+            </h2>
+          </div>
+          
+          <button 
+            className="w-full py-4 rounded-2xl text-white font-medium text-lg"
+            style={{ 
+              background: 'linear-gradient(135deg, rgba(200, 168, 130, 0.6) 0%, rgba(180, 140, 100, 0.4) 100%)',
+              backdropFilter: 'blur(10px)',
+              fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif'
+            }}
+          >
+            Shop Now
           </button>
         </div>
       </motion.div>
