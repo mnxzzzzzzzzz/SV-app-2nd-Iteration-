@@ -9,7 +9,7 @@ export function HomeScreen() {
       description: "Fresh brewed coffee & snacks",
       distance: "40m",
       logoType: "image" as const,
-      logoSrc: "/attached_assets/coffe_planet_1767408144306.png",
+      logoSrc: "/coffee-planet.png",
     },
     {
       id: 2,
@@ -17,7 +17,7 @@ export function HomeScreen() {
       description: "Traditional chai & beverages",
       distance: "120m",
       logoType: "image" as const,
-      logoSrc: "/attached_assets/filli_1767408144307.png",
+      logoSrc: "/filli.png",
     },
     {
       id: 3,
@@ -25,7 +25,7 @@ export function HomeScreen() {
       description: "Retro dining experience",
       distance: "200m",
       logoType: "image" as const,
-      logoSrc: "/attached_assets/B60_1767408144308.jpg",
+      logoSrc: "/b60.jpg",
     },
     {
       id: 4,
