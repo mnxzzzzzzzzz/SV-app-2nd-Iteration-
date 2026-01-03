@@ -12,6 +12,14 @@ Preferred communication style: Simple, everyday language.
 
 ## Recent Changes
 
+### Brand Offers Integration (January 2026)
+- Created centralized brand offers data structure (`src/data/brandOffers.ts`) with Coffee Planet, Filli Café, B60, and Book Corner
+- HomeScreen hero cards and nearby offers now navigate to QR redemption screen on click
+- SearchScreen uses brand offers with category filtering (All, Cafe, Restaurant, Retail, Entertainment)
+- Orbit AI displays active deals banner and provides brand-specific recommendations based on user queries
+- Added Language & Region settings modal in MeScreen with 5 languages (English, Arabic, Hindi, Chinese, Spanish) and 5 regions (UAE, UK, US, India, Singapore)
+- Fixed Textarea component with proper forwardRef implementation
+
 ### Typography System Implementation (January 2026)
 - Added custom public/index.html with Google Fonts (Outfit, IBM Plex Sans, IBM Plex Mono) for Expo web
 - Typography CSS utility classes defined in public/index.html for Expo Metro bundler compatibility
