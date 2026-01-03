@@ -4,7 +4,7 @@ import type React from "react"
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { Mail, ArrowRight } from "lucide-react"
+import { Mail, ArrowRight, Lock } from "lucide-react"
 
 interface EmailEntryProps {
   onSubmit: (email: string) => void
@@ -12,6 +12,7 @@ interface EmailEntryProps {
 
 export function EmailEntry({ onSubmit }: EmailEntryProps) {
   const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
   const [error, setError] = useState("")
   const [isLoading, setIsLoading] = useState(false)
 
@@ -31,11 +32,23 @@ export function EmailEntry({ onSubmit }: EmailEntryProps) {
     return true
   }
 
+  const validatePassword = (password: string): boolean => {
+    if (password.length < 8) {
+      setError("Password must be at least 8 characters")
+      return false
+    }
+    return true
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError("")
 
     if (!validateEmail(email)) {
+      return
+    }
+
+    if (!validatePassword(password)) {
       return
     }
 
@@ -61,7 +74,7 @@ export function EmailEntry({ onSubmit }: EmailEntryProps) {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="flex items-center justify-center mx-auto mb-8"
         >
-          <img src="/studentverse-app-icon.png" alt="StudentVerse Logo" className="h-20 w-auto" />
+          <img src="/studentverse-app-icon.png" alt="StudentVerse Logo" className="h-28 w-auto" />
         </motion.div>
 
         {/* Welcome Text */}
@@ -71,8 +84,8 @@ export function EmailEntry({ onSubmit }: EmailEntryProps) {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-center mb-10"
         >
-          <h1 className="text-3xl font-semibold text-sv-text-main mb-2">Welcome</h1>
-          <p className="text-sv-text-muted">Enter your student email to continue</p>
+          <h1 className="text-3xl font-semibold text-sv-text-main mb-2">Create Account</h1>
+          <p className="text-sv-text-muted">Sign up with your student email</p>
         </motion.div>
 
         {/* Email Form */}
@@ -109,25 +122,52 @@ export function EmailEntry({ onSubmit }: EmailEntryProps) {
             <p id="email-hint" className="text-sv-text-muted text-sm mt-2 ml-4">
               Only .edu or .ac.ae email addresses
             </p>
-            {error && (
-              <motion.p
-                id="email-error"
-                initial={{ opacity: 0, y: -5 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-destructive text-sm mt-2 ml-4"
-                role="alert"
-              >
-                {error}
-              </motion.p>
-            )}
           </div>
 
-          {/* Send OTP Button */}
+          {/* Password Input */}
+          <div>
+            <label htmlFor="password" className="block text-sv-text-main text-sm font-medium mb-3">
+              Password
+            </label>
+            <div className="relative">
+              <div className="absolute left-4 top-1/2 -translate-y-1/2">
+                <Lock className="w-5 h-5 text-sv-text-muted" aria-hidden="true" />
+              </div>
+              <input
+                id="password"
+                type="password"
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value)
+                  setError("")
+                }}
+                placeholder="Enter your password"
+                className="w-full bg-sv-glass-bg border border-sv-glass-border rounded-full pl-12 pr-4 py-4 text-sv-text-main placeholder:text-sv-text-muted focus:outline-none focus:border-sv-azure transition-colors backdrop-blur-sm"
+              />
+            </div>
+            <p className="text-sv-text-muted text-sm mt-2 ml-4">
+              Minimum 8 characters
+            </p>
+          </div>
+
+          {error && (
+            <motion.p
+              id="email-error"
+              initial={{ opacity: 0, y: -5 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-destructive text-sm ml-4"
+              role="alert"
+            >
+              {error}
+            </motion.p>
+          )}
+
+          {/* Sign Up Button */}
           <button
             type="submit"
-            disabled={isLoading || !email}
+            disabled={isLoading || !email || !password}
             className="w-full bg-sv-azure text-white py-4 rounded-full font-medium flex items-center justify-center gap-2 hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed min-h-[56px]"
-            aria-label="Send OTP to email"
+            aria-label="Sign up"
           >
             {isLoading ? (
               <div className="flex gap-2">
@@ -149,22 +189,12 @@ export function EmailEntry({ onSubmit }: EmailEntryProps) {
               </div>
             ) : (
               <>
-                Send OTP
+                Sign Up
                 <ArrowRight className="w-5 h-5" aria-hidden="true" />
               </>
             )}
           </button>
         </motion.form>
-
-        {/* Footer Text */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="text-center text-sv-text-muted text-sm mt-8"
-        >
-          By continuing, you agree to our Terms & Privacy Policy
-        </motion.p>
       </motion.div>
     </div>
   )
