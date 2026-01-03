@@ -76,6 +76,12 @@ export default function App() {
     setUserEmail("");
   };
 
+  const handleLogout = () => {
+    setAuthStep("email");
+    setUserEmail("");
+    setActiveTab("home");
+  };
+
   // Render auth screens
   const renderAuthScreen = () => {
     switch (authStep) {
@@ -128,7 +134,7 @@ export default function App() {
       case "qr":
         return <QRScreen />;
       case "me":
-        return <MeScreen />;
+        return <MeScreen onLogout={handleLogout} />;
       default:
         return <HomeScreen onOfferClick={handleOfferClick} />;
     }

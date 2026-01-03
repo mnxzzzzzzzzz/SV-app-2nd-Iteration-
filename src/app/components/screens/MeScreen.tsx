@@ -35,7 +35,11 @@ const REGIONS = [
   { code: "sg", name: "Singapore", flag: "🇸🇬" },
 ]
 
-export function MeScreen() {
+interface MeScreenProps {
+  onLogout?: () => void
+}
+
+export function MeScreen({ onLogout }: MeScreenProps) {
   const [twoFactorEnabled, setTwoFactorEnabled] = useState(false)
   const [biometricsEnabled, setBiometricsEnabled] = useState(true)
   const [showLanguageModal, setShowLanguageModal] = useState(false)
@@ -43,7 +47,9 @@ export function MeScreen() {
   const [selectedRegion, setSelectedRegion] = useState("ae")
 
   const handleLogout = () => {
-    console.log("Logging out...")
+    if (onLogout) {
+      onLogout()
+    }
   }
 
   return (
