@@ -87,9 +87,12 @@ export function HomeScreen({ onOfferClick }: HomeScreenProps) {
         <button className="w-10 h-10 rounded-full bg-sv-glass-bg flex items-center justify-center border border-sv-glass-border">
           <Menu size={20} className="text-sv-text-main" />
         </button>
-        <div className="flex items-center gap-3">
-          <img src="/studentverse-app-icon.png" alt="StudentVerse" className="h-12 w-auto" />
-          <span className="font-heading text-sv-text-main font-extrabold text-3xl">StudentVerse</span>
+        <div className="flex items-center gap-2">
+          <img src="/studentverse-symbol.svg" alt="StudentVerse" className="h-10 w-auto" />
+          <span className="font-heading font-extrabold text-3xl">
+            <span className="text-sv-text-main">Student</span>
+            <span className="text-sv-text-muted">Verse</span>
+          </span>
         </div>
         <button 
           onClick={() => setShowNotifications(true)}
