@@ -1,10 +1,5 @@
 import { useState, useEffect } from "react";
-import { Platform } from "react-native";
-
-// Load CSS for web platform
-if (Platform.OS === "web") {
-  require("../styles/index.css");
-}
+import "../global.css";
 
 import { SplashScreen } from "./components/SplashScreen";
 import { BottomNav } from "./components/BottomNav";
