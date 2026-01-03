@@ -5,35 +5,34 @@ export function HomeScreen() {
   const nearbyOffers = [
     {
       id: 1,
-      name: "Campus Coffee",
+      name: "Coffee Planet",
       description: "Fresh brewed coffee & snacks",
       distance: "40m",
-      discount: "15% OFF",
-      logo: "☕",
+      logoType: "image" as const,
+      logoSrc: "/attached_assets/coffe_planet_1767408144306.png",
     },
     {
       id: 2,
-      name: "Tech Zone",
-      description: "Electronics & accessories",
+      name: "Filli Café",
+      description: "Traditional chai & beverages",
       distance: "120m",
-      discount: "20% OFF",
-      logo: "💻",
+      logoType: "image" as const,
+      logoSrc: "/attached_assets/filli_1767408144307.png",
     },
     {
       id: 3,
-      name: "Fresh Bites",
-      description: "Healthy meals & salads",
+      name: "B60",
+      description: "Retro dining experience",
       distance: "200m",
-      discount: "10% OFF",
-      logo: "🥗",
+      logoType: "image" as const,
+      logoSrc: "/attached_assets/B60_1767408144308.jpg",
     },
     {
       id: 4,
       name: "Book Corner",
       description: "Textbooks & stationery",
       distance: "350m",
-      discount: "25% OFF",
-      logo: "📚",
+      logoType: "icon" as const,
     },
   ];
 
@@ -111,10 +110,14 @@ export function HomeScreen() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
               whileTap={{ scale: 0.98 }}
-              className="bg-sv-glass-bg rounded-2xl p-3 border border-sv-glass-border flex items-center gap-3 hover:bg-sv-glass-highlight transition-colors cursor-pointer backdrop-blur-sm"
+              className="bg-sv-glass-bg rounded-2xl p-2 border border-sv-glass-border flex items-center gap-2 hover:bg-sv-glass-highlight transition-colors cursor-pointer backdrop-blur-sm"
             >
-              <div className="w-20 h-20 rounded-xl bg-sv-navy border border-sv-glass-border flex items-center justify-center text-4xl flex-shrink-0">
-                {offer.logo}
+              <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0" style={{ backgroundColor: offer.logoType === 'icon' ? '#000' : 'transparent' }}>
+                {offer.logoType === 'image' ? (
+                  <img src={offer.logoSrc} alt={offer.name} className="w-full h-full object-cover" />
+                ) : (
+                  <div className="w-full h-full bg-black rounded-xl" />
+                )}
               </div>
               <div className="flex-1 min-w-0">
                 <h4 className="text-sv-text-main font-semibold text-lg mb-1" style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}>{offer.name}</h4>
