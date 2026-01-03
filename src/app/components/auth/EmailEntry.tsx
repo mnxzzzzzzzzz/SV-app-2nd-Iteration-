@@ -61,7 +61,7 @@ export function EmailEntry({ onSubmit }: EmailEntryProps) {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="flex items-center justify-center mx-auto mb-8"
         >
-          <img src="/studentverse-app-icon.svg" alt="StudentVerse Logo" className="w-24 h-24" />
+          <img src="/studentverse-app-icon.png" alt="StudentVerse Logo" className="w-24 h-24" />
         </motion.div>
 
         {/* Welcome Text */}
