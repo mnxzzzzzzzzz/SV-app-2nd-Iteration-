@@ -1,12 +1,51 @@
-import { MapPin, Menu, Bell } from "lucide-react";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { MapPin, Menu, Bell, X, Check, Gift } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { BRAND_OFFERS } from "../../../data/brandOffers";
 
 interface HomeScreenProps {
   onOfferClick?: (offerId: string) => void;
 }
 
+interface DealNotification {
+  id: string;
+  type: "new" | "redeemed";
+  brandName: string;
+  dealTitle: string;
+  logoSrc?: string;
+  date: string;
+}
+
+const DEAL_NOTIFICATIONS: DealNotification[] = [
+  {
+    id: "1",
+    type: "new",
+    brandName: "Coffee Planet",
+    dealTitle: "20% off Matcha Drinks",
+    logoSrc: "/coffee-planet.png",
+    date: "Today",
+  },
+  {
+    id: "2",
+    type: "redeemed",
+    brandName: "Filli Café",
+    dealTitle: "15% off Chai Combo",
+    logoSrc: "/filli.png",
+    date: "Yesterday",
+  },
+  {
+    id: "3",
+    type: "new",
+    brandName: "B60",
+    dealTitle: "25% off Lunch Special",
+    logoSrc: "/b60.jpg",
+    date: "2 days ago",
+  },
+];
+
 export function HomeScreen({ onOfferClick }: HomeScreenProps) {
+  const [showNotifications, setShowNotifications] = useState(false);
+  const unseenCount = DEAL_NOTIFICATIONS.filter(d => d.type === "new").length;
   const nearbyOffers = [
     {
       id: 1,
@@ -52,23 +91,22 @@ export function HomeScreen({ onOfferClick }: HomeScreenProps) {
           <img src="/studentverse-app-icon.png" alt="StudentVerse" className="h-10 w-auto" />
           <span className="font-heading text-sv-text-main font-bold text-lg">StudentVerse</span>
         </div>
-        <button className="w-10 h-10 rounded-full bg-sv-glass-bg flex items-center justify-center border border-sv-glass-border relative">
+        <button 
+          onClick={() => setShowNotifications(true)}
+          className="w-10 h-10 rounded-full bg-sv-glass-bg flex items-center justify-center border border-sv-glass-border relative"
+        >
           <Bell size={20} className="text-sv-text-main" />
-          <div className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full border-2 border-[#080C1F] flex items-center justify-center">
-            <span className="text-white text-[8px] font-bold">2</span>
-          </div>
+          {unseenCount > 0 && (
+            <div className="absolute -top-1 -right-1 w-4 h-4 bg-sv-azure rounded-full border-2 border-[#080C1F] flex items-center justify-center">
+              <span className="text-white text-[8px] font-bold">{unseenCount}</span>
+            </div>
+          )}
         </button>
       </div>
 
       {/* Greeting Row */}
-      <div className="flex items-center justify-between mb-6">
+      <div className="mb-6">
         <h1 className="font-heading text-sv-text-main font-bold text-2xl">Hello, Ahmed</h1>
-        <div className="bg-sv-navy border border-sv-glass-border rounded-full px-4 py-2 flex items-center gap-2">
-          <div className="w-5 h-5 rounded-full bg-gradient-to-br from-sv-gold to-orange-500 flex items-center justify-center">
-            <span className="text-[8px] font-bold text-white">★</span>
-          </div>
-          <span className="font-mono text-sv-gold text-sm font-bold">850 VP</span>
-        </div>
       </div>
 
       {/* Hero Promotional Cards - Two Side by Side */}
@@ -208,6 +246,112 @@ export function HomeScreen({ onOfferClick }: HomeScreenProps) {
           ))}
         </div>
       </div>
+
+      {/* Notifications Panel */}
+      <AnimatePresence>
+        {showNotifications && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/60 z-50 flex items-end justify-center"
+            onClick={() => setShowNotifications(false)}
+          >
+            <motion.div
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-sv-navy rounded-t-3xl w-full max-w-[480px] max-h-[70vh] overflow-y-auto"
+            >
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="font-heading text-xl font-bold text-sv-text-main">Your Deals</h2>
+                  <button
+                    onClick={() => setShowNotifications(false)}
+                    className="w-10 h-10 rounded-full bg-sv-glass-bg flex items-center justify-center border border-sv-glass-border"
+                  >
+                    <X className="w-5 h-5 text-sv-text-muted" />
+                  </button>
+                </div>
+
+                {/* New Deals Section */}
+                <div className="mb-6">
+                  <h3 className="font-heading text-sm font-semibold text-sv-azure mb-3 uppercase tracking-wider flex items-center gap-2">
+                    <Gift className="w-4 h-4" />
+                    New Deals
+                  </h3>
+                  <div className="space-y-3">
+                    {DEAL_NOTIFICATIONS.filter(d => d.type === "new").map((deal) => (
+                      <motion.div
+                        key={deal.id}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={() => {
+                          setShowNotifications(false);
+                          onOfferClick?.(deal.brandName.toLowerCase().replace(/\s+/g, '-'));
+                        }}
+                        className="flex items-center gap-3 p-3 bg-sv-glass-bg rounded-xl border border-sv-azure/30 cursor-pointer hover:bg-sv-glass-highlight transition-colors"
+                      >
+                        <div className="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 bg-sv-navy">
+                          {deal.logoSrc ? (
+                            <img src={deal.logoSrc} alt={deal.brandName} className="w-full h-full object-cover" />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center">
+                              <Gift className="w-6 h-6 text-sv-azure" />
+                            </div>
+                          )}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sv-text-main font-medium text-sm">{deal.dealTitle}</p>
+                          <p className="text-sv-text-muted text-xs">{deal.brandName}</p>
+                        </div>
+                        <div className="text-right">
+                          <span className="text-sv-text-muted text-xs">{deal.date}</span>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Redeemed Deals Section */}
+                <div>
+                  <h3 className="font-heading text-sm font-semibold text-sv-text-muted mb-3 uppercase tracking-wider flex items-center gap-2">
+                    <Check className="w-4 h-4" />
+                    Redeemed
+                  </h3>
+                  <div className="space-y-3">
+                    {DEAL_NOTIFICATIONS.filter(d => d.type === "redeemed").map((deal) => (
+                      <div
+                        key={deal.id}
+                        className="flex items-center gap-3 p-3 bg-sv-glass-bg rounded-xl border border-sv-glass-border opacity-60"
+                      >
+                        <div className="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 bg-sv-navy">
+                          {deal.logoSrc ? (
+                            <img src={deal.logoSrc} alt={deal.brandName} className="w-full h-full object-cover" />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center">
+                              <Check className="w-6 h-6 text-green-500" />
+                            </div>
+                          )}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sv-text-main font-medium text-sm line-through">{deal.dealTitle}</p>
+                          <p className="text-sv-text-muted text-xs">{deal.brandName}</p>
+                        </div>
+                        <div className="text-right flex flex-col items-end gap-1">
+                          <Check className="w-4 h-4 text-green-500" />
+                          <span className="text-sv-text-muted text-xs">{deal.date}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
