@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Send, Sparkles, AlertCircle, Tag } from "lucide-react"
+import { Send, Bot, AlertCircle, Compass } from "lucide-react"
 import type { Message, PlanOption, ChatState } from "./types"
 import { MessageBubble } from "./MessageBubble"
 import { PlanOptionsCard } from "./PlanOptionsCard"
@@ -155,8 +155,8 @@ export function OrbitAIChat() {
       {/* Header */}
       <div className="px-6 mb-4 flex-shrink-0">
         <div className="flex items-center gap-3 mb-2">
-          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-sv-azure to-sv-violet flex items-center justify-center">
-            <Sparkles className="w-5 h-5 text-white" aria-hidden="true" />
+          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-violet-500 via-fuchsia-500 to-cyan-400 flex items-center justify-center shadow-lg shadow-violet-500/30">
+            <Compass className="w-6 h-6 text-white" aria-hidden="true" />
           </div>
           <div>
             <h1 className="font-heading text-2xl font-bold text-sv-text-main">Orbit AI</h1>
@@ -182,25 +182,37 @@ export function OrbitAIChat() {
         </div>
       )}
 
-      {/* Active Deals Banner */}
+      {/* Active Deals Banner - Glass Box */}
       <div className="px-6 mb-4 flex-shrink-0">
-        <div className="bg-gradient-to-r from-sv-azure/20 to-sv-violet/20 rounded-xl p-3 border border-sv-azure/30">
-          <div className="flex items-center gap-2 mb-2">
-            <Tag className="w-4 h-4 text-sv-azure" />
-            <span className="text-sv-text-main text-sm font-medium">Active Deals</span>
+        <div 
+          className="rounded-2xl p-4 border border-white/10"
+          style={{
+            background: 'rgba(255, 255, 255, 0.03)',
+            backdropFilter: 'blur(20px)',
+            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05)'
+          }}
+        >
+          <div className="flex items-center gap-2 mb-3">
+            <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-sv-azure to-sv-cyan flex items-center justify-center">
+              <span className="text-xs">✨</span>
+            </div>
+            <span className="text-sv-text-main text-sm font-semibold">Active Deals</span>
           </div>
           <div className="flex gap-2 overflow-x-auto pb-1">
             {BRAND_OFFERS.slice(0, 3).map((offer) => (
               <button
                 key={offer.id}
                 onClick={() => handleExamplePrompt(`Tell me about ${offer.name} deals`)}
-                className="flex items-center gap-2 bg-sv-glass-bg rounded-lg px-3 py-2 border border-sv-glass-border whitespace-nowrap hover:bg-sv-glass-highlight transition-colors"
+                className="flex items-center gap-2 rounded-xl px-3 py-2.5 border border-white/10 whitespace-nowrap hover:border-white/20 transition-all"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.05)',
+                }}
               >
                 {offer.logoSrc && (
-                  <img src={offer.logoSrc} alt={offer.name} className="w-6 h-6 rounded object-cover" />
+                  <img src={offer.logoSrc} alt={offer.name} className="w-7 h-7 rounded-lg object-cover" />
                 )}
-                <span className="text-sv-text-main text-xs font-medium">{offer.name}</span>
-                <span className="text-sv-azure text-xs font-bold">{offer.discount}</span>
+                <span className="text-sv-text-main text-sm font-medium">{offer.name}</span>
+                <span className="text-sv-cyan text-sm font-bold">{offer.discount}</span>
               </button>
             ))}
           </div>
@@ -245,8 +257,8 @@ export function OrbitAIChat() {
         {/* Loading indicator */}
         {chatState === "loading" && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex items-center gap-2 mb-4">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-sv-azure to-sv-violet flex items-center justify-center">
-              <Sparkles className="w-5 h-5 text-white" aria-hidden="true" />
+            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-violet-500 via-fuchsia-500 to-cyan-400 flex items-center justify-center">
+              <Compass className="w-5 h-5 text-white" aria-hidden="true" />
             </div>
             <div className="bg-sv-glass-bg rounded-xl px-4 py-3 border border-sv-glass-border backdrop-blur-sm">
               <div className="flex gap-1">
