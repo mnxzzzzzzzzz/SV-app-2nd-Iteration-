@@ -61,7 +61,7 @@ export function EmailEntry({ onSubmit }: EmailEntryProps) {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-6 max-w-[480px] mx-auto" style={{ background: 'linear-gradient(to bottom, #0A0F1E 0%, #1a0a0a 40%, #3d1515 70%, #5c2a1a 85%, #8B4513 100%)' }}>
+    <div className="min-h-screen flex flex-col items-center justify-center px-6 max-w-[480px] mx-auto" style={{ background: 'linear-gradient(to bottom, #8B4513 0%, #5c2a1a 15%, #3d1515 30%, #1a0a0a 60%, #0A0F1E 100%)' }}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
