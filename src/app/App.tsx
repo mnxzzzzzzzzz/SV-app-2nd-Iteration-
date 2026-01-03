@@ -53,7 +53,7 @@ export default function App() {
     setUserEmail(email);
     setAuthStep("loading");
     setTimeout(() => {
-      setAuthStep("otp");
+      setAuthStep("authenticated");
     }, 2000);
   };
 
